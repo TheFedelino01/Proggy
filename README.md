@@ -17,5 +17,4 @@ SITO
 SACCANI: PHP PRENDE DATI DA SERVER E LI VISUALIZZA
 
 
-![Schema](R:/Desktop/Immagine.png)
-Format: ![Alt Text](url)
+![Schema](/Schema.png)
