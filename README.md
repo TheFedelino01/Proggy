@@ -18,4 +18,6 @@ SITO
 SACCANI: PHP PRENDE DATI DA SERVER E LI VISUALIZZA E INVIA RICHIESTE AL SITO 
 
 
+https://create.arduino.cc/projecthub/RVLAD/free-fall-detection-using-3-axis-accelerometer-06383e
+https://circuitdigest.com/microcontroller-projects/interfacing-gps-with-nodemcu-esp12
 ![Schema](/Schema.png)
