@@ -3,65 +3,66 @@ package Server;
 import com.sun.net.httpserver.HttpServer;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.JSONObject;
 
 public class DataReceive {
 
-    public static HttpServer createConnection(int port) {
-        try {
-            HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-            server.createContext("/info", new InfoHandler());
-            server.createContext("/get", new GetHandler());
-            server.setExecutor(null); // creates a default executor
-            server.start();
-            return server;
-        } catch (IOException ex) {
-            Logger.getLogger(DataReceive.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+    public static String socketReceive(int port) throws SocketException {
+            DatagramSocket serverSocket = new DatagramSocket(port);//6789
+            String out = "";
+            boolean attivo = true;				// per la ripetizione
+            byte[] bufferIN = new byte[1024];	// buffer spedizione e ricezione
+            byte[] bufferOUT = new byte[1024];
+            System.out.println("Server avviato...");
+            while (attivo) {
+                // definizione del datagramma
+                DatagramPacket receivePacket
+                        = new DatagramPacket(bufferIN, bufferIN.length);
+                try {
+                    // attesa della ricezione dato dal client
+                    serverSocket.receive(receivePacket);
+                } catch (IOException ex) {
+                    Logger.getLogger(DataReceive.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // analisi del pacchetto ricevuto
+                String ricevuto = new String(receivePacket.getData());
+                int numCaratteri = receivePacket.getLength();
+                ricevuto = ricevuto.substring(0, numCaratteri);	// elimina i caratteri in eccesso
+                System.out.println("RICEVUTO: " + ricevuto);
+                out = ricevuto;
+                // riconoscimento dei parametri del socket dei client
+                InetAddress IPClient = receivePacket.getAddress();
+                int portClient = receivePacket.getPort();
+                // preparo il dato da spedire
+                String daSpedire = ricevuto.toUpperCase();
+                bufferOUT = daSpedire.getBytes();
+                // invio del datagramma             
+                DatagramPacket sendPacket
+                        = new DatagramPacket(bufferOUT, bufferOUT.length, IPClient, portClient);
+                try {
+                    serverSocket.send(sendPacket);
+                } catch (IOException ex) {
+                    Logger.getLogger(DataReceive.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                // controllo termine esecuzione del server
+                if (ricevuto.equals("fine")) {
+                    System.out.println("SERVER IN CHIUSURA.");
+                    attivo = false;
+                }
         }
-    };
-    
-    
-
-  static class InfoHandler implements HttpHandler {
-    public void handle(HttpExchange t) throws IOException {
-      String response = "Use /get to download a PDF";
-      t.sendResponseHeaders(200, response.length());
-      OutputStream os = t.getResponseBody();
-      os.write(response.getBytes());
-      os.close();
-    }
-  }
-
-  static class GetHandler implements HttpHandler {
-    public void handle(HttpExchange t) throws IOException {
-
-      // add the required response header for a PDF file
-      Headers h = t.getResponseHeaders();
-      h.add("Content-Type", "application/pdf");
-
-      // a PDF (you provide your own!)
-      File file = new File ("c:/temp/doc.pdf");
-      byte [] bytearray  = new byte [(int)file.length()];
-      FileInputStream fis = new FileInputStream(file);
-      BufferedInputStream bis = new BufferedInputStream(fis);
-      bis.read(bytearray, 0, bytearray.length);
-
-      // ok, we are ready to send the response.
-      t.sendResponseHeaders(200, file.length());
-      OutputStream os = t.getResponseBody();
-      os.write(bytearray,0,bytearray.length);
-      os.close();
-    }
-  }
-
-    public static JSONObject receive() {
-        DataInputStream in = new DataInputStream(new BufferedInputStream(createConnection(3333).getInputStream()));
-
+        serverSocket.close();
+        return out;
     }
 ;
 }
