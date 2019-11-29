@@ -7,7 +7,7 @@ TinyGPSPlus gps;  // The TinyGPS++ object
 SoftwareSerial ss(4, 5); // The serial connection to the GPS device
 
 const char* ssid = "Saccani ROG MODEM";
-const char* password = "SaCCaNiWiFi01";
+const char* password = "";
 
 float latitude , longitude;
 int year , month , date, hour , minute , second;
