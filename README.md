@@ -21,4 +21,5 @@
 
 https://create.arduino.cc/projecthub/RVLAD/free-fall-detection-using-3-axis-accelerometer-06383e
 https://circuitdigest.com/microcontroller-projects/interfacing-gps-with-nodemcu-esp12
+http://www.ozekiphone.com/voip-part1-java-example-on-sending-sms-making-voip-calls-752.html
 ![Schema](/Schema.png)
