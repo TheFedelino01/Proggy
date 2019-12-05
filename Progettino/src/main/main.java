@@ -6,15 +6,18 @@
 package main;
 
 import Server.*;
+import java.io.IOException;
+import java.net.ProtocolException;
 
 /**
  *
  * @author saccani_federico
  */
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ProtocolException, IOException {
         thSocket thSocket = new thSocket(4210);
-        thSocket.start();
+        //thSocket.start();
+        System.out.println(Whatsapp.send());
         
        
     }
