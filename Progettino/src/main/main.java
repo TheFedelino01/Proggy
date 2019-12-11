@@ -17,7 +17,7 @@ public class main {
     public static void main(String[] args) throws ProtocolException, IOException {
         thSocket thSocket = new thSocket(4210);
         //thSocket.start();
-        System.out.println(Whatsapp.send());
+        Whatsapp.send();
         
        
     }

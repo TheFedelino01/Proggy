@@ -5,24 +5,29 @@
  */
 package Server;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
-/**
- *
- * @author tiabr
- */
 public class Whatsapp {
 
-    public static String send() throws MalformedURLException, ProtocolException, IOException {
-
-        URL url = new URL("https://wa.me/393459499843?text=ciao");
+    public static void send() throws IOException {
+        URL url = new URL("https://www.waboxapp.com/api/send/chat");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-      
-        return con.getResponseMessage();
+        System.out.println(con.getResponseMessage());
+        con.setRequestMethod("POST");
+        con.setInstanceFollowRedirects(true);
+
+        String postData = "token=my-test-api-key&uid=393459499843&to=393459499843&custom_uid=msg-5696&text=Hello world!";
+        con.setRequestProperty("Content-length", String.valueOf(postData.length()));
+
+        con.setDoOutput(true);
+        con.setDoInput(true);
+
+        DataOutputStream output = new DataOutputStream(con.getOutputStream());
+        System.out.println(con.getOutputStream());
+        output.writeBytes(postData);
+        output.close();
     }
 }
