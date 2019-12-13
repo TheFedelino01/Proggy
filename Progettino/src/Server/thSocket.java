@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import main.salvataggi;
 
 /**
  *
@@ -21,49 +22,29 @@ import javax.swing.JLabel;
 public class thSocket extends Thread {
 
     private socketUDP socket;
+    private salvataggi salvataggi;
     
-    public thSocket(int portaAscolto) {
+    public thSocket(int portaAscolto, salvataggi saves) {
         socket= new socketUDP(portaAscolto);
-
+        salvataggi = saves;
         //socket.setTimeOut(2000);
     }
 
     @Override
     public void run() {
         while (true) {
-            cmdRicevuto comandoComplesso = socket.receive();
-            socket.inviaACK(comandoComplesso.getPorta(), comandoComplesso.getIP());//invio ACK
-                    
-            System.out.println(comandoComplesso.getComando());
+            cmdRicevuto comandoComplesso = socket.receive();       
             
             if (comandoComplesso != null) {
-                String comandoTxt = comandoComplesso.getComando();
+                String cmdSplitted[] = comandoComplesso.getComando().split(";");
+                String comandoTxt = cmdSplitted[0];
+                String identificatore = cmdSplitted[1]; 
                 
-                String[] splitted = comandoTxt.split(";");
-                String cmd = splitted[0];
-                
-                if (cmd.equals("DATO")) {
-                    socket.inviaACK(comandoComplesso.getPorta(), comandoComplesso.getIP());//invio ACK
-                    
-                    String nomePeriferica = splitted[1];
-                    String dato = splitted[2];
+                if (comandoTxt.equals("COORDINATE")) {
+                    String coordinates = salvataggi.getLastCoordinate(identificatore).toString();
+                    socket.send(coordinates,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le coordinate
 
-                    
-                    //System.out.println("Ricevuta rilevazione: "+nomePeriferica+" dato: "+dato);
-                    
-                } else if (cmd.equals("DIMMELO")) {
-                    String nomePeriferica = splitted[1];
-
-                    
-                    //Rispondo al client che mi ha fatto la richiesta inviandogli il valore richiesto
-                    //socket.send(valore, comandoComplesso.getPorta(), comandoComplesso.getIP());
-
-                }else if(cmd.equals("ACCENDI")){
-                    String ipClient=comandoComplesso.getIP();
-                    int portaClient = comandoComplesso.getPorta();
-                    
-
-                }
+                } 
             }
         }
     }

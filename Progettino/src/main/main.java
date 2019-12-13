@@ -14,10 +14,11 @@ import java.net.ProtocolException;
  * @author saccani_federico
  */
 public class main {
-    public static void main(String[] args) throws ProtocolException, IOException {
-        thSocket thSocket = new thSocket(4210);
-        //thSocket.start();
-        Whatsapp.send();
+    public static void main(String[] args) {
+        salvataggi salvataggi = new salvataggi();
+        
+        thSocket thSocket = new thSocket(4210,salvataggi);
+        thSocket.start();
         
        
     }
