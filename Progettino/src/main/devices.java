@@ -36,4 +36,8 @@ public class devices {
     public coordinate getLastCoordinate(String identificatore) {
         return this.getDevice(identificatore).getLastCoordinate();
     }
+
+    public Integer getLastBattito(String identificatore) {
+        return this.getDevice(identificatore).getLastBattito();
+    }
 }

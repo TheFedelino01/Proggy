@@ -40,11 +40,21 @@ public class thSocket extends Thread {
                 String comandoTxt = cmdSplitted[0];
                 String identificatore = cmdSplitted[1]; 
                 
-                if (comandoTxt.equals("COORDINATE")) {
-                    String coordinates = salvataggi.getLastCoordinate(identificatore).toString();
-                    socket.send(coordinates,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le coordinate
+                switch(comandoTxt){
+                    case "COORDINATE":
+                        String coordinates = salvataggi.getLastCoordinate(identificatore).toString();
+                        socket.send(coordinates,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le coordinate
+                        break;
+                        
+                    case "BATTITO":
+                        String battiti = salvataggi.getLastBattito(identificatore).toString();
+                        socket.send(battiti,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio il battito
+                        break;
+                        
+                    case "OK-ACK":
+                        break;
+                }
 
-                } 
             }
         }
     }

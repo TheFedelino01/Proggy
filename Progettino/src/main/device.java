@@ -12,9 +12,11 @@ package main;
 public class device {
     private String identificatore;
     private coordinates coordinates;
+    private battiti battiti;
     
     public device(String identificatore){
         coordinates = new coordinates();
+        battiti = new battiti();
         this.identificatore=identificatore;
     }
 
@@ -25,4 +27,10 @@ public class device {
     public coordinate getLastCoordinate() {
         return coordinates.getLast();
     }
+
+    public Integer getLastBattito() {
+        return battiti.getLast();
+    }
+    
+    
 }

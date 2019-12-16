@@ -20,4 +20,8 @@ public class salvataggi {
     public coordinate getLastCoordinate(String identificatore){
         return devices.getLastCoordinate(identificatore);
     }
+
+    public Integer getLastBattito(String identificatore) {
+        return devices.getLastBattito(identificatore);
+    }
 }
