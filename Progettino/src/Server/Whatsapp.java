@@ -5,29 +5,38 @@
  */
 package Server;
 
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.UpdatesListener;
+import com.pengrad.telegrambot.model.Message;
+import com.pengrad.telegrambot.model.Update;
+import com.pengrad.telegrambot.request.BaseRequest;
+import com.pengrad.telegrambot.request.GetUpdates;
+import com.pengrad.telegrambot.request.SendMessage;
+import com.pengrad.telegrambot.response.BaseResponse;
+import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public class Whatsapp {
 
     public static void send() throws IOException {
-        URL url = new URL("https://www.waboxapp.com/api/send/chat");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        System.out.println(con.getResponseMessage());
-        con.setRequestMethod("POST");
-        con.setInstanceFollowRedirects(true);
+        // Create your bot passing the token received from @BotFather
+        TelegramBot bot = new TelegramBot("1002412328:AAErI2IPOMwyZ8bXYWnFxAHKGws1elinSPo");
 
-        String postData = "token=my-test-api-key&uid=393459499843&to=393459499843&custom_uid=msg-5696&text=Hello world!";
-        con.setRequestProperty("Content-length", String.valueOf(postData.length()));
-
-        con.setDoOutput(true);
-        con.setDoInput(true);
-
-        DataOutputStream output = new DataOutputStream(con.getOutputStream());
-        System.out.println(con.getOutputStream());
-        output.writeBytes(postData);
-        output.close();
+// Register for updates
+        bot.setUpdatesListener(updates -> {
+            // ... process updates
+            // return id of last processed update or confirm them all
+            return UpdatesListener.CONFIRMED_UPDATES_ALL;
+        });
+        BaseRequest ree;
+        bot.execute(request)
+GetUpdates getUpdates = new GetUpdates().limit(100).offset(0).timeout(0);
+GetUpdatesResponse updatesResponse = bot.execute(getUpdates);
+List<Update> updates = updatesResponse.updates();
+System.out.println(updatesResponse);
     }
 }
