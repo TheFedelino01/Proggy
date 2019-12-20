@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Server;
-
+/*
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Message;
@@ -39,4 +39,4 @@ GetUpdatesResponse updatesResponse = bot.execute(getUpdates);
 List<Update> updates = updatesResponse.updates();
 System.out.println(updatesResponse);
     }
-}
+}*/

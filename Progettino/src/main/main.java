@@ -19,7 +19,7 @@ public class main {
         
         thSocket thSocket = new thSocket(4210,salvataggi);
         thSocket.start();
-        Whatsapp.send();
+        //Whatsapp.send();
        
     }
 }
