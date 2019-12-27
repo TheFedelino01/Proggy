@@ -52,8 +52,11 @@ public class socketUDP {
         System.out.println("Send: "+msg+" ip: "+ip+" porta: "+port);
         
         System.out.println("Aspetto ACK");
-        return receive();//Aspetto ACK
-
+        cmdRicevuto ipoteticoACK = receive();//Aspetto ACK
+        if(ipoteticoACK.getComando().contains("ACK"))
+            return ipoteticoACK;
+        else
+            return null;
         
         }catch(Exception e){System.out.println("Errore socket: "+e.toString()); return null;}
     }

@@ -10,6 +10,7 @@ package main;
  * @author saccani_federico
  */
 public class coordinate {
+
     private String latitudine;
     private String longitudine;
 
@@ -30,4 +31,5 @@ public class coordinate {
     public String toString(){
         return latitudine+","+longitudine;
     }
+
 }

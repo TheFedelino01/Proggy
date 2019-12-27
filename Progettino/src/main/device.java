@@ -56,5 +56,20 @@ public class device {
     public String getIP() {
         return ip;
     }
+
+    public String getResoconto(String cosaVoglioOttenere) {
+        String ris="";
+        if(cosaVoglioOttenere.equals("*")){
+            ris="COORDINATE;"+coordinates.getResoconto()+"BATTITI;"+battiti.getResoconto();
+            
+        }else if(cosaVoglioOttenere.toLowerCase().equals("battiti")){
+            ris=battiti.getResoconto();
+            
+        }else if(cosaVoglioOttenere.toLowerCase().equals("coordinate")){
+            ris=coordinates.getResoconto();
+        }
+        
+        return ris;
+    }
     
 }

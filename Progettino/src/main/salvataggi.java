@@ -39,5 +39,9 @@ public class salvataggi {
         return devices.getDevice(identificatore);
     }
 
+    public String getResoconto(String identificatore, String cosaVoglioOttenere) {
+        return devices.getDevice(identificatore).getResoconto(cosaVoglioOttenere);
+    }
+
     
 }

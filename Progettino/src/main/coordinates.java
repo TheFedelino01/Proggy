@@ -40,4 +40,16 @@ public class coordinates {
         return coordinate.get(c);
         
     }
+
+    public String getResoconto() {
+        String ris="";
+        for (int i = 0; i < coordinate.size(); i++) {
+            ris+=coordinate.get(i);
+            //Non aggiungo ; all'ultimo
+            if(i!=coordinate.size()-1)
+                ris+=";";
+        }
+        
+        return ris;
+    }
 }

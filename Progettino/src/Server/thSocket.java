@@ -36,6 +36,7 @@ public class thSocket extends Thread {
     //COORDINATE;identificativo ->Restituisco l'ultima coordinata registrata
     //BATTITO;identificativo -> Restituisco l'ultimo battito registrato
     //SHAKE;indentificativo;tempoDiVibrazione -> Dico al dispositivo di vibrare per tempoDiVibrazione milllis
+    //RESOCONTO;identificativo;battitiOcoordinate; -> restituisco elenco battitiOcoordinate
     @Override
     public void run() {   
         
@@ -77,7 +78,12 @@ public class thSocket extends Thread {
 
                             socket.inviaACK(comandoComplesso.getPorta(), comandoComplesso.getIP());//invio l'ack
                             break;
-
+                            
+                        case "RESOCONTO":
+                            String listaToSend = salvataggi.getResoconto(identificatore,cmdSplitted[2]);
+                            socket.send(listaToSend,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le il resoconto
+                            break;
+                            
                         case "OK-ACK":
                             break;
                     }

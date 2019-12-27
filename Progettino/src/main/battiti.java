@@ -5,6 +5,7 @@
  */
 package main;
 
+import static java.lang.Math.random;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,9 @@ public class battiti {
     public battiti(){
         battiti = new ArrayList<Integer>();
         
-        add(85);//TODO RIMUOVERE
+        int casuale = (int)(Math.random()*100);
+        
+        add(casuale);//TODO RIMUOVERE
     }
     
     public void add(int battito){
@@ -27,6 +30,18 @@ public class battiti {
     
     public Integer getLast(){
         return battiti.get(battiti.size()-1);
+    }
+
+    public String getResoconto() {
+        String ris="";
+        for (int i = 0; i < battiti.size(); i++) {
+            ris+=battiti.get(i);
+            //Non aggiungo ; all'ultimo
+            if(i!=battiti.size()-1)
+                ris+=";";
+        }
+        
+        return ris;
     }
             
 }
