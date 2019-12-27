@@ -14,7 +14,17 @@ public class salvataggi {
     
     public salvataggi(){
         devices = new devices();
-        devices.addDevice("PERSONA1");
+        
+        devices.addDevice("PERSONA1",1010,"192.168.5.5");
+        devices.addEmergencyNumber("PERSONA1", "+393341563626", "PARENTI");
+    }
+    
+    public int getPort(String identificatore){
+        return devices.getPort(identificatore);
+    }
+         
+    public String getIP(String identificatore) {
+        return devices.getIP(identificatore);
     }
     
     public coordinate getLastCoordinate(String identificatore){
@@ -24,4 +34,10 @@ public class salvataggi {
     public Integer getLastBattito(String identificatore) {
         return devices.getLastBattito(identificatore);
     }
+
+    public device getDevice(String identificatore) {
+        return devices.getDevice(identificatore);
+    }
+
+    
 }

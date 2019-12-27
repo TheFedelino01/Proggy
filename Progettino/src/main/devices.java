@@ -19,11 +19,11 @@ public class devices {
         devices = new ArrayList<device>();
     }
     
-    public void addDevice(String identificatore){
-        devices.add(new device(identificatore));
+    public void addDevice(String identificatore, int port, String ip){
+        devices.add(new device(identificatore,port,ip));
     }
     
-    private device getDevice(String identificatore){
+    public device getDevice(String identificatore){
         int i=0;
         while(i<devices.size()){
             if(devices.get(i).getIdentificatore().equals(identificatore))
@@ -39,5 +39,17 @@ public class devices {
 
     public Integer getLastBattito(String identificatore) {
         return this.getDevice(identificatore).getLastBattito();
+    }
+
+    public int getPort(String identificatore) {
+        return this.getDevice(identificatore).getPort();
+    }
+
+    public String getIP(String identificatore) {
+        return this.getDevice(identificatore).getIP();
+    }
+    
+    public void addEmergencyNumber(String identificatore,String numero,String tipologia){
+        this.getDevice(identificatore).addEmergencyNumber(numero, tipologia);
     }
 }

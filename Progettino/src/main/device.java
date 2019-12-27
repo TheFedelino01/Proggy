@@ -5,6 +5,9 @@
  */
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author saccani_federico
@@ -13,11 +16,17 @@ public class device {
     private String identificatore;
     private coordinates coordinates;
     private battiti battiti;
+    private List<emergencyNumber> numeriEmergenza;
+    private int port=-1;
+    private String ip="";
     
-    public device(String identificatore){
+    public device(String identificatore,int port,String ip){
         coordinates = new coordinates();
         battiti = new battiti();
         this.identificatore=identificatore;
+        numeriEmergenza= new ArrayList<emergencyNumber>();
+        this.port=port;
+        this.ip=ip;
     }
 
     public String getIdentificatore() {
@@ -32,5 +41,20 @@ public class device {
         return battiti.getLast();
     }
     
+    public void addEmergencyNumber(String numero,String tipologia){
+        numeriEmergenza.add(new emergencyNumber(numero,tipologia));
+    }
+    
+    public List<emergencyNumber> getEmergencyNumbers(){
+        return numeriEmergenza;
+    }
+
+    public int getPort() {
+        return port;
+    }
+    
+    public String getIP() {
+        return ip;
+    }
     
 }
