@@ -24,4 +24,15 @@ https://circuitdigest.com/microcontroller-projects/interfacing-gps-with-nodemcu-
 http://www.ozekiphone.com/voip-part1-java-example-on-sending-sms-making-voip-calls-752.html
 
 https://www.youtube.com/watch?v=aCeVsySh-v4
+
+ARDUINO SETUP --------------------------------
+-MODULO GPS + SIM + TUTTO QUELLO CHE CI SERVE (pure A-GPS: Gps fixato come quello del cellulare perché usa lte)
+https://www.dfrobot.com/product-1469.html
+39EU+18EU di spedizione: 19EU a testa
+
+-SIM VODAFONE 2EU AL MESE: 50 min, 100 sms, 200 mega
+http://www.vodafone.it/portal/Privati/Tariffe-e-Prodotti/Tariffe/Easy-Control
+
+
+
 ![Schema](/Schema.png)
