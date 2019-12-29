@@ -27,7 +27,8 @@ https://www.youtube.com/watch?v=aCeVsySh-v4
 
 ARDUINO SETUP --------------------------------
 -MODULO GPS + SIM + TUTTO QUELLO CHE CI SERVE (pure A-GPS: Gps fixato come quello del cellulare perché usa lte)
-https://www.dfrobot.com/product-1469.html
+SIM808: https://www.dfrobot.com/product-1469.html
+SIM7000E (piu potente): https://www.dfrobot.com/product-1732.html
 39EU+18EU di spedizione: 19EU a testa
 
 -SIM VODAFONE 2EU AL MESE: 50 min, 100 sms, 200 mega
