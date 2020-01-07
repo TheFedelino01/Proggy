@@ -43,5 +43,9 @@ public class salvataggi {
         return devices.getDevice(identificatore).getResoconto(cosaVoglioOttenere);
     }
 
+    public String getMedia(String identificatore) {
+        return devices.getDevice(identificatore).getMedia();
+    }
+
     
 }

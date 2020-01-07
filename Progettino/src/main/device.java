@@ -71,5 +71,9 @@ public class device {
         
         return ris;
     }
+
+    public String getMedia() {
+        return battiti.getMedia();
+    }
     
 }

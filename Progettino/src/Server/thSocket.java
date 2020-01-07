@@ -37,6 +37,9 @@ public class thSocket extends Thread {
     //BATTITO;identificativo -> Restituisco l'ultimo battito registrato
     //SHAKE;indentificativo;tempoDiVibrazione -> Dico al dispositivo di vibrare per tempoDiVibrazione milllis
     //RESOCONTO;identificativo;battitiOcoordinate; -> restituisco elenco battitiOcoordinate
+            //return 07/01/2020 19:25:12-78;07/01/2020 19:26:10-85
+    //MEDIA;identificativo; --> Dice la media, il valore max, quello min e il numero di battiti registrati
+            //return media;MaxValue;minValue
     @Override
     public void run() {   
         
@@ -81,8 +84,13 @@ public class thSocket extends Thread {
                             
                         case "RESOCONTO":
                             String listaToSend = salvataggi.getResoconto(identificatore,cmdSplitted[2]);
-                            socket.send(listaToSend,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le il resoconto
+                            socket.send(listaToSend,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio il resoconto
                             break;
+                            
+                        case "MEDIA":
+                            String valori = salvataggi.getMedia(identificatore);
+                            socket.send(valori,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio info MEDIA,MAX e MIN
+                            break; 
                             
                         case "OK-ACK":
                             break;
