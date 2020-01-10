@@ -5,6 +5,7 @@
  */
 package main;
 
+import Database.dbManager;
 import Server.*;
 import java.io.IOException;
 import java.net.ProtocolException;
@@ -19,7 +20,8 @@ public class main {
         
         thSocket thSocket = new thSocket(4210,salvataggi);
         thSocket.start();
-        //Whatsapp.send();
+        dbManager.createConnection();
+        dbManager.writeOnDb("");
        
     }
 }
