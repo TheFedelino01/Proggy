@@ -20,8 +20,8 @@ public class main {
         
         thSocket thSocket = new thSocket(4210,salvataggi);
         thSocket.start();
-        dbManager.createConnection();
-        dbManager.writeOnDb("");
+        //dbManager.createConnection();
+        //dbManager.writeOnDb("");
        
     }
 }
