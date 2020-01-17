@@ -19,7 +19,10 @@ public class main {
         salvataggi salvataggi = new salvataggi();
         
         thSocket thSocket = new thSocket(4210,salvataggi);
-        thSocket.start();
+        //thSocket.start();
+        
+        Telegram.send();
+        
         //dbManager.createConnection();
         //dbManager.writeOnDb("");
        
