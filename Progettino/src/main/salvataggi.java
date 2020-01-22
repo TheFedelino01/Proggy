@@ -47,5 +47,7 @@ public class salvataggi {
         return devices.getDevice(identificatore).getMedia();
     }
 
-    
+    public void salvaCoordinate(String identificatore,String coordinate) {
+        devices.addCoordinate(identificatore, coordinate);
+    }
 }

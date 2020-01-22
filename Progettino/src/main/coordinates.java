@@ -52,4 +52,9 @@ public class coordinates {
         
         return ris;
     }
+    
+    public void addCordinate(String cord){
+        String[] split = cord.split(",");
+        coordinate.add(new coordinate(split[0], split[1]));
+    }
 }

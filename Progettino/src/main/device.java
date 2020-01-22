@@ -16,6 +16,7 @@ public class device {
     private String identificatore;
     private coordinates coordinates;
     private battiti battiti;
+
     private List<emergencyNumber> numeriEmergenza;
     private int port=-1;
     private String ip="";
@@ -76,4 +77,7 @@ public class device {
         return battiti.getMedia();
     }
     
+    public coordinates getCoordinates() {
+        return coordinates;
+    }
 }

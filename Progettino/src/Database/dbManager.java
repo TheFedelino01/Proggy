@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -21,7 +21,7 @@ public class dbManager {
     public dbManager() {
 
     }
-
+    /*
     public static void createConnection() {
         try {
             String driverName = "com.mysql.cj.jdbc.Driver";
@@ -47,7 +47,6 @@ public class dbManager {
     public static void writeOnDb(String query) {
         if (connection != null) {
             try {
-                query = "INSERT INTO `gps` (`latitudine`, `longitudine`) VALUES ('1', '1');";
                 Statement st = connection.createStatement();
 
                 // execute the query, and get a java resultset
@@ -63,4 +62,5 @@ public class dbManager {
         }
 
     }
+**/
 }

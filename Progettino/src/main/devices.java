@@ -52,4 +52,8 @@ public class devices {
     public void addEmergencyNumber(String identificatore,String numero,String tipologia){
         this.getDevice(identificatore).addEmergencyNumber(numero, tipologia);
     }
+    
+    public void addCoordinate(String identificatore, String coordinate) {
+        this.getDevice(identificatore).getCoordinates().addCordinate(coordinate);
+    }
 }

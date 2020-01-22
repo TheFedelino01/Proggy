@@ -33,6 +33,7 @@ public class thSocket extends Thread {
     }
 
     //DESCRIZIONE PROTOCOLLO:
+    //ADD-COORDINATE;indentificativo;longitudine,latitudine
     //COORDINATE;identificativo ->Restituisco l'ultima coordinata registrata
     //BATTITO;identificativo -> Restituisco l'ultimo battito registrato
     //SHAKE;indentificativo;tempoDiVibrazione -> Dico al dispositivo di vibrare per tempoDiVibrazione milllis
@@ -57,6 +58,12 @@ public class thSocket extends Thread {
                 
                 if(continua){
                     switch(comandoTxt){
+                        
+                        case "ACOORDINATE":
+                            //database.instance.quert("select * from merda");
+                            salvataggi.salvaCoordinate(identificatore, cmdSplitted[2]);
+                            break;
+                        
                         case "COORDINATE":
                             String coordinates = salvataggi.getLastCoordinate(identificatore).toString();
                             socket.send(coordinates,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le coordinate
