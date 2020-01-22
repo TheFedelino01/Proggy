@@ -19,8 +19,20 @@ public class devices {
         devices = new ArrayList<device>();
     }
     
-    public void addDevice(String identificatore, int port, String ip){
-        devices.add(new device(identificatore,port,ip));
+    public void addDevice(String identificatore, int port, String ip,String nomeTutore){
+        devices.add(new device(identificatore,port,ip,nomeTutore));
+    }
+    
+    public List getDevicesWithName(String tutore){
+        int i=0;
+        List<device> l = new ArrayList<device>();
+        while(i<devices.size()){
+            if(devices.get(i).getTutore().equals(tutore)){
+                l.add(devices.get(i));
+            }
+            i++;
+        }
+        return l;
     }
     
     public device getDevice(String identificatore){

@@ -20,18 +20,24 @@ public class device {
     private List<emergencyNumber> numeriEmergenza;
     private int port=-1;
     private String ip="";
+    private String nomeTutore="";
     
-    public device(String identificatore,int port,String ip){
+    public device(String identificatore,int port,String ip,String nomeTutore){
         coordinates = new coordinates();
         battiti = new battiti();
         this.identificatore=identificatore;
         numeriEmergenza= new ArrayList<emergencyNumber>();
         this.port=port;
         this.ip=ip;
+        this.nomeTutore=nomeTutore;
     }
 
     public String getIdentificatore() {
         return identificatore;
+    }
+    
+    public String getTutore() {
+        return nomeTutore;
     }
 
     public coordinate getLastCoordinate() {

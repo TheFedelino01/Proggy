@@ -9,7 +9,7 @@ import java.util.List;
 import main.device;
 import main.emergencyNumber;
 import main.phone;
-import main.salvataggi;
+import main.manager;
 
 /**
  *

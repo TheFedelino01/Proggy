@@ -5,18 +5,20 @@
  */
 package main;
 
+import java.util.List;
+
 /**
  *
  * @author saccani_federico
  */
-public class salvataggi {
+public class manager {
     private devices devices;
     
-    public salvataggi(){
+    public manager(){
         devices = new devices();
         
-        devices.addDevice("PERSONA1",1010,"192.168.5.5");
-        devices.addEmergencyNumber("PERSONA1", "+393341563626", "PARENTI");
+        devices.addDevice("federico",1010,"192.168.5.5","BROCH");
+        devices.addEmergencyNumber("federico", "+393341563626", "PARENTI");
     }
     
     public int getPort(String identificatore){
@@ -46,8 +48,12 @@ public class salvataggi {
     public String getMedia(String identificatore) {
         return devices.getDevice(identificatore).getMedia();
     }
-
-    public void salvaCoordinate(String identificatore,String coordinate) {
+    
+    public List getDevicesWithName(String tutore){
+        return devices.getDevicesWithName(tutore);
+    }
+public void salvaCoordinate(String identificatore,String coordinate) {
         devices.addCoordinate(identificatore, coordinate);
     }
+    
 }

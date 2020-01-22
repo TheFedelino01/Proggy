@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import main.device;
-import main.salvataggi;
+import main.manager;
 
 /**
  *
@@ -23,12 +23,12 @@ import main.salvataggi;
 public class thSocket extends Thread {
 
     private socketUDP socket;
-    private salvataggi salvataggi;
+    private manager manager;
     private thPhone thPhone;
     
-    public thSocket(int portaAscolto, salvataggi saves) {
+    public thSocket(int portaAscolto, manager saves) {
         socket= new socketUDP(portaAscolto);
-        salvataggi = saves;
+        manager = saves;
         //socket.setTimeOut(3000);
     }
 
@@ -61,41 +61,39 @@ public class thSocket extends Thread {
                         
                         case "ACOORDINATE":
                             //database.instance.quert("select * from merda");
-                            salvataggi.salvaCoordinate(identificatore, cmdSplitted[2]);
+                            manager.salvaCoordinate(identificatore, cmdSplitted[2]);
                             break;
                         
                         case "COORDINATE":
-                            String coordinates = salvataggi.getLastCoordinate(identificatore).toString();
+                            String coordinates = manager.getLastCoordinate(identificatore).toString();
                             socket.send(coordinates,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio le coordinate
                             break;
 
                         case "BATTITO":
-                            String battiti = salvataggi.getLastBattito(identificatore).toString();
+                            String battiti = manager.getLastBattito(identificatore).toString();
                             socket.send(battiti,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio il battito
                             break;
 
                         case "SHAKE":
                             //Dico  al dispositivo di vibrare per cmdSplitted[2] millis
-                            socket.send("SHAKE;"+cmdSplitted[2], salvataggi.getPort(identificatore), salvataggi.getIP(identificatore));
+                            socket.send("SHAKE;"+cmdSplitted[2], manager.getPort(identificatore), manager.getIP(identificatore));
                             socket.inviaACK(comandoComplesso.getPorta(), comandoComplesso.getIP());//invio l'ack
                             break;
 
-                        case "EMERGENZA":
-                            //TODO @tiaBroch INVIA MESSAGGIO TELEGRAM
+                         case "EMERGENZA":
                             //Effettuo le chiamate per i parenti
-                            thPhone = new thPhone(salvataggi.getDevice(identificatore),"PARENTI");
-                            thPhone.start();
-
-                            socket.inviaACK(comandoComplesso.getPorta(), comandoComplesso.getIP());//invio l'ack
+                            thPhone = new thPhone(manager.getDevice(identificatore),"PARENTI");
+                            //thPhone.start();
+                            //Telegram.emergenza(manager.getDevicesWithName(/* qua è da fare una query al db che avendo l'identificatore del dispositivo ti ricava di chi è il dispositivo(tutore) e il suo chat id*/));
                             break;
                             
                         case "RESOCONTO":
-                            String listaToSend = salvataggi.getResoconto(identificatore,cmdSplitted[2]);
+                            String listaToSend = manager.getResoconto(identificatore,cmdSplitted[2]);
                             socket.send(listaToSend,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio il resoconto
                             break;
                             
                         case "MEDIA":
-                            String valori = salvataggi.getMedia(identificatore);
+                            String valori = manager.getMedia(identificatore);
                             socket.send(valori,comandoComplesso.getPorta(), comandoComplesso.getIP());//invio info MEDIA,MAX e MIN
                             break; 
                             

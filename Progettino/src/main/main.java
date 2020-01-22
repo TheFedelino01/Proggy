@@ -16,13 +16,13 @@ import java.net.ProtocolException;
  */
 public class main {
     public static void main(String[] args) throws IOException {
-        salvataggi salvataggi = new salvataggi();
+        manager salvataggi = new manager();
         
         thSocket thSocket = new thSocket(4210,salvataggi);
         thSocket.start();
         
-        //Telegram t = new Telegram();
-        //t.login();
+        Telegram t = new Telegram();
+        t.start();
         
         //dbManager.createConnection();
         //dbManager.writeOnDb("");
