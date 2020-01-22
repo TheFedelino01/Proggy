@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package main;
-
+ /*
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Message;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Telegram {
-    
+   
     private long id;
     private int codDispositivo;    
     
@@ -54,6 +54,7 @@ public class Telegram {
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
         });
 
-    }
+    
 }
 
+}*/

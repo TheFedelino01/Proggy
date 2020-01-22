@@ -18,11 +18,11 @@ public class main {
     public static void main(String[] args) throws IOException {
         salvataggi salvataggi = new salvataggi();
         
-        //thSocket thSocket = new thSocket(4210,salvataggi);
-        //thSocket.start();
+        thSocket thSocket = new thSocket(4210,salvataggi);
+        thSocket.start();
         
-        Telegram t = new Telegram();
-        t.login();
+        //Telegram t = new Telegram();
+        //t.login();
         
         //dbManager.createConnection();
         //dbManager.writeOnDb("");
