@@ -27,7 +27,8 @@ public class Telegram extends Thread {
                 System.out.println(message.chat().id());
                 chatId = message.chat().id();
                 if (message.text().equals("/start")) {
-                    bot.execute(new SendMessage(chatId, "Inserisci il tuo"));//saccani deve parlare su un codice o CON EMAIL RICAVO UN CODICE DAL DB E LO SPARO DENTRO
+                    bot.execute(new SendMessage(chatId, "Inserisci il tuo username"));
+                    //@AleColo controllo se username esiste e in tal caso ASSOCIO ID CHAT A USERNAME
                 } else {
                     bot.execute(new SendMessage(chatId, "/start se vuoi registrarti"));
                 }
