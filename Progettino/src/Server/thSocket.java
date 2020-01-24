@@ -5,6 +5,7 @@
  */
 package Server;
 
+import Database.dbManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -60,7 +61,7 @@ public class thSocket extends Thread {
                     switch(comandoTxt){
                         
                         case "ACOORDINATE":
-                            //database.instance.quert("select * from merda");
+                            dbManager.getIstance().query("select * from stoCazzo");
                             manager.salvaCoordinate(identificatore, cmdSplitted[2]);
                             break;
                         
