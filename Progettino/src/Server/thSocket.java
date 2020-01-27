@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import main.Telegram;
 import main.device;
 import main.manager;
 
@@ -61,7 +62,7 @@ public class thSocket extends Thread {
                     switch(comandoTxt){
                         
                         case "ACOORDINATE":
-                            dbManager.getIstance().query("select * from stoCazzo");
+                            //dbManager.getIstance().writeOnDb("select * from stoCazzo");
                             manager.salvaCoordinate(identificatore, cmdSplitted[2]);
                             break;
                         
@@ -85,7 +86,7 @@ public class thSocket extends Thread {
                             //Effettuo le chiamate per i parenti
                             thPhone = new thPhone(manager.getDevice(identificatore),"PARENTI");
                             //thPhone.start();
-                            //Telegram.emergenza(manager.getDevicesWithName(/* qua è da fare una query al db che avendo l'identificatore del dispositivo ti ricava di chi è il dispositivo(tutore) e il suo chat id*/));
+                            Telegram.emergenza(dbManager.getIstance().getChatId(identificatore));
                             break;
                             
                         case "RESOCONTO":

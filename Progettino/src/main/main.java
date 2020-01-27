@@ -21,11 +21,11 @@ public class main {
         thSocket thSocket = new thSocket(4210,salvataggi);
         thSocket.start();
         
-        Telegram t = new Telegram();
-        t.start();
+        //Telegram t = new Telegram();
+        //t.start();
         
-        //dbManager.createConnection();
-        //dbManager.writeOnDb("");
+        dbManager.getIstance().createConnection();
+        dbManager.getIstance().writeOnDb("");
        
     }
 }
