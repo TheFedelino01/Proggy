@@ -40,8 +40,12 @@ public class battiti {
         orario.add(formatter.format(date));
     }
     
-    public Integer getLast(){
+    public Integer getLastBattito(){
         return battiti.get(battiti.size()-1);
+    }
+    
+    public String getLastOra(){
+        return orario.get(orario.size()-1);
     }
 
     public String getResoconto() {

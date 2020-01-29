@@ -16,6 +16,24 @@ public class device {
     private String identificatore;
     private coordinates coordinates;
     private battiti battiti;
+    private String query;
+
+    public String getQuery(boolean caduta) {
+        Integer cad = 0;
+        if(caduta == true){
+            cad = 1;
+        }
+        
+        query = "INSERT INTO" + "evento" + "(data, posizione, caduta, battiti)" + "VALUES" + 
+                "('" + battiti.getLastOra().toString() + "'," + "'" +coordinates.getLast().toString() + 
+                "'," + "'" + cad.toString() + "'," + battiti.getLastBattito() + "'," + ")";
+        
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
     private List<emergencyNumber> numeriEmergenza;
     private int port=-1;
@@ -30,6 +48,7 @@ public class device {
         this.port=port;
         this.ip=ip;
         this.nomeTutore=nomeTutore;
+        this.query="";
     }
 
     public String getIdentificatore() {
@@ -45,7 +64,7 @@ public class device {
     }
 
     public Integer getLastBattito() {
-        return battiti.getLast();
+        return battiti.getLastBattito();
     }
     
     public void addEmergencyNumber(String numero,String tipologia){
@@ -85,5 +104,8 @@ public class device {
     
     public coordinates getCoordinates() {
         return coordinates;
+    }
+    public void addBattiti(String battiti){
+        this.battiti.add(Integer.parseInt(battiti));
     }
 }

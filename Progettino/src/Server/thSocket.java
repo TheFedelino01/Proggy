@@ -61,9 +61,18 @@ public class thSocket extends Thread {
                 if(continua){
                     switch(comandoTxt){
                         
-                        case "ACOORDINATE":
-                            //dbManager.getIstance().writeOnDb("select * from stoCazzo");
+                        case "ACADUTA":
                             manager.salvaCoordinate(identificatore, cmdSplitted[2]);
+                            dbManager.getIstance().scriviDB(manager.getDevice(identificatore).getQuery(true));
+                            break;
+                        
+                        case "ACOORDINATE":
+                            manager.salvaCoordinate(identificatore, cmdSplitted[2]);
+                            
+                            break;
+                        case "ABATTITO":
+                            manager.salvaBattiti(identificatore, cmdSplitted[2]);
+                            
                             break;
                         
                         case "COORDINATE":

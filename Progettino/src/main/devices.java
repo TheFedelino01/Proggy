@@ -68,4 +68,9 @@ public class devices {
     public void addCoordinate(String identificatore, String coordinate) {
         this.getDevice(identificatore).getCoordinates().addCordinate(coordinate);
     }
+    
+    public void addBattiti(String identificatore, String battiti) {
+        this.getDevice(identificatore).addBattiti(battiti);
+    }
+    
 }

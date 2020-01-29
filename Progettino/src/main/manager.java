@@ -55,5 +55,7 @@ public class manager {
 public void salvaCoordinate(String identificatore,String coordinate) {
         devices.addCoordinate(identificatore, coordinate);
     }
-    
+    public void salvaBattiti(String identificatore,String battiti) {
+        devices.addBattiti(identificatore, battiti);
+    }
 }

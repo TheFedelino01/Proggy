@@ -5,6 +5,10 @@
  */
 package Database;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -30,11 +34,11 @@ public class dbManager {
         return istance;
     }
     
-    public long getChatId(String identificatore){
-        "SELECT chatId FROM dispositivi WHERE dispositivi.id="+
+    public void getChatId(String identificatore){
+        //"SELECT chatId FROM dispositivi WHERE dispositivi.id="+
         
     }
-
+    
     public void createConnection() {
         try {
             String driverName = "com.mysql.cj.jdbc.Driver";
@@ -76,5 +80,28 @@ public class dbManager {
         }
 
     }
+    public void scriviDB(String query)
+    {
+        try {
+                        // open a connection to the site
+                        URL url = new URL("https://personalsafety.altervista.org/receiveData.php");
+                        URLConnection con = url.openConnection();
+                        // activate the output
+                        con.setDoOutput(true);
+                        PrintStream ps = new PrintStream(con.getOutputStream());
+                        // send your parameters to your site
+                        ps.print("cod=" + query);
+
+                        // we have to get the input stream in order to actually send the
+                        // request
+                        //System.out.println(new String(con.getInputStream().readAllBytes()));
+
+                        // close the print stream
+                        ps.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+    }
+
 
 }
