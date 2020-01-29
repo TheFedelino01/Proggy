@@ -35,6 +35,9 @@ public class thSocket extends Thread {
     }
 
     //DESCRIZIONE PROTOCOLLO:
+    //ACADUTA;ricezione da arduino;sccrivo su db tutti i dati
+    //ACOORDINATE;ricezione da arduino;coordinate;salvo in ram
+    //ABATTITO;ricezione da arduino;battiti;salvo in ram
     //ADD-COORDINATE;indentificativo;longitudine,latitudine
     //COORDINATE;identificativo ->Restituisco l'ultima coordinata registrata
     //BATTITO;identificativo -> Restituisco l'ultimo battito registrato
@@ -45,14 +48,29 @@ public class thSocket extends Thread {
             //return media;MaxValue;minValue
     @Override
     public void run() {   
-        
+        int i = 0;
+        long startTime = 0;
         while (true) {
-            cmdRicevuto comandoComplesso = socket.receive();       
+            cmdRicevuto comandoComplesso = socket.receive();
+            
+                      
             boolean continua=true;
             if (comandoComplesso != null) {
                 String cmdSplitted[] = comandoComplesso.getComando().split(";");
                 String comandoTxt = cmdSplitted[0];
                 String identificatore="";
+                
+                
+                //sccrivo ogni 60 secondi su db se il dispositivo è attivo e manda dati
+                if(i == 0){
+                    startTime = System.currentTimeMillis();    
+                    i++;                
+                }
+            
+                if(i == 1 && (System.currentTimeMillis() - startTime) / 1000 > 60){
+                    dbManager.getIstance().scriviDB(manager.getDevice(identificatore).getQuery(false));
+                    i=0;                
+                    }
                 
                 try{
                 identificatore = cmdSplitted[1]; 
@@ -62,7 +80,7 @@ public class thSocket extends Thread {
                     switch(comandoTxt){
                         
                         case "ACADUTA":
-                            manager.salvaCoordinate(identificatore, cmdSplitted[2]);
+                            manager.salvaCoordinate(identificatore, cmdSplitted[0]);
                             dbManager.getIstance().scriviDB(manager.getDevice(identificatore).getQuery(true));
                             break;
                         
