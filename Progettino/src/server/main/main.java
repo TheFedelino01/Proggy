@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package server.main;
 
 import Database.dbManager;
+import Socket.thSocket;
 import Server.*;
 import java.io.IOException;
 import java.net.ProtocolException;
+import server.manager;
 
 /**
  *
@@ -24,8 +26,6 @@ public class main {
         //Telegram t = new Telegram();
         //t.start();
         
-        dbManager.getIstance().createConnection();
-        dbManager.getIstance().writeOnDb("");
        
     }
 }

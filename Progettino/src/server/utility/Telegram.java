@@ -1,4 +1,4 @@
-package main;
+package server.utility;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;

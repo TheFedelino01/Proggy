@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server;
+package Socket;
 
 import java.util.List;
-import main.device;
-import main.emergencyNumber;
-import main.phone;
-import main.manager;
+import server.device;
+import server.emergencyNumber;
+import server.utility.phone;
+import server.manager;
 
 /**
  *

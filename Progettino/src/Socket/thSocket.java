@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server;
+package Socket;
 
 import Database.dbManager;
 import java.io.File;
@@ -13,9 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import main.Telegram;
-import main.device;
-import main.manager;
+import server.utility.Telegram;
+import server.device;
+import server.manager;
 
 /**
  *
@@ -113,7 +113,7 @@ public class thSocket extends Thread {
                             //Effettuo le chiamate per i parenti
                             thPhone = new thPhone(manager.getDevice(identificatore),"PARENTI");
                             //thPhone.start();
-                            Telegram.emergenza(dbManager.getIstance().getChatId(identificatore));
+                            //Telegram.emergenza(dbManager.getIstance().getChatId(identificatore));
                             break;
                             
                         case "RESOCONTO":
