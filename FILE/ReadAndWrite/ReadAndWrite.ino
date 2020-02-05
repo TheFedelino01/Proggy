@@ -29,7 +29,7 @@ void setup() {
     key2.keyByte[i] = 0xFF;
   }
 
-  Serial.println(F("Attendo carta...."));
+  //Serial.println(F("Attendo carta...."));
 }
 
 /**
@@ -50,6 +50,13 @@ void loop() {
     0x02, 0x65, 0x6e, 0xfe,
     0xfe, 0xfe, 0xfe, 0xfe
   };
+
+    byte dataBlock5[]    = {
+    0x00, 0x00, 0x03, 0x0c, //Scrivo ciao
+    0xd1, 0x01, 0x08, 0x54,
+    0x02, 0x65, 0x6e, 0xfe,
+    0xfe, 0xfe, 0xfe, 0xfe
+  };
   byte trailerBlock   = 7;
   MFRC522::StatusCode status;
   byte buffer[18];
@@ -62,19 +69,66 @@ void loop() {
     return;
   }
   else {
-    s = Serial.readString();
+    s = readLine();
+    Serial.println(s.length());
 
-    if (s.length() > 4) {
+    if (s.length() <5) {
       while (true) {
         if (mfrc522.PICC_IsNewCardPresent()) {
 
           // Select one of the cards
           if (mfrc522.PICC_ReadCardSerial()) {
-            Serial.println(F("Carta rilevata!"));
+            //Serial.println(F("Carta rilevata!"));
 
             connetto(trailerBlock);
-            String s1=s.substring(0,5);
-            stringToDataBlocco1(&dataBlock[0], s1);
+            stringToDataBlocco1(&dataBlock[0], s);
+            scrivo(4, dataBlock);
+
+
+
+            // Halt PICC
+            mfrc522.PICC_HaltA();
+            // Stop encryption on PCD
+            mfrc522.PCD_StopCrypto1();
+            //Serial.println("Preciso, tutto ok!");
+            return;
+          }
+        }
+      }
+    } else if(s.length()==5){
+      while (true) {
+        if (mfrc522.PICC_IsNewCardPresent()) {
+
+          // Select one of the cards
+          if (mfrc522.PICC_ReadCardSerial()) {
+            //Serial.println(F("Carta rilevata!"));
+
+            connetto(trailerBlock);
+            stringToDataBlocco1(&dataBlock5[0], s);
+            scrivo(4, dataBlock5);
+
+
+
+            // Halt PICC
+            mfrc522.PICC_HaltA();
+            // Stop encryption on PCD
+            mfrc522.PCD_StopCrypto1();
+            //Serial.println("Preciso, tutto ok!");
+            return;
+          }
+        }
+      }
+    }else{ 
+
+      while (true) {
+        if (mfrc522.PICC_IsNewCardPresent()) {
+
+          // Select one of the cards
+          if (mfrc522.PICC_ReadCardSerial()) {
+            //Serial.println(F("Carta rilevata!"));
+
+            connetto(trailerBlock);
+            stringToDataBlocco1(&dataBlock[0], s);
             scrivo(4, dataBlock);
             stringToData(&dataBlock1[0], "oooooooooooooo");
             scrivo(5, dataBlock1);
@@ -84,30 +138,7 @@ void loop() {
             mfrc522.PICC_HaltA();
             // Stop encryption on PCD
             mfrc522.PCD_StopCrypto1();
-            Serial.println("Preciso, tutto ok!");
-            return;
-          }
-        }
-      }
-    } else {
-
-      while (true) {
-        if (mfrc522.PICC_IsNewCardPresent()) {
-
-          // Select one of the cards
-          if (mfrc522.PICC_ReadCardSerial()) {
-            Serial.println(F("Carta rilevata!"));
-
-            connetto(trailerBlock);
-            stringToDataBlocco1(&dataBlock[0], s);
-            scrivo(4, dataBlock);
-
-
-            // Halt PICC
-            mfrc522.PICC_HaltA();
-            // Stop encryption on PCD
-            mfrc522.PCD_StopCrypto1();
-            Serial.println("Preciso, tutto ok!");
+            //Serial.println("Preciso, tutto ok!");
             return;
           }
         }
@@ -122,41 +153,41 @@ void loop() {
 */
 void dump_byte_array(byte *buffer, byte bufferSize) {
   for (byte i = 0; i < bufferSize; i++) {
-    Serial.print(buffer[i] < 0x10 ? " 0" : " ");
-    Serial.print(buffer[i], HEX);
+    //Serial.print(buffer[i] < 0x10 ? " 0" : " ");
+    //Serial.print(buffer[i], HEX);
   }
 }
 MFRC522::StatusCode connetto(int trailerBlock) {
   //Prova le 2 password per autenticarsi
   MFRC522::StatusCode status;
-  Serial.println(F("Connessione..."));
+  //Serial.println(F("Connessione..."));
   status = (MFRC522::StatusCode) mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, trailerBlock, &key, &(mfrc522.uid));
   if (status != MFRC522::STATUS_OK) {
     status = (MFRC522::StatusCode) mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, trailerBlock, &key2, &(mfrc522.uid));
     if (status != MFRC522::STATUS_OK) {
-      Serial.print(F("PCD_Authenticate() failed: "));
-      Serial.println(mfrc522.GetStatusCodeName(status));
+      //Serial.print(F("PCD_Authenticate() failed: "));
+      //Serial.println(mfrc522.GetStatusCodeName(status));
     }
   }
 
-  Serial.println(F("CONNESSO"));
+  //Serial.println(F("CONNESSO"));
   return status;
 }
 MFRC522::StatusCode scrivo(int blockAddr, byte dataBlock[]) {
   MFRC522::StatusCode status;
-  Serial.println(F("Scrittura in corso..."));
+  //Serial.println(F("Scrittura in corso..."));
   status = (MFRC522::StatusCode) mfrc522.MIFARE_Write(blockAddr, dataBlock, 16);
   if (status != MFRC522::STATUS_OK) {
-    Serial.print(F("MIFARE_Write() failed: "));
-    Serial.println(mfrc522.GetStatusCodeName(status));
+    //Serial.print(F("MIFARE_Write() failed: "));
+    //Serial.println(mfrc522.GetStatusCodeName(status));
   }
-  Serial.println(F("Scrittura completata"));
-  Serial.println();
+  //Serial.println(F("Scrittura completata"));
+  //Serial.println();
   return status;
 }
 
 void stringToDataBlocco1(byte *dataBlock, String s) {//il blocco 1 è stornzo che ha il bit stuffing all'inzio
-  for (int i = 11; i < 16; i++) {
+  for (int i = 11; i <= 15; i++) {
     dataBlock[i] = s.charAt(i - 11);
   }
 }
@@ -167,3 +198,21 @@ void stringToData(byte *dataBlock, String s) {
   }
 }
 
+
+String readLine(){
+ 
+  String datoricevuto = "";
+  char c;
+ 
+  while(Serial.available() > 0){
+    c = Serial.read();
+
+    if (c == '\n')
+      break;
+
+    else
+      datoricevuto += c;
+      delay(10);
+  }
+  return datoricevuto;
+}
