@@ -25,7 +25,7 @@ public class main {
         //t.start();
         
         NFCManager m=new NFCManager("COM4");
-        m.write("iiii");
+        m.write("12345\n");
         
        
     }

@@ -5,6 +5,7 @@
  */
 package proggyGradle.server.utility;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -27,6 +28,11 @@ public class NFCManager {
         try {
             outputStream.writeChars(s);
             System.out.println("Scritto");
+            DataInputStream inputStream = new DataInputStream(sp.getInputStream());
+            
+            while(true)
+                System.out.println(inputStream.readLine());
+
         } catch (IOException e) {
             System.out.println("Errore scrittura");
         }
@@ -35,7 +41,7 @@ public class NFCManager {
     private boolean open(String com) {
         try {
             sp = (SerialPort) CommPortIdentifier.getPortIdentifier(com).open("AAA", 2000);//selectSerialPort();
-            sp.setSerialPortParams(9600, 8, 2, 0);
+            sp.setSerialPortParams(9600, 8, 1, 0);
             outputStream = new DataOutputStream(sp.getOutputStream());
             return true;
         } catch (Exception e) {
