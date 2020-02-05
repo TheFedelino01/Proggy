@@ -44,7 +44,7 @@ void loop() {
   MFRC522::StatusCode status;
   byte buffer[18];
   byte size = sizeof(buffer);
-
+  int nBlock[] = {4, 5, 6, 8, 9, 10};
 
 
   String s = "";
@@ -53,27 +53,28 @@ void loop() {
   }
   else {
     s = readLine();
+    Serial.println(s);
     Serial.println(s.length());
-  byte dataBlock1[]    = {
-    0x00, 0x00, 0x03, 0x0b, //i byte a 0xfe sono scrivibli
-    0xd1, 0x01, 0x07, 0x54,
-    0x02, 0x65, 0x6e, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe
-  };
+    byte dataBlock1[]    = {
+      0x00, 0x00, 0x03, 0x0b, //i byte a 0xfe sono scrivibli
+      0xd1, 0x01, 0x07, 0x54,
+      0x02, 0x65, 0x6e, 0xfe,
+      0xfe, 0xfe, 0xfe, 0xfe
+    };
 
-  byte dataBlock[]    = {
-    0xfe, 0xfe, 0xfe, 0xfe, //i byte a 0xfe sono scrivibli
-    0xfe, 0xfe, 0xfe, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe
-  };
+    byte dataBlock[]    = {
+      0xfe, 0xfe, 0xfe, 0xfe, //i byte a 0xfe sono scrivibli
+      0xfe, 0xfe, 0xfe, 0xfe,
+      0xfe, 0xfe, 0xfe, 0xfe,
+      0xfe, 0xfe, 0xfe, 0xfe
+    };
 
-  byte dataBlock5[]    = {
-    0x00, 0x00, 0x03, 0x0c,
-    0xd1, 0x01, 0x08, 0x54,
-    0x02, 0x65, 0x6e, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe
-  };
+    byte dataBlock5[]    = {
+      0x00, 0x00, 0x03, 0x0c,
+      0xd1, 0x01, 0x08, 0x54,
+      0x02, 0x65, 0x6e, 0xfe,
+      0xfe, 0xfe, 0xfe, 0xfe
+    };
     if (s.length() < 5) {
 
       while (true) {
@@ -98,6 +99,8 @@ void loop() {
       }
     } else if (s.length() == 5) {
       while (true) {
+
+
         if (mfrc522.PICC_IsNewCardPresent()) {
 
           // Select one of the cards
@@ -118,6 +121,7 @@ void loop() {
       }
     } else if (s.length() > 5) {
       while (true) {
+
         if (mfrc522.PICC_IsNewCardPresent()) {
 
           // Select one of the cards
@@ -125,16 +129,33 @@ void loop() {
             //Serial.println(F("Carta rilevata!"));
 
             connetto(trailerBlock);
-            uint8_t len=s.length();
-            dataBlock5[3]=len+7;
-            dataBlock5[6]=len+3;
+            uint8_t len = s.length();
+            dataBlock5[3] = len + 7;
+            dataBlock5[6] = len + 3;
             String s1 = s.substring(0, 5);
-            String s2 = s.substring(5);
-            stringToDataBlocco1(&dataBlock5[0], s);
+            stringToDataBlocco1(&dataBlock5[0], s1);
             scrivo(4, dataBlock5);
 
-            stringToData(&dataBlock[0], s2);
-            scrivo(5, dataBlock);
+            String s2 = s.substring(5);
+            for (int i = 0;i<5; i = i + 1) {
+                        Serial.println(i);
+
+              byte thisData[]    = {
+                0xfe, 0xfe, 0xfe, 0xfe, //i byte a 0xfe sono scrivibli
+                0xfe, 0xfe, 0xfe, 0xfe,
+                0xfe, 0xfe, 0xfe, 0xfe,
+                0xfe, 0xfe, 0xfe, 0xfe
+              };
+
+              String subs = s2.substring(i * 16);
+              Serial.println(subs.substring(0,16));
+              if (subs != "") {
+                stringToData(&thisData[0], subs.substring(0,16));
+                scrivo(nBlock[i + 1], thisData);
+              } else {
+                return;
+              }
+            }
 
 
             // Halt PICC
@@ -196,7 +217,7 @@ void stringToDataBlocco1(byte *dataBlock, String s) {//il blocco 1 è stornzo ch
 }
 
 void stringToData(byte *dataBlock, String s) {
-  for (int i = 0; i < 15; i++) {
+  for (int i = 0; i <= 15; i++) {
     dataBlock[i] = s.charAt(i);
   }
 }
