@@ -36,27 +36,10 @@ void setup() {
    Main loop.
 */
 void loop() {
+
   byte sector         = 1;
   byte blockAddr      = 4;
-  byte dataBlock[]    = {
-    0x00, 0x00, 0x03, 0x0b, //Scrivo ciao
-    0xd1, 0x01, 0x07, 0x54,
-    0x02, 0x65, 0x6e, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe
-  };
-    byte dataBlock1[]    = {
-    0x00, 0x00, 0x03, 0x0b, //Scrivo ciao
-    0xd1, 0x01, 0x07, 0x54,
-    0x02, 0x65, 0x6e, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe
-  };
 
-    byte dataBlock5[]    = {
-    0x00, 0x00, 0x03, 0x0c, //Scrivo ciao
-    0xd1, 0x01, 0x08, 0x54,
-    0x02, 0x65, 0x6e, 0xfe,
-    0xfe, 0xfe, 0xfe, 0xfe
-  };
   byte trailerBlock   = 7;
   MFRC522::StatusCode status;
   byte buffer[18];
@@ -71,9 +54,30 @@ void loop() {
   else {
     s = readLine();
     Serial.println(s.length());
+  byte dataBlock1[]    = {
+    0x00, 0x00, 0x03, 0x0b, //i byte a 0xfe sono scrivibli
+    0xd1, 0x01, 0x07, 0x54,
+    0x02, 0x65, 0x6e, 0xfe,
+    0xfe, 0xfe, 0xfe, 0xfe
+  };
 
-    if (s.length() <5) {
+  byte dataBlock[]    = {
+    0xfe, 0xfe, 0xfe, 0xfe, //i byte a 0xfe sono scrivibli
+    0xfe, 0xfe, 0xfe, 0xfe,
+    0xfe, 0xfe, 0xfe, 0xfe,
+    0xfe, 0xfe, 0xfe, 0xfe
+  };
+
+  byte dataBlock5[]    = {
+    0x00, 0x00, 0x03, 0x0c,
+    0xd1, 0x01, 0x08, 0x54,
+    0x02, 0x65, 0x6e, 0xfe,
+    0xfe, 0xfe, 0xfe, 0xfe
+  };
+    if (s.length() < 5) {
+
       while (true) {
+
         if (mfrc522.PICC_IsNewCardPresent()) {
 
           // Select one of the cards
@@ -81,21 +85,18 @@ void loop() {
             //Serial.println(F("Carta rilevata!"));
 
             connetto(trailerBlock);
-            stringToDataBlocco1(&dataBlock[0], s);
-            scrivo(4, dataBlock);
-
-
+            stringToDataBlocco1(&dataBlock1[0], s);
+            scrivo(4, dataBlock1);
 
             // Halt PICC
             mfrc522.PICC_HaltA();
             // Stop encryption on PCD
             mfrc522.PCD_StopCrypto1();
-            //Serial.println("Preciso, tutto ok!");
             return;
           }
         }
       }
-    } else if(s.length()==5){
+    } else if (s.length() == 5) {
       while (true) {
         if (mfrc522.PICC_IsNewCardPresent()) {
 
@@ -107,19 +108,15 @@ void loop() {
             stringToDataBlocco1(&dataBlock5[0], s);
             scrivo(4, dataBlock5);
 
-
-
             // Halt PICC
             mfrc522.PICC_HaltA();
             // Stop encryption on PCD
             mfrc522.PCD_StopCrypto1();
-            //Serial.println("Preciso, tutto ok!");
             return;
           }
         }
       }
-    }else{ 
-
+    } else if (s.length() > 5) {
       while (true) {
         if (mfrc522.PICC_IsNewCardPresent()) {
 
@@ -128,10 +125,16 @@ void loop() {
             //Serial.println(F("Carta rilevata!"));
 
             connetto(trailerBlock);
-            stringToDataBlocco1(&dataBlock[0], s);
-            scrivo(4, dataBlock);
-            stringToData(&dataBlock1[0], "oooooooooooooo");
-            scrivo(5, dataBlock1);
+            uint8_t len=s.length();
+            dataBlock5[3]=len+7;
+            dataBlock5[6]=len+3;
+            String s1 = s.substring(0, 5);
+            String s2 = s.substring(5);
+            stringToDataBlocco1(&dataBlock5[0], s);
+            scrivo(4, dataBlock5);
+
+            stringToData(&dataBlock[0], s2);
+            scrivo(5, dataBlock);
 
 
             // Halt PICC
@@ -199,12 +202,12 @@ void stringToData(byte *dataBlock, String s) {
 }
 
 
-String readLine(){
- 
+String readLine() {
+
   String datoricevuto = "";
   char c;
- 
-  while(Serial.available() > 0){
+
+  while (Serial.available() > 0) {
     c = Serial.read();
 
     if (c == '\n')
@@ -212,7 +215,7 @@ String readLine(){
 
     else
       datoricevuto += c;
-      delay(10);
+    delay(10);
   }
   return datoricevuto;
 }
