@@ -6,30 +6,29 @@
 package proggyGradle.server;
 
 /**
- *
  * @author saccani_federico
  */
 public class coordinate {
 
-    private String latitudine;
-    private String longitudine;
+    private double latitudine;
+    private double longitudine;
 
-    public coordinate(String latitudine, String longitudine) {
+    public coordinate(double latitudine, double longitudine) {
         this.latitudine = latitudine;
         this.longitudine = longitudine;
     }
 
-    public String getLatitudine() {
+    public double getLatitudine() {
         return latitudine;
     }
 
-    public String getLongitudine() {
+    public double getLongitudine() {
         return longitudine;
     }
-    
+
     @Override
-    public String toString(){
-        return latitudine+","+longitudine;
+    public String toString() {
+        return latitudine + "," + longitudine;
     }
 
 }

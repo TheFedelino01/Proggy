@@ -15,4 +15,12 @@ dependencies {
     implementation 'com.github.pengrad:java-telegram-bot-api:4.6.0'
     implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
     compile 'com.github.purejavacomm:purejavacomm:1.0.2.RELEASE'
+
+    //compile 'org.nd4j:nd4j-native-platform:1.0.0-alpha'
+    //compile 'org.nd4j:nd4j-native-platform:1.0.0-beta6'
+
+    //compile 'javax.vecmath:vecmath:1.5.2'
+
+
+    compile 'org.apache.commons:commons-math3:3.6.1'
 }
