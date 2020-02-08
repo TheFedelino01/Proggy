@@ -104,7 +104,7 @@ public class Trilateration {
 
         final double x = (Math.pow(ap1.getDistanza(), 2) - Math.pow(ap2.getDistanza(), 2) + Math.pow(d, 2)) / (2 * d);
         final double y = ((Math.pow(ap1.getDistanza(), 2) - Math.pow(ap3.getDistanza(), 2) + Math.pow(i, 2) + Math.pow(j, 2)) / (2 * j)) - ((i / j) * x);
-        final double z = Math.sqrt(Math.pow(ap1.getDistanza(), 2) - Math.pow(x, 2) - Math.pow(y, 2));
+        final double z = Math.sqrt(Math.abs(Math.pow(ap1.getDistanza(), 2) - Math.pow(x, 2) - Math.pow(y, 2)));
 
         final Vector3D _P1 = new Vector3D(P1.getEntry(0), P1.getEntry(1), P1.getEntry(2));
         final Vector3D triPt = _P1.add(ex.scalarMultiply(x)).add(ey.scalarMultiply(y)).add(ez.scalarMultiply(z));
