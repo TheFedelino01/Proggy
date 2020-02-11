@@ -1,0 +1,565 @@
+#include <ESP8266WiFi.h>
+#include <WiFiUdp.h>
+#include <ESP8266WebServer.h>
+#include "fauxmoESP.h"//PER ALEXA!
+
+#define releAlza D2
+#define releAbbassa D3
+
+#define inputUP D5
+#define inputDown D6
+
+boolean up=false;
+boolean down=false;
+boolean changed=false;
+
+//ESP8266WebServer server(80);  
+WiFiUDP Udp;
+unsigned int localUdpPort = 4210;  // local port to listen on
+char incomingPacket[400];  // buffer for incoming packets
+char  replyPacket[40];  // a reply string to send back
+char  replyPacketSec[40];  // a reply string to send back
+
+
+int ritardoPassaggioAltoBasso=1000;//quanti ms deve aspettare per passare da Alto a Basso e viceversa
+int pressioneBottoneFisico=500;//quanti ms l'utente deve premere il pulsante per far alzare/abbassare
+int preservoRele=40; //sec di movimento dopo i quali smetto di muovere (spengo i rele)
+int evitoFalsiPos=3;//Per essere rivelato come tocco voluto deve essere premuto per almeno tot tempo =1 significa 10 ms
+
+long startTime=0;
+int showed=-1;
+/*
+void handleRoot();              // function prototypes for HTTP handlers
+void handleLED();
+void handleNotFound();*/
+
+bool securityOn=true;
+String security="ABDK1AaDlpP0aAK";
+
+int numEl=0;
+int MAXEL=40;
+String debug[40];//160 byte per riga tenendo conto dei 61 byte per il messaggio html (<div> etc)
+char debugInfo[30000];//3072000
+
+//String page = "<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <title>Terminal Saccani - Debug</title> <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'> <link rel='stylesheet' href='./style.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script> <style> body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #333; font-family: 'Open Sans', Arial, sans-serif; overflow: hidden; } .term { width: 50vw; height: 30vw; border-radius: 7px; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.56); background: #000; display: flex; flex-direction: column; overflow: hidden; } .term-header { display: flex; padding: 5px; background: linear-gradient(#e2e0e2, #c7c6c8); } .term-header-button { position: relative; width: 12px; height: 12px; margin-right: 8px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); padding: 0; } .term-header-button-close { background: #ff615a; } .term-header-button-minimize { background: #ffc230; } .term-header-button-expand { background: #29cb41; } .term-header-title { text-align: center; color: #494849; font-family: 'Open Sans', Arial, sans-serif; font-size: 13px; width: 100%; } .term.inactive .term-header { background: linear-gradient(to bottom, #f8f8f8 0%, #f7f6f7 100%); } .term.inactive .term-header-button-close, .term.inactive .term-header-button-minimize, .term.inactive .term-header-button-expand { border: 1px solid #d0d0d0; background-color: #dddddd; } .term.inactive .term-header-title { color: #b7b6b7; } .term-content { overflow-y: scroll; padding: 10px; font-size: 14px; color: lightgray; } .term-content-arrow { color: #55f95d; margin-right: 10px; } .term-content-tilde { color: #54f9fb; margin-right: 10px; } .term-content-caret { height: 17px; width: 6px; display: inline-block; border: 1px solid lightgray; position: relative; top: 5px; transition: none; animation: blink .8s linear infinite alternate; } .info{ padding-top:8px; font-size: 20px; } .txt{ font-size: 20px; } @keyframes blink { from, 49% { opacity: 1; } 50%, to { opacity: 0; } } @media only screen and (min-width: 375px) and (orientation: portrait) { .SCHERMOperIPHONE--VERTICALE{} .term { width: 90vw; height: 90vw; } } </style> </head> <body> <div class='term'> <div class='term-header'> <button class='term-header-button term-header-button-close'></button> <button class='term-header-button term-header-button-minimize'></button> <button class='term-header-button term-header-button-expand' onclick='mio()'></button> <div class='term-header-title'> <span>saccani@192.168.0.57: ~ (Finestra SX1 e SX2 soggiorno)</span> </div> </div> <div class='term-content' id='mio'>";
+//String page2 = "</div> <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script> <script src='https://codepen.io/Nerd/pen/XooQKV.js'></script> <script> var grande=false; function mio(){ grande=!grande; var t = document.getElementsByClassName('term'); var st1='90vh'; var st2='90vw'; if(grande==false){ st1='60vh'; st2='50vw'; } for(var i=0; i<t.length;i++){ t[i].style.height=st1; t[i].style.width=st2; } } $('.term').drags({ handle: $('.term-header') }); $(document).ready(function() { setInterval(function(){ $('#mio').load('index.html #mio'); }, 1000); }); </script> </body> </html>";
+
+long riconnessioneInizio;
+long INTERVAL_CONNECTION=3600000;//ms --> 1 ora 
+int resetClick=0;
+int numOfClickForResetting=5;
+
+fauxmoESP fauxmo;
+#define NOME "TapparellaCucina"
+String alexaTODO="";
+
+void setup()
+{
+  pinMode(releAlza,OUTPUT);
+  pinMode(releAbbassa,OUTPUT);
+  pinMode(inputDown,INPUT);
+  pinMode(inputUP,INPUT);
+  
+  ferma();
+  
+  Serial.begin(115200);
+  serialPrint("");
+  
+  ferma();
+  
+  connectToWIFI();
+  
+  serialPrint("AVVIATO! DISPOSITIVO: Salotto DA FARE");
+  
+
+  //server.on("/index.html", handleRoot);               // Call the 'handleRoot' function when a client requests URI "/"
+  //server.onNotFound(handleNotFound);        // When a client requests an unknown URI (i.e. something other than "/"), call function "handleNotFound"+
+
+  //server.begin();                           // Actually start the server
+  //serialPrint("HTTP server started!");
+
+  if(securityOn==false)
+      security="";
+
+   //INIZIO CONFIGURAZIONE ALEXA
+   
+   fauxmo.setPort(80); // required for gen3 devices
+   fauxmo.enable(true);  
+   
+   fauxmo.addDevice(NOME); // Add virtual devices
+
+   fauxmo.onSetState(handleAlexa);
+}
+
+
+void loop()
+{
+  fauxmo.handle(); //Accetto richieste da parte di Alexa
+  //server.handleClient();
+
+  eseguiAlexaLoop();//Eseguo le richieste di alexa
+  
+  checkConnection();
+  checkReconnectionSure();
+  
+  controllaInputFisico();
+  
+  //eseguiSePremutoFisico();
+  
+  prendiPacchetti();
+
+  preservaRele();
+
+  checkClicksReset();
+  
+}
+
+// Callback when a command from Alexa is received. 
+// State is a boolean (ON/OFF) and value a number from 0 to 255 (if you say "set kitchen light to 50%" you will receive a 128 here).
+void handleAlexa(unsigned char device_id, const char * device_name, bool state, unsigned char value1){
+    String Name= String(device_name);
+    String id= String(device_id);
+    String value= String(value1);
+    
+    serialPrint("Ricevuto comando da Alexa! ID: "+id+" Nome: "+Name+" Value: "+value);
+    
+    if (Name == NOME) {
+      gestisciTapparella(value.toInt()); //Eseguo quello chiesto
+    }  
+}
+
+//VALORI RIFERITI A VAL
+// 16 --> ferma (6%)
+// altri --> segue ON o OFF NO PERCHE PROBLEMI CON IL FERMA E OFF
+// 52 20% --> ON
+// 102 40% --> OFF
+void gestisciTapparella(int val){
+
+  
+  if(val==16){alexaTODO="FERMO";}
+  else if(val==52){alexaTODO="ALZO";}
+  else if(val==102){alexaTODO="ABBASSO"; }
+
+  serialPrint("Comando Alexa: "+alexaTODO);
+}
+
+//DEVO ESEGUIRE QUESTO NEL MAIN PERCHÉ RICHIAMANDO I METODI DIRETTAMENTE NEL GESTISCI TAPPARELLA, BYPASSA PER QUALCHE MOTIVO I DELAY
+void eseguiAlexaLoop(){
+    if(alexaTODO=="FERMO"){
+          ferma();
+    }
+    else if(alexaTODO=="ALZO"){
+      alza();
+    }
+    else if(alexaTODO=="ABBASSO"){
+      abbassa();
+    }
+
+  alexaTODO="";
+  
+}
+
+//PER AVVIARE IL RESET FISICO BISOGNA PREMERE 5 VOLTE IL TASTO UP SX come se si volesse fermare la salita della tapparella. 
+//Ad ogni click viene incrementato un contatore, viene resettato quando si
+//clicca un qualsiasi altro pulsante (salita o discesa DX o discesa SX)
+void checkClicksReset(){
+  if(resetClick>=numOfClickForResetting){
+    restart();
+  }
+}
+/*
+void handleRoot() {
+  server.send(200, "text/html", getHTMLpage());   // Send HTTP status 200 (Ok) and send some text to the browser/client
+}*/
+void serialPrint(String txt){
+  txt = "["+ String(millis(), DEC) + "] "+txt;
+  
+  Serial.println(txt);
+  
+  if(numEl<MAXEL){
+    debug[numEl]=txt;
+    numEl++;
+  }else{
+    //resetto, parto da zero
+    numEl=0;
+  }
+  //Serial.println("\n=============================\n");
+  //Serial.println(getHTMLpage());
+}
+/*
+void handleNotFound(){
+  server.send(404, "text/plain", "404: Not found"); // Send HTTP status 404 (Not Found) when there's no handler for the URI in the request
+}
+String getHTMLpage(){
+  String ris=page;
+  String cont="";
+  cont+=getAllInfo();
+
+  ris+=cont+page2;
+  
+  return ris;
+}*/
+String convertToHTMLTxt(String testo){
+  String tmp = "<div class='info'> <span class='term-content-arrow'>➜</span>";
+  tmp+=testo;
+  tmp+="<br> </div>";
+  
+  return tmp;
+}/*
+String getAllInfo(){
+  String ris="";
+  for(int i=0; i<numEl;i++)
+    ris+=convertToHTMLTxt(debug[i]);
+
+  return ris;
+}*/
+String getAllInfo(){
+  String ris="";
+  for(int i=0; i<numEl;i++){
+    ris+=debug[i];
+    
+    if(i!=(numEl-1))//Non metto ";" all'ultimo elemento
+      ris+=";";
+  }
+    
+
+  return ris;
+}
+void sendTermConent(){
+    //serialPrint("Invio pacchetto di DEBUG");
+    String ris = getAllInfo();//Prendo tutto il contenuto html che dovra' essere visualizzato
+    //Serial.println(ris);
+    
+    //Preparo il messaggio di grandezza pari al numero di caratteri da inviare... 
+    ris.toCharArray(debugInfo, 30000);
+  
+    Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
+    Udp.write(debugInfo);
+    Udp.endPacket();
+}
+
+void preservaRele(){
+  //se i 2 rele sono attivi per piu' di 40 secondi, li faccio fermare
+  //cosi li preservo nel funzionamento evitando che rimanghino on per molto tempo
+  if(down==true || up==true){
+    int passato = (millis()-startTime)/1000;
+    
+    if(showed!=passato){//cosi evito di intasare la console
+      serialPrint("Sto muovendo da: "+String(passato)+" sec");
+      showed=passato;
+    }
+      
+    if(passato>=preservoRele){
+      serialPrint("Stop perche' rele attivo da tanto tempo 40sec");
+      
+      ferma();
+      showed=-1;
+    }
+
+  }
+
+}
+
+void prendiPacchetti(){
+  //Se riveco qualche input esequo il movimento in base al messaggio che ricevo
+  int packetSize = Udp.parsePacket();
+  if (packetSize)
+  {
+    // receive incoming UDP packets
+    Serial.println("Received "+String(packetSize)+" bytes from "+Udp.remoteIP().toString().c_str()+", port "+Udp.remotePort());
+    
+    int len = Udp.read(incomingPacket, 400);
+    if (len > 0)
+    {
+      incomingPacket[len] = 0;
+    }
+    Serial.println("UDP packet contents: "+String(incomingPacket));
+    
+    String ris = String(incomingPacket);
+
+    if(ris=="ACCENDI")alza();
+    else if(ris=="SPEGNI")abbassa();
+    else if(ris=="STOP")ferma();
+    else if(ris=="STATUS")sendStatus();
+    else if(ris=="debug")sendTermConent();
+    else if(ris=="restart")restart();
+    
+    //Controllo per il primo dispositivo
+    /*if(ris=="1"+security)alza();
+    else if(ris=="-1"+security)abbassa();
+    else if(ris=="STOP"+security)ferma();
+    else if(ris=="STATUS"+security)sendStatus();
+    else if(ris=="debug"+security)sendTermConent();
+    else if(ris=="restart"+security)restart();*/
+  }
+}
+void restart(){
+  serialPrint("Restart device now!!");
+ 
+  alza();
+  delay(500);
+  abbassa();
+  delay(500);
+  ferma();
+  
+  ESP.restart();
+}
+
+void eseguiSePremutoFisico(){
+  if(changed==true){//Se ho premuto il pulsante, aggiorno il movimento
+    String ris = "ESEGUITO: ";
+    //controllo se ha premuto il primo pulsante
+    if(changed==true){
+        if(up==true && down==false){
+        ris+="Alzo";
+        alza();
+      }else if(up==false && down==true){
+        ris+="Abbasso";
+        abbassa();
+      }else if(up==false && down==false){
+        ris+="Stop";
+        ferma();
+      }
+      serialPrint(ris);
+      changed=false;
+    }
+
+    
+    while(digitalRead(inputUP)==HIGH || digitalRead(inputDown)==HIGH){
+      delay(10);
+    } 
+  }
+}
+
+void checkConnection(){
+  //Se non sono connesso...
+  if(WiFi.status() != WL_CONNECTED){
+    serialPrint("WARNING>>> DISPOSITIVO NON PIU' CONNESSO AL WIFI. AVVIO RICONNESSIONE...");
+    WiFi.disconnect();
+    connectToWIFI();
+  }
+}
+
+void checkReconnectionSure(){
+  if(millis()-riconnessioneInizio>INTERVAL_CONNECTION){
+    serialPrint("Effettuo riconnessione forzata avendo aspettato: "+ String(INTERVAL_CONNECTION)+" ms");
+    WiFi.disconnect();
+    WiFi.disconnect();
+    serialPrint("Status WIFI: "+statusToString(WiFi.status()));
+    connectToWIFI();
+  }
+}
+
+void connectToWIFI(){
+  riconnessioneInizio=millis();//salvo l'ultima volta che ho cercato di collegarmi al wifi
+  
+  WiFi.begin("Saccani ROG MODEM", "");
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
+    
+  IPAddress ip(192,168,0,60);   
+  IPAddress gateway(192,168,0,1);   
+  IPAddress subnet(255,255,255,0);   
+  WiFi.config(ip, gateway, subnet);
+  boolean clicca=false;
+  
+  serialPrint("Connecting");
+  while (WiFi.status() != WL_CONNECTED && clicca==false)
+  {
+    delay(500);
+    serialPrint(".");
+
+    //Durante la fase di connessione, se preme un tasto, interrompo la connessione ed eseguo quello che ha richiesto
+    if(staPremendoTasti()){
+      clicca=true;
+      
+      controllaInputFisico();
+      
+      //eseguiSePremutoFisico();
+    }
+  }
+  serialPrint("");
+
+  if(clicca==false){
+    serialPrint("Connected, IP address: ");
+    serialPrint(WiFi.localIP().toString());
+  
+    Udp.begin(localUdpPort);
+    serialPrint("Now listening at IP "+ String(WiFi.localIP().toString().c_str())+", UDP port "+String(localUdpPort));
+  }else{
+    serialPrint("ALERT>> Tentativo di connessione annullato in quanto si e' rilevata una pressione fisica!");
+  }
+
+  
+  serialPrint("Status WIFI: "+statusToString(WiFi.status()));
+  
+}
+
+boolean staPremendoTasti(){
+  int i=0;
+  boolean vero=false;
+  //Controllo se preme effettivamente un tasto
+  //utilizzo un contatore per evtare falsi positivi
+  while(digitalRead(inputUP)==HIGH || digitalRead(inputDown)==HIGH && vero==false){
+    i++;
+    delay(10);
+
+    //se preme per almeno 0.40 secondi, classifico la pressione come veritiera
+    if(i>=4){
+      vero=true;//cosi' esco dal ciclo
+    }
+  }
+
+  return vero;
+  
+}
+
+void sendStatus(){
+	// send back a reply, to the IP address and port we got the packet from
+    Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
+    Udp.write(replyPacket);
+    Udp.endPacket();
+}
+
+void abbassa(){
+  digitalWrite(releAlza,LOW);
+  if(up==true)
+    delay(ritardoPassaggioAltoBasso);
+  digitalWrite(releAbbassa,HIGH);
+  
+  String ris = "Abbassamento tapparella...";
+  up=false;
+  down=true;
+  
+  //changed=false;
+  
+  startTime=millis();
+  serialPrint(ris);
+  ris.toCharArray(replyPacket, 40) ;
+}
+void alza(){
+  digitalWrite(releAbbassa,LOW);
+  if(down==true)
+    delay(ritardoPassaggioAltoBasso);
+  digitalWrite(releAlza,HIGH);
+
+  String ris = "Alzamento tapparella...";
+  
+  down=false;
+  up=true;
+  
+  //changed=false;
+  
+  startTime=millis();
+  serialPrint(ris);
+  ris.toCharArray(replyPacket, 40) ;
+}
+
+
+
+void ferma(){
+  digitalWrite(releAbbassa,LOW);
+  digitalWrite(releAlza,LOW);
+  
+  String ris = "Fermo";
+  up=false;
+  down=false;
+  
+  //changed=false;
+  serialPrint(ris);
+  ris.toCharArray(replyPacket, 40);
+}
+
+
+
+void controllaInputFisico(){
+  //if(changed==false){
+
+    if(digitalRead(inputUP)==HIGH){
+            //changed=true;
+            serialPrint("UP High");
+          
+            int i=0;
+            
+            while(digitalRead(inputUP)==HIGH && i<pressioneBottoneFisico/10){
+              delay(10); 
+              i++;
+            }
+    
+            //controlla se ha premuto una sequenza di reset del dispositivo
+            //UP high + DOWN sec HIGH
+            if(i>=pressioneBottoneFisico/10){
+              /*  if(digitalRead(inputDownSec)==true){
+                  ESP.restart();
+                  serialPrint("SEUQUENZA SPECIALE");
+                  
+              }else{*/
+               // up=true;
+                //down=false;
+                alza();
+                
+                serialPrint("2 SECONDI PREMUTO UP");
+                resetClick=0; //annullo il numero di volte che ho registrato un click di reset
+              
+            }else if(i>=evitoFalsiPos){
+             // up=false;
+             // down=false;
+              ferma();
+              
+              serialPrint("Click UP");
+
+              resetClick++;//Dico che ha premuto anche un tasto di reset
+            }
+          
+    }else if(digitalRead(inputDown)==HIGH){
+            //changed=true;
+            serialPrint("Down High");
+        
+            int i=0;
+            
+            while(digitalRead(inputDown)==HIGH && i<pressioneBottoneFisico/10){
+              delay(10); 
+              i++;
+            }
+            
+            if(i>=pressioneBottoneFisico/10){
+              //up=false;
+              //down=true;
+              abbassa();
+              
+              serialPrint("2 SECONDI PREMUTO DOWN");
+              resetClick=0;
+            }else if(i>=evitoFalsiPos){
+              //up=false;
+              //down=false;
+              ferma();
+              
+              serialPrint("Click DOWN");
+              resetClick=0;
+            }
+    }
+    
+    
+    while(digitalRead(inputUP)==HIGH || digitalRead(inputDown)==HIGH){
+      delay(10);
+    } 
+    delay(100);
+  //}
+  
+}
+
+
+ 
+
+
+String statusToString(wl_status_t status) {
+  switch (status) {
+    case WL_NO_SHIELD: return "WL_NO_SHIELD";
+    case WL_IDLE_STATUS: return "WL_IDLE_STATUS";
+    case WL_NO_SSID_AVAIL: return "WL_NO_SSID_AVAIL";
+    case WL_SCAN_COMPLETED: return "WL_SCAN_COMPLETED";
+    case WL_CONNECTED: return "WL_CONNECTED";
+    case WL_CONNECT_FAILED: return "WL_CONNECT_FAILED";
+    case WL_CONNECTION_LOST: return "WL_CONNECTION_LOST";
+    case WL_DISCONNECTED: return "WL_DISCONNECTED";
+  }
+}
