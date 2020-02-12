@@ -10,13 +10,13 @@ public class APInfo {
     private final String name;
     private final String MAC;
     private final coordinate coordinate;
-    private double distanza;
+    private double potenza; //RSSI in db
 
-    public APInfo(String name, String MAC, coordinate coordinate,double distanza) {
+    public APInfo(String name, String MAC, coordinate coordinate, double potenza) {
         this.name = name;
         this.MAC = MAC;
         this.coordinate = coordinate;
-        this.distanza=distanza;
+        this.potenza = potenza;
     }
 
     public String getName() {
@@ -31,7 +31,19 @@ public class APInfo {
         return coordinate;
     }
 
+    /**
+     * 10 ^ ((Measured Power – RSSI)/(10 * N))
+     *
+     * @return distanza tra l'access point e il dispositivo
+     */
     public double getDistanza() {
-        return distanza;
+
+        final double measuredPower = -69; //TODO misurare la potenza effettiva a 1 metro
+        final int n = 2;
+        return Math.pow(10, (measuredPower - potenza) / (10 * n)) / 1000;
+    }
+
+    public double getPotenza() {
+        return potenza;
     }
 }
