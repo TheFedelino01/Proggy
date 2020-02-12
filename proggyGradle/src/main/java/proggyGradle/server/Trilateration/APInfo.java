@@ -10,13 +10,13 @@ public class APInfo {
     private final String name;
     private final String MAC;
     private final coordinate coordinate;
-    private final double distanza;
+    private double distanza;
 
-    public APInfo(String name, String MAC, coordinate coordinate, double distanza) {
+    public APInfo(String name, String MAC, coordinate coordinate,double distanza) {
         this.name = name;
         this.MAC = MAC;
         this.coordinate = coordinate;
-        this.distanza = distanza;
+        this.distanza=distanza;
     }
 
     public String getName() {
