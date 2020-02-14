@@ -28,7 +28,7 @@ public enum ACCESSPOINTS {
         this.distance=distance;
     }
     
-    public void setDistance(double measuredPower){
+    public void setDistance(double distance){
         this.distance=distance;
     }
    
