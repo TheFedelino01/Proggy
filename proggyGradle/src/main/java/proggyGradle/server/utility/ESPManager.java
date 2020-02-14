@@ -31,24 +31,23 @@ public class ESPManager extends Thread {
             if (comandoComplesso != null) {
                 try {
 
-                    String reti[] = comandoComplesso.getComando().split("\n");
+                    String reti[] = comandoComplesso.getComando().split("-");
                     
-                    final List<String> foundMac = Arrays.stream(reti)
-                            .map((String rete) -> rete.split("/")[1])
-                            .filter((String macCandidate) -> Arrays.stream(ACCESSPOINTS.values())
-                                    .map(ap -> ap.getMac())
-                                    .anyMatch(mac -> mac.equals(macCandidate)))
-                            .collect(Collectors.toList());
+//                    final List<String> foundMac = Arrays.stream(reti)
+//                            .map((String rete) -> rete.split("/")[1])
+//                            .filter((String macCandidate) -> Arrays.stream(ACCESSPOINTS.values())
+//                                    .map(ap -> ap.getMac())
+//                                    .anyMatch(mac -> mac.equals(macCandidate)))
+//                            .collect(Collectors.toList());
                     
                     for(int i=0;i<reti.length;i++){
                         for(ACCESSPOINTS ap : ACCESSPOINTS.values())
                             if(reti[i].split("/")[1].equals(ap.getMac())) {
-                               ap.toAPInfo();
+                               ap.setDistance(Double.parseDouble(reti[i].split("/")[2]));
                             }
                     }
-                    String nome = cmdSplitted[0];
-                    String mac = cmdSplitted[1];
-                    String rssi = cmdSplitted[2];
+                    
+                        
                     
                 } catch (Exception e) {
                     System.out.println(e.getCause());

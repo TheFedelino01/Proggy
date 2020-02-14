@@ -12,9 +12,9 @@ import proggyGradle.server.coordinate;
  * @author broch_mattia
  */
 public enum ACCESSPOINTS {
-    POINT_UNO("JWML", "", new coordinate(45.68779, 9.18132),0),
-    POINT_DUE("JWML", "", new coordinate(45.68771, 9.1811),0),
-    POINT_TRE("JWML", "", new coordinate(45.68752, 9.18111),0);
+    POINT_UNO("JWML", "44d9e7fa933e", new coordinate(45.68779, 9.18132),0),
+    POINT_DUE("JWML", "22722f94e2", new coordinate(45.68771, 9.1811),0),
+    POINT_TRE("JWML", "22722efd21e", new coordinate(45.68752, 9.18111),0);
 
     private final String rete;
     private final String mac;
@@ -28,9 +28,10 @@ public enum ACCESSPOINTS {
         this.distance=distance;
     }
     
-    void setDistance(double distance){
+    public void setDistance(double measuredPower){
         this.distance=distance;
     }
+   
 
     public String getMac() {
         return mac;
