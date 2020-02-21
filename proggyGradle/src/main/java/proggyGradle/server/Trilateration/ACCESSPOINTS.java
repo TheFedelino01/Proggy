@@ -19,17 +19,17 @@ public enum ACCESSPOINTS {
     private final String rete;
     private final String mac;
     private final coordinate rssi;
-    private double distance;
+    private double potenza;
 
-    ACCESSPOINTS(String rete, String mac, coordinate rssi,double distance) {
+    ACCESSPOINTS(String rete, String mac, coordinate rssi,double potenza) {
         this.rete = rete;
         this.mac = mac;
         this.rssi = rssi;
-        this.distance=distance;
+        this.potenza =potenza;
     }
     
-    public void setDistance(double distance){
-        this.distance=distance;
+    public void setPotenza(double potenza){
+        this.potenza = potenza;
     }
    
 
@@ -38,6 +38,6 @@ public enum ACCESSPOINTS {
     }
     
     public APInfo toAPInfo() {
-        return new APInfo(rete, mac, rssi,distance);
+        return new APInfo(rete, mac, rssi, potenza);
     }
 }

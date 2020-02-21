@@ -5,12 +5,13 @@
  */
 package proggyGradle.server.utility;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import proggyGradle.Socket.cmdRicevuto;
 import proggyGradle.Socket.socketUDP;
 import proggyGradle.server.Trilateration.ACCESSPOINTS;
+import proggyGradle.server.Trilateration.APInfo;
+import proggyGradle.server.Trilateration.Trilateration;
+
+import java.util.Arrays;
 
 /**
  *
@@ -28,10 +29,11 @@ public class ESPManager extends Thread {
     public void run() {
         while (true) {
             cmdRicevuto comandoComplesso = socket.receive();
+            System.out.println("siii");
             if (comandoComplesso != null) {
+                String reti[] = comandoComplesso.getComando().split("-");
                 try {
 
-                    String reti[] = comandoComplesso.getComando().split("-");
                     
 //                    final List<String> foundMac = Arrays.stream(reti)
 //                            .map((String rete) -> rete.split("/")[1])
@@ -43,14 +45,19 @@ public class ESPManager extends Thread {
                     for(int i=0;i<reti.length;i++){
                         for(ACCESSPOINTS ap : ACCESSPOINTS.values())
                             if(reti[i].split("/")[1].equals(ap.getMac())) {
-                               ap.setDistance(Double.parseDouble(reti[i].split("/")[2]));
+                               ap.setPotenza(Double.parseDouble(reti[i].split("/")[2]));
                             }
                     }
-                    
-                        
-                    
+
+                    APInfo ap1 = ACCESSPOINTS.values()[0].toAPInfo();//new APInfo("AP1", "", new coordinate(45.68779, 9.18132), /*0.016*/-85);
+                    APInfo ap2 = ACCESSPOINTS.values()[1].toAPInfo(); //new APInfo("AP2", "", new coordinate(45.68771, 9.1811), /*0.011*/-80);
+                    APInfo ap3 = ACCESSPOINTS.values()[2].toAPInfo();// new APInfo("AP3", "", new coordinate(45.68752, 9.18111), /*0.018*/-88);
+                    System.out.println("COORDINATE TRILATERAZIONE: " + new Trilateration(ap1, ap2, ap3).getPoint());
+
+
                 } catch (Exception e) {
-                    System.out.println(e.getCause());
+                    e.printStackTrace();
+                    System.err.println(Arrays.toString(reti));
                 }
             }
         }

@@ -47,6 +47,11 @@ public class main {
         };
         t3.start();
 
+
+
+        ESPManager m=new ESPManager(1234);
+        m.start();
+
 //
 //        NFCManager m=new NFCManager("COM4");
 //        m.write("12345\n");
