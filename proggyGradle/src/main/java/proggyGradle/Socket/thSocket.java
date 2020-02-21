@@ -7,6 +7,7 @@ package proggyGradle.Socket;
 
 import proggyGradle.Database.dbManager;
 import proggyGradle.server.manager;
+import proggyGradle.server.utility.Telegram;
 
 
 /**
@@ -105,7 +106,7 @@ public class thSocket extends Thread {
                             //Effettuo le chiamate per i parenti
                             thPhone = new thPhone(manager.getDevice(identificatore),"PARENTI");
                             //thPhone.start();
-                            dbManager.getIstance().getChatId(identificatore);
+                            Telegram.emergenza(Long.parseLong(dbManager.getIstance().getChatId(identificatore)));
                             break;
                             
                         case "RESOCONTO":

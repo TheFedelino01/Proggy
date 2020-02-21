@@ -5,6 +5,7 @@
  */
 package proggyGradle.server.main;
 
+import proggyGradle.Database.dbManager;
 import proggyGradle.Socket.thSocket;
 import proggyGradle.server.Trilateration.APInfo;
 import proggyGradle.server.Trilateration.Trilateration;
@@ -21,6 +22,18 @@ public class main {
 
     public static void main(String[] args) {
 
+
+        Thread t3 = new Thread() {
+            public void run() {
+                manager salvataggi = new manager();
+                dbManager.getIstance().createConnection("my_personalsafety");
+                thSocket thSocket = new thSocket(4040, salvataggi);
+                thSocket.start();
+            }
+        };
+        t3.start();
+
+
         Thread t1 = new Thread() {
             public void run() {
                 Telegram t = new Telegram();
@@ -36,21 +49,6 @@ public class main {
             }
         };
         t2.start();
-
-        Thread t3 = new Thread() {
-            public void run() {
-                manager salvataggi = new manager();
-
-                thSocket thSocket = new thSocket(4210, salvataggi);
-                thSocket.start();
-            }
-        };
-        t3.start();
-
-
-
-        ESPManager m=new ESPManager(1234);
-        m.start();
 
 //
 //        NFCManager m=new NFCManager("COM4");

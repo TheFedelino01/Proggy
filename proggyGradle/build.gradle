@@ -21,6 +21,7 @@ dependencies {
 
     //compile 'javax.vecmath:vecmath:1.5.2'
 
+    compile 'mysql:mysql-connector-java:6.0.+'
 
     compile 'org.apache.commons:commons-math3:3.6.1'
 }
