@@ -105,7 +105,7 @@ public class thSocket extends Thread {
                             //Effettuo le chiamate per i parenti
                             thPhone = new thPhone(manager.getDevice(identificatore),"PARENTI");
                             //thPhone.start();
-                            //Telegram.emergenza(dbManager.getIstance().getChatId(identificatore));
+                            dbManager.getIstance().getChatId(identificatore);
                             break;
                             
                         case "RESOCONTO":
