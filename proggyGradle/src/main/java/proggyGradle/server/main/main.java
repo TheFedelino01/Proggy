@@ -15,6 +15,8 @@ import proggyGradle.server.utility.ESPManager;
 import proggyGradle.server.utility.NFCManager;
 import proggyGradle.server.utility.Telegram;
 
+import java.io.IOException;
+
 /**
  * @author saccani_federico
  */
@@ -26,9 +28,13 @@ public class main {
         Thread t3 = new Thread() {
             public void run() {
                 manager salvataggi = new manager();
-                dbManager.getIstance().createConnection("my_personalsafety");
-                thSocket thSocket = new thSocket(4040, salvataggi);
-                thSocket.start();
+                //dbManager.getIstance().createConnection("my_personalsafety");
+                try {
+                    thSocket thSocket = new thSocket(4040, salvataggi);
+                    thSocket.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         t3.start();

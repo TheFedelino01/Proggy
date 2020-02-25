@@ -17,8 +17,8 @@ public class manager {
     public manager(){
         devices = new devices();
         
-        devices.addDevice("federico",1010,"192.168.5.5","BROCH");
-        devices.addEmergencyNumber("federico", "+393341563626", "PARENTI");
+        devices.addDevice("2",1010,"192.168.5.5","BROCH");
+        devices.addEmergencyNumber("2", "+393341563626", "PARENTI");
     }
     
     public int getPort(String identificatore){
