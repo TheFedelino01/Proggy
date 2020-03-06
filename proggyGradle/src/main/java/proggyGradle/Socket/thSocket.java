@@ -5,7 +5,8 @@
  */
 package proggyGradle.Socket;
 
-import proggyGradle.Database.dbManager;
+import proggyGradle.Database.DbManager;
+import proggyGradle.Database.DbManagerLocal;
 import proggyGradle.server.manager;
 import proggyGradle.server.utility.Telegram;
 
@@ -97,7 +98,7 @@ public class thSocket extends Thread {
 
                             case "ACADUTA":
                                 manager.salvaCoordinate(identificatore, cmdSplitted[0]);
-                                dbManager.getIstance().scriviDB(manager.getDevice(identificatore).getQuery(true));
+                                DbManager.getInstance().writeOnDb(manager.getDevice(identificatore).getQuery(true));
                                 break;
 
                             case "ACOORDINATE":
@@ -128,7 +129,7 @@ public class thSocket extends Thread {
                                 //Effettuo le chiamate per i parenti
                                 thPhone = new thPhone(manager.getDevice(identificatore), "PARENTI");
                                 //thPhone.start();
-                                Telegram.emergenza(Long.parseLong(dbManager.getIstance().getChatId(identificatore)));
+                                Telegram.emergenza(Long.parseLong(DbManager.getInstance().getChatId(identificatore)));
                                 break;
 
                             case "RESOCONTO":

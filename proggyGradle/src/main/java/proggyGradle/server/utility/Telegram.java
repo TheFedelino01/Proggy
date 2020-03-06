@@ -5,7 +5,7 @@ import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
-import proggyGradle.Database.dbManager;
+import proggyGradle.Database.DbManager;
 
 public class Telegram extends Thread {
 
@@ -34,10 +34,10 @@ public class Telegram extends Thread {
                 } else if(isName) {
                     String nome = update.message().text();
                     String query="SELECT count(*) FROM utenti WHERE username='"+nome+"';";
-                    String ack=dbManager.getIstance().getFromDb(query);
+                    String ack= DbManager.getInstance().getFromDb(query);
                     if(ack.equals("OK")){
                         String query2="UPDATE `utenti` SET `idTelegram` = '"+ chatId+"' WHERE `utenti`.`username` = '"+nome+"';";
-                        dbManager.getIstance().writeOnDb(query2);
+                        DbManager.getInstance().writeOnDb(query2);
                         bot.execute(new SendMessage(chatId, "Ti sei registrato correttamente"));
                     }
                         //@AleColo controllo se username esiste e in tal caso ASSOCIO ID CHAT A USERNAME
