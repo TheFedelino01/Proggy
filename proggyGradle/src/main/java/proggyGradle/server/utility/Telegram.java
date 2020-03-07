@@ -6,6 +6,7 @@ import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import proggyGradle.Database.DbManager;
+import proggyGradle.Database.DbManagerRemote;
 
 public class Telegram extends Thread {
 
@@ -15,12 +16,13 @@ public class Telegram extends Thread {
     private boolean isName=false;
 
 
+
     @Override
     public void run() {
         // Create your bot passing the token received from @BotFather
         System.out.println("Server telegram started");
         //final byte[] audio = Telegram.class.getClassLoader().getResourceAsStream("audio.oga").readAllBytes();
-// Register for updates
+        // Register for updates
         bot.setUpdatesListener(updates -> {
             // ... process updates
             // chatId of last processed update or confirm them all
@@ -32,15 +34,22 @@ public class Telegram extends Thread {
                     isName=true;
                     break;
                 } else if(isName) {
-                    String nome = update.message().text();
+                    String nome = message.text();
                     String query="SELECT count(*) FROM utenti WHERE username='"+nome+"';";
-                    String ack= DbManager.getInstance().getFromDb(query);
-                    if(ack.equals("OK")){
-                        String query2="UPDATE `utenti` SET `idTelegram` = '"+ chatId+"' WHERE `utenti`.`username` = '"+nome+"';";
-                        DbManager.getInstance().writeOnDb(query2);
-                        bot.execute(new SendMessage(chatId, "Ti sei registrato correttamente"));
+                    String ack= DbManagerRemote.getInstance().getFromDb(query);
+                    if(ack.equals("[{\"count(*)\":\"1\"}]")){
+                        bot.execute(new SendMessage(chatId, "Benvenuto: "+nome));
+                        String query2="UPDATE utenti SET idTelegram = '"+chatId+"' WHERE username = '"+nome+"'";
+                        String ris = DbManagerRemote.getInstance().writeOnDb(query2);
+                        if(ris.equals("1")) {
+                            bot.execute(new SendMessage(chatId, "Ti sei registrato correttamente. Id chat:" + chatId));
+                        }else{
+                            bot.execute(new SendMessage(chatId, "Errore! Non sono riuscito ad associare questa Chat al tuo username sul DataBase."));
+                        }
+                    }else{
+                        bot.execute(new SendMessage(chatId, "Username non esiste"));
                     }
-                        //@AleColo controllo se username esiste e in tal caso ASSOCIO ID CHAT A USERNAME
+
                     isName=false;
                 }else{
                         bot.execute(new SendMessage(chatId, "/start se vuoi registrarti"));
@@ -56,5 +65,10 @@ public class Telegram extends Thread {
     public static void emergenza(long chatId) {
         bot.execute(new SendMessage(chatId, "EMERGENZA!"));
     }
+
+    public static void scrivi(String msg,long identificativoChat) {
+        bot.execute(new SendMessage(identificativoChat, msg));
+    }
+
 
 }

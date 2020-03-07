@@ -9,6 +9,8 @@ package proggyGradle.server;
  *
  * @author feder
  */
+
+
 public class emergencyNumber {
     private String numero;
     private String info;//PARENTI,AMICI,OSPEDALI,SOCCORSI  ... 

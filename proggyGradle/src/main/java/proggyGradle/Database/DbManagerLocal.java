@@ -79,7 +79,7 @@ public class DbManagerLocal implements DbManagerInterface {
     }
 
     @Override
-    public void writeOnDb(String query) {
+    public String writeOnDb(String query) {
         if (connection != null) {
             try {
                 Statement st = connection.createStatement();
@@ -95,6 +95,7 @@ public class DbManagerLocal implements DbManagerInterface {
             System.out.println("Crea la connessione prima");
             //todo mettere metodo anche qua
         }
+        return "done";
 
     }
 

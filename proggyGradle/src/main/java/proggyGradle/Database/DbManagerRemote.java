@@ -5,6 +5,10 @@
  */
 package proggyGradle.Database;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,9 +16,12 @@ import java.io.PrintStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
 
 
 public class DbManagerRemote implements DbManagerInterface {
@@ -59,7 +66,7 @@ public class DbManagerRemote implements DbManagerInterface {
 
 
     @Override
-    public void writeOnDb(String query) {
+    public String writeOnDb(String query) {
         try {
             // open a connection to the site
             URL url = new URL("https://personalsafety.000webhostapp.com/dbjava.php");
@@ -75,18 +82,30 @@ public class DbManagerRemote implements DbManagerInterface {
 
             // we have to get the input stream in order to actually send the
             // request
-            //System.out.println(new BufferedReader(new InputStreamReader(con.getInputStream())).lines().collect(Collectors.joining("\n")));
+            String ris = new BufferedReader(new InputStreamReader(con.getInputStream())).lines().collect(Collectors.joining("\n"));
 
             // close the print stream
             ps.close();
+            return ris;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "errore";
     }
+
 
     @Override
     public String getChatId(String identificatore) {
-        return getFromDb("SELECT idTelegram FROM dispositivi INNER JOIN utenti ON dispositivi.usernameUtente=utenti.username WHERE dispositivi.id='" + identificatore + "';");
+        String ris = getFromDb("SELECT idTelegram FROM dispositivi INNER JOIN utenti ON dispositivi.usernameUtente=utenti.username WHERE dispositivi.id='" + identificatore + "';");
+
+        //Prendo il valore dal vettore json
+        JSONArray jsonArray = new JSONArray(ris);
+        String idChat="-1";
+
+        if(jsonArray.length()>0)
+            idChat = (String) jsonArray.getJSONObject(0).toMap().get("idTelegram");
+
+        return idChat;
     }
 
     @Override
@@ -116,5 +135,6 @@ public class DbManagerRemote implements DbManagerInterface {
         }
         return "";
     }
+
 
 }

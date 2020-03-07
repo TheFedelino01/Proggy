@@ -60,7 +60,8 @@ public class devices {
     public String getIP(String identificatore) {
         return this.getDevice(identificatore).getIP();
     }
-    
+
+
     public void addEmergencyNumber(String identificatore,String numero,String tipologia){
         this.getDevice(identificatore).addEmergencyNumber(numero, tipologia);
     }
