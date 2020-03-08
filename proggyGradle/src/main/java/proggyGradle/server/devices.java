@@ -23,7 +23,7 @@ public class devices {
         devices.add(new device(identificatore,port,ip,nomeTutore));
     }
     
-    public List getDevicesWithName(String tutore){
+    public List<device> getDevicesWithName(String tutore){
         int i=0;
         List<device> l = new ArrayList<device>();
         while(i<devices.size()){

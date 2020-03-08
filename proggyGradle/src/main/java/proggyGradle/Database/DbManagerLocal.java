@@ -23,7 +23,7 @@ public class DbManagerLocal implements DbManagerInterface {
         createConnection("my_personalsafety");
     }
 
-    public static DbManagerLocal getInstance() {
+    static DbManagerLocal getInstance() {
         if (instance == null) {
             instance = new DbManagerLocal();
         }

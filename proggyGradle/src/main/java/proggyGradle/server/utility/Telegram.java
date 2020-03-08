@@ -36,11 +36,11 @@ public class Telegram extends Thread {
                 } else if(isName) {
                     String nome = message.text();
                     String query="SELECT count(*) FROM utenti WHERE username='"+nome+"';";
-                    String ack= DbManagerRemote.getInstance().getFromDb(query);
+                    String ack= DbManager.getInstance().getFromDb(query);
                     if(ack.equals("[{\"count(*)\":\"1\"}]")){
                         bot.execute(new SendMessage(chatId, "Benvenuto: "+nome));
                         String query2="UPDATE utenti SET idTelegram = '"+chatId+"' WHERE username = '"+nome+"'";
-                        String ris = DbManagerRemote.getInstance().writeOnDb(query2);
+                        String ris = DbManager.getInstance().writeOnDb(query2);
                         if(ris.equals("1")) {
                             bot.execute(new SendMessage(chatId, "Ti sei registrato correttamente. Id chat:" + chatId));
                         }else{

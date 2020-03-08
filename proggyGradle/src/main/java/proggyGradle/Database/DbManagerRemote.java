@@ -6,8 +6,6 @@
 package proggyGradle.Database;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,11 +13,6 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
@@ -31,38 +24,12 @@ public class DbManagerRemote implements DbManagerInterface {
     private DbManagerRemote() {
     }
 
-    public static DbManagerRemote getInstance() {
+    static DbManagerRemote getInstance() {
         if (instance == null) {
             instance = new DbManagerRemote();
         }
         return instance;
     }
-
-//    public String getChatId(String identificatore) {
-//        if (connection != null) {
-//            try {
-//                Statement st = connection.createStatement();
-//
-//                // execute the query, and get a java resultset
-//                String query = "SELECT idTelegram FROM dispositivi INNER JOIN utenti ON dispositivi.usernameUtente=utenti.username WHERE dispositivi.id='" + identificatore + "';";
-//                ResultSet rs = st.executeQuery(query);
-//                while (rs.next()) {
-//                    return rs.getString("idTelegram");
-//                }
-//
-//            } catch (SQLException ex) {
-//                Logger.getLogger(DbManagerLocal.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (Exception e) {
-//                Logger.getLogger(DbManagerLocal.class.getName()).log(Level.SEVERE, null, e);
-//            }
-//        } else {
-//            System.out.println("Crea la connessione prima");
-//            //todo mettere metodo anche qua
-//        }
-//
-//        return "";
-//
-//    }
 
 
     @Override

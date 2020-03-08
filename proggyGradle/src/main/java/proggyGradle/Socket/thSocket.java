@@ -65,10 +65,10 @@ public class thSocket extends Thread {
                 boolean continua = true;
 
                 if (line != null) {
-                    String cmdSplitted[] = line.split(";");
+                    String[] cmdSplitted = line.split(";");
                     String comandoTxt = cmdSplitted[0];
                     String identificatore = "";
-                    Long indentificatoreLong=new Long(-1);
+                    long indentificatoreLong= -1;
 
                     //sccrivo ogni 60 secondi su db se il dispositivo è attivo e manda dati
                     if (i == 0) {
@@ -132,6 +132,7 @@ public class thSocket extends Thread {
                                 thPhone = new thPhone(manager.getDevice(identificatore), "PARENTI");
                                // thPhone.start(); TODO SCOMMENTARE PER EFFETTUARE LE CHIAMATE
                                 Telegram.emergenza(indentificatoreLong);
+                                pr.println("WORKING");
                                 break;
 
                             case "RESOCONTO":
