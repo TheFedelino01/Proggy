@@ -53,8 +53,8 @@ public class coordinates {
         return ris;
     }
 
-    public void addCordinate(String cord) {
-        String[] split = cord.split(",");
-        coordinate.add(new coordinate(Double.parseDouble(split[0]), Double.parseDouble(split[1])));
+    public void addCordinate(coordinate cord) {
+
+        coordinate.add(cord);
     }
 }

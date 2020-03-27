@@ -66,7 +66,7 @@ public class devices {
         this.getDevice(identificatore).addEmergencyNumber(numero, tipologia);
     }
     
-    public void addCoordinate(String identificatore, String coordinate) {
+    public void addCoordinate(String identificatore, coordinate coordinate) {
         this.getDevice(identificatore).getCoordinates().addCordinate(coordinate);
     }
     

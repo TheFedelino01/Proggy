@@ -54,7 +54,7 @@ public class manager {
     public List getDevicesWithName(String tutore){
         return devices.getDevicesWithName(tutore);
     }
-public void salvaCoordinate(String identificatore,String coordinate) {
+public void salvaCoordinate(String identificatore,coordinate coordinate) {
         devices.addCoordinate(identificatore, coordinate);
     }
     public void salvaBattiti(String identificatore,String battiti) {
