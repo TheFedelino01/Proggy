@@ -44,7 +44,7 @@ public class ESPManager extends Thread {
                     
                     for(int i=0;i<reti.length;i++){
                         for(ACCESSPOINTS ap : ACCESSPOINTS.values())
-                            if(reti[i].split(";")[1].equals(ap.getMac())) {
+                            if(reti[i].split(";")[0].equals(ap.getMac())) {
                                ap.setPotenza(Double.parseDouble(reti[i].split(";")[1]));
                             }
                     }
