@@ -44,8 +44,8 @@ public class ESPManager extends Thread {
 //                                    .map(ap -> ap.getMac())
 //                                    .anyMatch(mac -> mac.equals(macCandidate)))
 //                            .collect(Collectors.toList());
-                    
-                    for(int i=0;i<reti.length;i++){
+                    //reti[0]
+                    for(int i=1;i<reti.length;i++){
                         for(ACCESSPOINTS ap : ACCESSPOINTS.values())
                             if(reti[i].split(";")[0].equals(ap.getMac())) {
                                ap.setPotenza(Double.parseDouble(reti[i].split(";")[1]));
