@@ -97,18 +97,18 @@ public class thSocket extends Thread {
                                 pr.println("WORKING");
                                 break;
 
-                            case "ACADUTA":
-                                manager.salvaCoordinate(identificatore, cmdSplitted[0]);
-                                DbManager.getInstance().writeOnDb(manager.getDevice(identificatore).getQuery(true));
-                                break;
-
-                            case "ACOORDINATE":
-                                manager.salvaCoordinate(identificatore, cmdSplitted[2]);
-                                break;
-
-                            case "ABATTITO":
-                                manager.salvaBattiti(identificatore, cmdSplitted[2]);
-                                break;
+//                            case "ACADUTA":
+//                                manager.salvaCoordinate(identificatore, cmdSplitted[0]);
+//                                DbManager.getInstance().writeOnDb(manager.getDevice(identificatore).getQuery(true));
+//                                break;
+//
+//                            case "ACOORDINATE":
+//                                manager.salvaCoordinate(identificatore, cmdSplitted[2]);
+//                                break;
+//
+//                            case "ABATTITO":
+//                                manager.salvaBattiti(identificatore, cmdSplitted[2]);
+//                                break;
 
                             case "COORDINATE":
                                 String coordinates = manager.getLastCoordinate(identificatore).toString();
