@@ -10,6 +10,7 @@ import proggyGradle.Socket.socketUDP;
 import proggyGradle.server.Trilateration.ACCESSPOINTS;
 import proggyGradle.server.Trilateration.APInfo;
 import proggyGradle.server.Trilateration.Trilateration;
+import proggyGradle.server.manager;
 
 import java.util.Arrays;
 
@@ -20,9 +21,11 @@ import java.util.Arrays;
 public class ESPManager extends Thread {
 
     private socketUDP socket; 
+    private manager manager;
 
-    public ESPManager(int portaAscolto) {
+    public ESPManager(int portaAscolto, manager manager) {
         socket = new socketUDP(portaAscolto);
+        this.manager=manager;
     }
 
     @Override

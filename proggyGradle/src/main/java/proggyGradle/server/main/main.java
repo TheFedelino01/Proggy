@@ -31,7 +31,7 @@ public class main {
         Telegram t = new Telegram();
         t.start();
 
-        ESPManager m = new ESPManager(1234);
+        ESPManager m = new ESPManager(1234, salvataggi);
         m.start();
 
 
