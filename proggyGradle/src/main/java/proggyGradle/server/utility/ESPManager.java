@@ -56,7 +56,7 @@ public class ESPManager extends Thread {
                     APInfo ap2 = ACCESSPOINTS.values()[1].toAPInfo(); //new APInfo("AP2", "", new coordinate(45.68771, 9.1811), /*0.011*/-80);
                     APInfo ap3 = ACCESSPOINTS.values()[2].toAPInfo();// new APInfo("AP3", "", new coordinate(45.68752, 9.18111), /*0.018*/-88);
                     System.out.println("COORDINATE TRILATERAZIONE: " + new Trilateration(ap1, ap2, ap3).getPoint());
-
+                    manager.salvaCoordinate(reti[0],new Trilateration(ap1, ap2, ap3).getPoint());
 
                 } catch (Exception e) {
                     e.printStackTrace();
