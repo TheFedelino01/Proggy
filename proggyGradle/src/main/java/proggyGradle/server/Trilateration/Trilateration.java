@@ -12,15 +12,9 @@ import proggyGradle.server.coordinate;
  * @author Giacomo Orsenigo
  */
 public class Trilateration {
-    private final APInfo ap1;
-    private final APInfo ap2;
-    private final APInfo ap3;
     private static final int earthR = 6371;
 
-    public Trilateration(APInfo ap1, APInfo ap2, APInfo ap3) {
-        this.ap1 = ap1;
-        this.ap2 = ap2;
-        this.ap3 = ap3;
+    private Trilateration() {
     }
 
     /**
@@ -35,8 +29,13 @@ public class Trilateration {
      * Riconverte le coordinate del piano euclideo in coordinate geografiche
      * @see <a href="https://gis.stackexchange.com/a/415">https://gis.stackexchange.com/a/415</a>
      * @see <a href="https://stackoverflow.com/a/2862714">https://stackoverflow.com/a/2862714</a>
+     *
+     * @param ap1 punto 1
+     * @param ap2 punto 2
+     * @param ap3 punto 3
+     * @return coordinate del dispositivo
      */
-    public coordinate getPoint() {
+    public static coordinate getPoint(APInfo ap1, APInfo ap2, APInfo ap3) {
 
         final double xA = earthR * (Math.cos(Math.toRadians(ap1.getCoordinate().getLatitudine())) * Math.cos(Math.toRadians(ap1.getCoordinate().getLongitudine())));
         final double yA = earthR * (Math.cos(Math.toRadians(ap1.getCoordinate().getLatitudine())) * Math.sin(Math.toRadians(ap1.getCoordinate().getLongitudine())));

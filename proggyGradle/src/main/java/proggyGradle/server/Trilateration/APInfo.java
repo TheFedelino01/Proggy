@@ -46,4 +46,15 @@ public class APInfo {
     public double getPotenza() {
         return potenza;
     }
+
+    @Override
+    public String toString() {
+        return "APInfo{" +
+                "name='" + name + '\'' +
+                ", MAC='" + MAC + '\'' +
+                ", coordinate=" + coordinate +
+                ", potenza=" + potenza +
+                ", distanza=" + getDistanza() +
+                '}';
+    }
 }
