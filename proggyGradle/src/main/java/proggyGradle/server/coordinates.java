@@ -6,6 +6,7 @@
 package proggyGradle.server;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,7 +32,9 @@ public class coordinates {
     private int c = -1;
 
     public coordinate getLast() {
-        return coordinate.get(coordinate.size()-1);// DA SCOMMENTARE
+        if (coordinate.size() > 0)
+            return coordinate.get(coordinate.size() - 1);// DA SCOMMENTARE
+        return null;
 //        System.out.println(c);
 //        if (c + 1 != 82)
 //            c++;

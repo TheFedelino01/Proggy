@@ -7,6 +7,7 @@ package proggyGradle.Socket;
 
 import proggyGradle.Database.DbManager;
 import proggyGradle.Database.DbManagerLocal;
+import proggyGradle.server.coordinate;
 import proggyGradle.server.manager;
 import proggyGradle.server.utility.Telegram;
 
@@ -68,7 +69,7 @@ public class thSocket extends Thread {
                     String[] cmdSplitted = line.split(";");
                     String comandoTxt = cmdSplitted[0];
                     String identificatore = "";
-                    long indentificatoreLong= -1;
+                    long indentificatoreLong = -1;
 
                     //sccrivo ogni 60 secondi su db se il dispositivo è attivo e manda dati
                     if (i == 0) {
@@ -84,7 +85,7 @@ public class thSocket extends Thread {
 
                     try {
                         identificatore = cmdSplitted[1];
-                        indentificatoreLong=Long.parseLong(DbManager.getInstance().getChatId(identificatore));
+                        indentificatoreLong = Long.parseLong(DbManager.getInstance().getChatId(identificatore));
                     } catch (java.lang.ArrayIndexOutOfBoundsException e) {
                         continua = false;
                         System.out.println("Identificatore non pervenuto: " + e.toString());
@@ -111,8 +112,11 @@ public class thSocket extends Thread {
 //                                break;
 
                             case "COORDINATE":
-                                String coordinates = manager.getLastCoordinate(identificatore).toString();
-                                pr.println(coordinates);//invio le coordinate
+                                coordinate coord = manager.getLastCoordinate(identificatore);
+                                if (coord != null)
+                                    pr.println(coord.toString());//invio le coordinate
+                                else
+                                    pr.println("Impossibile localizzare");
                                 break;
 
                             case "BATTITO":
@@ -124,13 +128,13 @@ public class thSocket extends Thread {
                                 //Dico  al dispositivo di vibrare per cmdSplitted[2] millis
                                 pr.println("SHAKE;" + cmdSplitted[2]);
                                 //socket.inviaACK(comandoComplesso.getPorta(), comandoComplesso.getIP());//invio l'ack
-                                Telegram.scrivi("REQUEST SHAKING DEVICE...",indentificatoreLong);
+                                Telegram.scrivi("REQUEST SHAKING DEVICE...", indentificatoreLong);
                                 break;
 
                             case "EMERGENZA":
                                 //Effettuo le chiamate per i parenti
                                 thPhone = new thPhone(manager.getDevice(identificatore), "PARENTI");
-                               // thPhone.start(); TODO SCOMMENTARE PER EFFETTUARE LE CHIAMATE
+                                // thPhone.start(); TODO SCOMMENTARE PER EFFETTUARE LE CHIAMATE
                                 Telegram.emergenza(indentificatoreLong);
                                 pr.println("WORKING");
                                 break;
