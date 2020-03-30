@@ -11,12 +11,14 @@ public class APInfo {
     private final String MAC;
     private final coordinate coordinate;
     private double potenza; //RSSI in db
+    private final int measuredPower;
 
-    public APInfo(String name, String MAC, coordinate coordinate, double potenza) {
+    public APInfo(String name, String MAC, coordinate coordinate, double potenza, int measuredPower) {
         this.name = name;
         this.MAC = MAC;
         this.coordinate = coordinate;
         this.potenza = potenza;
+        this.measuredPower = measuredPower;
     }
 
     public String getName() {
@@ -38,7 +40,7 @@ public class APInfo {
      */
     public double getDistanza() {
 
-        final double measuredPower = -69; //TODO misurare la potenza effettiva a 1 metro
+        //final double measuredPower = -69; //TODO misurare la potenza effettiva a 1 metro
         final int n = 2;
         return Math.pow(10, (measuredPower - potenza) / (10 * n)) / 1000;
     }
