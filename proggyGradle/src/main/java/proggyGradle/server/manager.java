@@ -19,6 +19,7 @@ public class manager {
 
         //TODO QUERY CHE BECCA I DEVICES DAL DATABASE!
         devices.addDevice("2",1010,"192.168.5.5","BROCH");
+        devices.addDevice("13",1010,"192.168.5.5","BROCH");
         //TODO PRENDERE I NUMERI DI EMERGENZA DAL DATABASE. ME LI SALVO ANCHE IN RAM PERCHÉ SE IL DB VA OFFLINE, RIESCO LO STESSO A CHIAMARE
         devices.addEmergencyNumber("2", "+393341563626", "PARENTI");
     }
