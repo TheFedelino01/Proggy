@@ -6,19 +6,20 @@ import proggyGradle.server.coordinate;
  * Informazioni riguardanti un Access Point
  */
 public class APInfo {
-
     private final String name;
     private final String MAC;
     private final coordinate coordinate;
-    private double potenza; //RSSI in db
+    private int potenza; //RSSI in db
     private final int measuredPower;
+    private final int canale;
 
-    public APInfo(String name, String MAC, coordinate coordinate, double potenza, int measuredPower) {
+    public APInfo(String name, String MAC, coordinate coordinate, int potenza, int measuredPower, int canale) {
         this.name = name;
         this.MAC = MAC;
         this.coordinate = coordinate;
         this.potenza = potenza;
         this.measuredPower = measuredPower;
+        this.canale = canale;
     }
 
     public String getName() {
@@ -33,17 +34,18 @@ public class APInfo {
         return coordinate;
     }
 
+
+    public double getDistanzaOld() {
+        return WiFiUtils.rssiToDistanceOld(measuredPower, potenza);
+    }
+
     /**
-     * 10 ^ ((Measured Power – RSSI)/(10 * N))
-     *
      * @return distanza tra l'access point e il dispositivo
      */
     public double getDistanza() {
-
-        //final double measuredPower = -69; //TODO misurare la potenza effettiva a 1 metro
-        final int n = 2;
-        return Math.pow(10, (measuredPower - potenza) / (10 * n)) / 1000;
+        return WiFiUtils.rssiToDistance(WiFiUtils.channelToFrequency(canale), potenza);
     }
+
 
     public double getPotenza() {
         return potenza;
@@ -57,6 +59,9 @@ public class APInfo {
                 ", coordinate=" + coordinate +
                 ", potenza=" + potenza +
                 ", distanza=" + getDistanza() +
+                ", distanzaOld=" + getDistanzaOld() +
+                ", measuredPower=" + measuredPower +
+                ", canale=" + canale +
                 '}';
     }
 }

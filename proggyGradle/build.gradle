@@ -9,8 +9,13 @@ repositories {
     jcenter()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
-    testCompile 'junit:junit:4.12'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.1')
+
     
     implementation 'com.github.pengrad:java-telegram-bot-api:4.6.0'
     implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
