@@ -51,6 +51,16 @@ public class WiFiUtils {
 
 
     public static double rssiToDistance(int frequenza, int potenza) {
+        System.out.println(frequenza + "----" + potenza);
+        return Math.pow(10.0, (DISTANCE_MHZ_M - (20 * Math.log10(frequenza)) + Math.abs(potenza)) / 20.0) / 1000.0;
+    }
+
+    public static double rssiToDistanceFixed(int frequenza, int potenza) {
+        System.out.println(frequenza + " Potenza: " + potenza);
+        System.out.println("Fixing...:" + (Math.pow(1.05, -potenza - 20) - 4));
+        if (potenza < -50)
+            potenza += Math.floor(Math.pow(1.05, -potenza - 20) - 4);
+        System.out.println("Nuova potenza: " + potenza);
         return Math.pow(10.0, (DISTANCE_MHZ_M - (20 * Math.log10(frequenza)) + Math.abs(potenza)) / 20.0) / 1000.0;
     }
 

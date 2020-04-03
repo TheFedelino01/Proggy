@@ -43,7 +43,7 @@ public class APInfo {
      * @return distanza tra l'access point e il dispositivo
      */
     public double getDistanza() {
-        return WiFiUtils.rssiToDistance(WiFiUtils.channelToFrequency(canale), potenza);
+        return WiFiUtils.rssiToDistanceFixed(WiFiUtils.channelToFrequency(canale), potenza);
     }
 
 
