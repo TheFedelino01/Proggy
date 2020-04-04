@@ -1,5 +1,6 @@
 package proggyGradle.server.Trilateration;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,10 +8,10 @@ public class WiFiUtils {
     private static final int n = 2;
     private static final double DISTANCE_MHZ_M = 27.55;
 
-    public static Map<Integer, Integer> canali;
+    private static final Map<Integer, Integer> canaliUnmodifiable;
 
     static {
-        canali = new HashMap<>();
+        final Map<Integer, Integer> canali = new HashMap<>();
         canali.put(1, 2412);
         canali.put(2, 2417);
         canali.put(3, 2422);
@@ -33,8 +34,7 @@ public class WiFiUtils {
             channel += 2;
             frequency += 10;
         }
-
-        System.out.println(canali);
+        canaliUnmodifiable = Collections.unmodifiableMap(canali);
     }
 
     private WiFiUtils() {
@@ -51,20 +51,20 @@ public class WiFiUtils {
 
 
     public static double rssiToDistance(int frequenza, int potenza) {
-        System.out.println(frequenza + "----" + potenza);
+        //System.out.println(frequenza + "----" + potenza);
         return Math.pow(10.0, (DISTANCE_MHZ_M - (20 * Math.log10(frequenza)) + Math.abs(potenza)) / 20.0) / 1000.0;
     }
 
     public static double rssiToDistanceFixed(int frequenza, int potenza) {
-        System.out.println(frequenza + " Potenza: " + potenza);
-        System.out.println("Fixing...:" + (Math.pow(1.05, -potenza - 20) - 4));
+        //System.out.println(frequenza + " Potenza: " + potenza);
+        //System.out.println("Fixing...:" + (Math.pow(1.05, -potenza - 20) - 4));
         if (potenza < -50)
             potenza += Math.floor(Math.pow(1.05, -potenza - 20) - 4);
-        System.out.println("Nuova potenza: " + potenza);
+        //System.out.println("Nuova potenza: " + potenza);
         return Math.pow(10.0, (DISTANCE_MHZ_M - (20 * Math.log10(frequenza)) + Math.abs(potenza)) / 20.0) / 1000.0;
     }
 
     public static int channelToFrequency(int channel) {
-        return canali.get(channel);
+        return canaliUnmodifiable.get(channel);
     }
 }
