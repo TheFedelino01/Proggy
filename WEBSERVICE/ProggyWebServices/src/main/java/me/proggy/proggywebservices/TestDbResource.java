@@ -42,7 +42,7 @@ public class TestDbResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_XML)
     public String getText() {
         final DbManager db = DbManager.getInstance();
         // verifica stato connessione a DBMS
