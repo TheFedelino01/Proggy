@@ -95,13 +95,6 @@ public class DevicesResource {
     }
 
 
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO
-        throw new UnsupportedOperationException();
-    }
-
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
