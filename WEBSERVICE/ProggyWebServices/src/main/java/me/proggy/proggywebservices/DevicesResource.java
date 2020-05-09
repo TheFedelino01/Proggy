@@ -63,10 +63,9 @@ public class DevicesResource {
             throw new WebApplicationException("DBMS server error!", 500);
         }
 
-        sql = "SELECT cliente.id, nome, cognome, dataOraInizio, dataOraFine FROM scheda " +
-                "INNER JOIN utilizza ON (scheda.cod = utilizza.idScheda) " +
-                "INNER JOIN cliente ON (cliente.id = utilizza.idCliente) " +
-                "WHERE scheda.cod = ?";
+        sql = "SELECT cliente.id, nome, cognome, dataOraInizio, dataOraFine FROM cliente " +
+                "INNER JOIN utilizza ON (cliente.id = utilizza.idCliente) " +
+                "WHERE utilizza.idScheda = ?";
         try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
             statement.setInt(1, idScheda);
 
