@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 07, 2020 alle 12:49
+-- Creato il: Mag 09, 2020 alle 20:00
 -- Versione del server: 10.1.38-MariaDB
 -- Versione PHP: 7.3.3
 
@@ -89,19 +89,18 @@ CREATE TABLE `cliente` (
   `dataNascita` date NOT NULL,
   `sesso` enum('M','F') COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password` char(32) COLLATE utf8_unicode_ci NOT NULL,
-  `idScheda` int(11) NOT NULL
+  `password` char(32) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `cf`, `foto`, `nome`, `cognome`, `dataNascita`, `sesso`, `username`, `password`, `idScheda`) VALUES
-(1, 'DACONTROLLARE', 'default.png', 'Ugo', 'Proserpio', '1980-02-15', 'M', 'test', '5f4dcc3b5aa765d61d8327deb882cf99', 0),
-(18, 'NONDICO', 'foto Saccani Federico.jpg', 'Federico', 'Saccani', '2001-11-12', 'M', 'federico', '5f4dcc3b5aa765d61d8327deb882cf99', 0),
-(24, 'NONDICO2', 'Koala by TheFedelino01.png', 'Luca', 'Minecraft', '2001-04-28', '', 'minekraft', '5f4dcc3b5aa765d61d8327deb882cf99', 0),
-(25, 'v Data di Nascit', '19inchs.jpg', 'Data di Nascita  08/04/2020 Sess', 'Data di Nascita  08/04/2020 Sess', '2020-04-08', '', 'Data di Nascita  08/04/2020 Sess', '11b37b126f80faae2de7161e4e53b8e5', 0);
+INSERT INTO `cliente` (`id`, `cf`, `foto`, `nome`, `cognome`, `dataNascita`, `sesso`, `username`, `password`) VALUES
+(1, 'DACONTROLLARE', 'default.png', 'Ugo', 'Proserpio', '1980-02-15', 'M', 'test', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(18, 'NONDICO', 'foto Saccani Federico.jpg', 'Federico', 'Saccani', '2001-11-12', 'M', 'federico', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(24, 'NONDICO2', 'Koala by TheFedelino01.png', 'Luca', 'Minecraft', '2001-04-28', '', 'minekraft', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(25, 'v Data di Nascit', '19inchs.jpg', 'Data di Nascita  08/04/2020 Sess', 'Data di Nascita  08/04/2020 Sess', '2020-04-08', '', 'Data di Nascita  08/04/2020 Sess', '11b37b126f80faae2de7161e4e53b8e5');
 
 -- --------------------------------------------------------
 
@@ -113,10 +112,19 @@ CREATE TABLE `collisione` (
   `id` int(11) NOT NULL,
   `idScheda` int(11) NOT NULL,
   `idEstraneo` int(11) NOT NULL,
-  `dataOra` int(11) NOT NULL,
+  `dataOra` datetime NOT NULL,
   `latitudine` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `longitudine` varchar(16) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `collisione`
+--
+
+INSERT INTO `collisione` (`id`, `idScheda`, `idEstraneo`, `dataOra`, `latitudine`, `longitudine`) VALUES
+(1, 1, 2, '2002-05-30 09:00:00', '12.56', '12.56'),
+(2, 1, 2, '2002-05-30 09:00:00', '12.56', '12.56'),
+(3, 1, 2, '2002-05-30 09:00:00', '12.56', '12.56');
 
 -- --------------------------------------------------------
 
@@ -193,7 +201,18 @@ CREATE TABLE `scheda` (
 
 INSERT INTO `scheda` (`cod`, `idEnte`) VALUES
 (1, 1),
-(2, 1);
+(2, 1),
+(8, 1),
+(3, 2),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2),
+(13, 2);
 
 -- --------------------------------------------------------
 
@@ -317,7 +336,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT per la tabella `collisione`
 --
 ALTER TABLE `collisione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `ente`
@@ -341,7 +360,7 @@ ALTER TABLE `posizione`
 -- AUTO_INCREMENT per la tabella `scheda`
 --
 ALTER TABLE `scheda`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Limiti per le tabelle scaricate
