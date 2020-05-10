@@ -49,20 +49,18 @@ public final class XMLUtils {
     public static String getTextValue(Element root, String tagName) {
         return root.getElementsByTagName(tagName).item(0).getFirstChild().getNodeValue();
     }
-    
+
     public static Element loadXmlFromString(String xml) {
-        try{
+        try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             InputSource is = new InputSource(new StringReader(xml));
-            final Element root = builder.parse(is).getDocumentElement();
-            return root;//Elemento root esempio per ottenere valori: root.getElementsByTagName("idUtente").item(0).getTextContent()
-        }catch(ParserConfigurationException | SAXException | IOException e){
+            return builder.parse(is).getDocumentElement(); //Elemento root esempio per ottenere valori: root.getElementsByTagName("idUtente").item(0).getTextContent()
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             return null;
         }
-        
+
     }
-    
-    
+
 
 }
