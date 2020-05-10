@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.proggy.proggywebservices;
+package me.proggy.proggywebservices.orsenigo;
 
+import me.proggy.proggywebservices.DbManager;
 import me.proggy.proggywebservices.utils.XMLUtils;
 import me.proggy.proggywebservices.utils.XMLValidator;
 import org.w3c.dom.Document;
