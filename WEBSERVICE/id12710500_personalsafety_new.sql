@@ -74,6 +74,14 @@ CREATE TABLE `cartellaclinica` (
   `idCliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dump dei dati per la tabella `cartellaclinica`
+--
+
+INSERT INTO `cartellaclinica` (`id`, `allergie`, `fermaci`, `gruppoSanguigno`, `note`, `idCliente`) VALUES
+(1, 'ambrosia', 'farmaco importante', NULL, 'nessuna', 18),
+(2, 'ambrosia', 'tachipirina', NULL, 'nessuna', 18);
+
 -- --------------------------------------------------------
 
 --
@@ -223,8 +231,8 @@ INSERT INTO `scheda` (`cod`, `idEnte`) VALUES
 CREATE TABLE `utilizza` (
   `idScheda` int(11) NOT NULL,
   `idCliente` int(11) NOT NULL,
-  `dataOraInizio` datetime NOT NULL,
-  `dataOraFine` datetime NOT NULL
+  `dataOraInizio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dataOraFine` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -232,7 +240,8 @@ CREATE TABLE `utilizza` (
 --
 
 INSERT INTO `utilizza` (`idScheda`, `idCliente`, `dataOraInizio`, `dataOraFine`) VALUES
-(1, 18, '2020-04-19 00:00:00', '2020-04-19 00:13:00');
+(1, 1, '2020-05-09 13:00:00', '2020-05-09 13:05:00'),
+(1, 18, '2020-05-19 12:00:00', NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -258,6 +267,7 @@ ALTER TABLE `ap`
 -- Indici per le tabelle `cartellaclinica`
 --
 ALTER TABLE `cartellaclinica`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `caratterizza` (`idCliente`);
 
 --
