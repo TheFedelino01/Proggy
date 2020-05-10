@@ -58,14 +58,15 @@ public class ContattiResource {
             throw new WebApplicationException("DB non connesso!", 500);
         }
 
-
         final String sql = "SELECT cliente1.id, cliente1.nome, cliente1.cognome, " +
                 " cliente2.id, cliente2.nome, cliente2.cognome, collisione.* " +
                 "FROM collisione " +
                 "INNER JOIN utilizza AS utilizza1 ON (utilizza1.idScheda = collisione.idScheda) " +
                 "INNER JOIN utilizza AS utilizza2 ON (utilizza2.idScheda = collisione.idEstraneo) " +
                 "INNER JOIN cliente AS cliente1 ON (utilizza1.idCliente = cliente1.id) " +
-                "iNNER JOIN cliente AS cliente2 ON (utilizza2.idCliente = cliente2.id) ";
+                "INNER JOIN cliente AS cliente2 ON (utilizza2.idCliente = cliente2.id) " +
+                "WHERE (collisione.dataOra > utilizza1.dataOraInizio AND (collisione.dataOra < utilizza1.dataOraFine OR utilizza1.dataOraFine IS NULL)) " +
+                "AND (collisione.dataOra > utilizza2.dataOraInizio AND (collisione.dataOra < utilizza2.dataOraFine OR utilizza2.dataOraFine IS NULL))";
         try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
 
             StringBuilder ris;
