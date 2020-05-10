@@ -29,12 +29,12 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(me.proggy.proggywebservices.ContattiResource.class);
-        resources.add(me.proggy.proggywebservices.DevicesAssocia.class);
-        resources.add(me.proggy.proggywebservices.DevicesAttivi.class);
         resources.add(me.proggy.proggywebservices.DevicesResource.class);
         resources.add(me.proggy.proggywebservices.TestDbResource.class);
         resources.add(me.proggy.proggywebservices.TestResource.class);
+        resources.add(saccani.DevicesAssocia.class);
+        resources.add(saccani.DevicesAttivi.class);
+        resources.add(saccani.DevicesDissocia.class);
     }
     
 }
