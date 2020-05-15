@@ -50,4 +50,19 @@ public class TestResource {
     @Consumes(MediaType.TEXT_PLAIN)
     public void putText(String content) {
     }
+
+    /**
+     * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     * @return an instance of java.lang.String
+     */
+    @GET
+    @Path("/auth")
+    @JWTTokenNeeded
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTextAuth() {
+        return "FUNZIAAAAAA";
+    }
+
+
+
 }

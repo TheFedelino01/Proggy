@@ -5,8 +5,7 @@
  */
 package me.proggy.proggywebservices;
 
-import me.proggy.proggywebservices.orsenigo.ContattiResource;
-import me.proggy.proggywebservices.orsenigo.DevicesResource;
+import me.proggy.proggywebservices.orsenigo.UsersResource;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -36,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(me.proggy.proggywebservices.TestResource.class);
         resources.add(me.proggy.proggywebservices.orsenigo.ContattiResource.class);
         resources.add(me.proggy.proggywebservices.orsenigo.DevicesResource.class);
+        resources.add(UsersResource.class);
         resources.add(me.proggy.proggywebservices.saccani.DevicesAssocia.class);
         resources.add(me.proggy.proggywebservices.saccani.DevicesAttivi.class);
         resources.add(me.proggy.proggywebservices.saccani.DevicesDissocia.class);
