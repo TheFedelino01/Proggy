@@ -10,9 +10,11 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.security.Key;
+import java.security.Principal;
 import java.util.logging.Logger;
 
 @Provider
@@ -25,8 +27,9 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
 
 
     @Override
-    public void filter(ContainerRequestContext requestContext) throws IOException {
+    public void filter(ContainerRequestContext requestContext) {
         System.out.println("filtro");
+
 
         // Get the HTTP Authorization header from the request
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
@@ -42,6 +45,32 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
                 Key key = SimpleKeyGenerator.generateKey();
                 Jwts.parser().setSigningKey(key).parseClaimsJws(token);
                 System.out.println("#### valid token : " + token);
+
+
+                final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
+                String username = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().getSubject();
+                requestContext.setSecurityContext(new SecurityContext() {
+                    @Override
+                    public Principal getUserPrincipal() {
+                        return () -> username;
+                    }
+
+                    @Override
+                    public boolean isUserInRole(String role) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean isSecure() {
+                        return currentSecurityContext.isSecure();
+                    }
+
+                    @Override
+                    public String getAuthenticationScheme() {
+                        return AUTHENTICATION_SCHEME;
+                    }
+                });
+
 
             } catch (Exception e) {
                 System.err.println("#### invalid token : " + token);

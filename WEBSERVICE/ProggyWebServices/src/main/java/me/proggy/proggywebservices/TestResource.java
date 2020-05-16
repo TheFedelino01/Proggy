@@ -6,6 +6,7 @@
 package me.proggy.proggywebservices;
 
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -33,6 +34,7 @@ public class TestResource {
 
     /**
      * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     *
      * @return an instance of java.lang.String
      */
     @GET
@@ -44,6 +46,7 @@ public class TestResource {
 
     /**
      * PUT method for updating or creating an instance of TestResource
+     *
      * @param content representation for the resource
      */
     @PUT
@@ -53,16 +56,16 @@ public class TestResource {
 
     /**
      * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     *
      * @return an instance of java.lang.String
      */
     @GET
     @Path("/auth")
     @JWTTokenNeeded
     @Produces(MediaType.TEXT_PLAIN)
-    public String getTextAuth() {
-        return "FUNZIAAAAAA";
+    public String getTextAuth(@Context SecurityContext securityContext) {
+        return "Logged: " + securityContext.getUserPrincipal().getName();
     }
-
 
 
 }
