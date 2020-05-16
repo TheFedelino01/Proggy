@@ -9,16 +9,14 @@ import java.security.Key;
  *         http://www.antoniogoncalves.org
  *         --
  */
-public class SimpleKeyGenerator implements KeyGenerator {
+public class SimpleKeyGenerator {
 
     // ======================================
     // =          Business methods          =
     // ======================================
 
-    @Override
-    public Key generateKey() {
-        String keyString = "simplekey";
-        Key key = new SecretKeySpec(keyString.getBytes(), 0, keyString.getBytes().length, "DES");
-        return key;
+    public static Key generateKey() {
+        final String keyString = "9P5fzJTcz9k/Cxn4&z* chiave molto lunga e molto sicura x5*379dv^hit2^gSynW";
+        return new SecretKeySpec(keyString.getBytes(), 0, keyString.getBytes().length, "HmacSHA512");
     }
 }

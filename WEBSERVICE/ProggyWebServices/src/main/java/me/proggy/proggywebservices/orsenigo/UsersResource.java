@@ -8,7 +8,7 @@ package me.proggy.proggywebservices.orsenigo;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import me.proggy.proggywebservices.DbManager;
-import me.proggy.proggywebservices.utils.KeyGenerator;
+import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -21,7 +21,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,8 +53,6 @@ public class UsersResource {
     public UsersResource() {
     }
 
-    @Inject
-    private KeyGenerator keyGenerator;
 
     /**
      * Retrieves representation of an instance of me.proggy.proggywebservices.orsenigo.UserResource
@@ -74,6 +75,7 @@ public class UsersResource {
             return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
 
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(UNAUTHORIZED).build();
         }
     }
@@ -82,16 +84,26 @@ public class UsersResource {
         final DbManager db = DbManager.getInstance();
         try (PreparedStatement statement = db.getConnection().prepareStatement("SELECT COUNT(*) FROM cliente WHERE username = ? AND password = ?")) {
             statement.setString(1, username);
-            statement.setString(1, password);
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] digest = md.digest();
+            String hashedPassword = DatatypeConverter.printHexBinary(digest).toUpperCase();
+
+            statement.setString(2, hashedPassword);
+
             try (ResultSet result = statement.executeQuery()) {
+                result.next();
                 if (result.getInt(1) != 1)
                     throw new SecurityException("Invalid user/password");
             }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
     }
 
     private String issueToken(String user) {
-        Key key = keyGenerator.generateKey();
+        Key key = SimpleKeyGenerator.generateKey();
         return Jwts.builder()
                 .setSubject(user)
                 .setIssuer(context.getAbsolutePath().toString())
@@ -104,6 +116,5 @@ public class UsersResource {
     private Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
-
 
 }
