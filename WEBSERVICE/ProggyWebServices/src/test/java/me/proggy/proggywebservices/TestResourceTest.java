@@ -7,7 +7,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
@@ -24,7 +23,7 @@ public class TestResourceTest extends JerseyTest {
 
     @Override
     protected Application configure() {
-        return new ResourceConfig(TestResource.class, JWTTokenNeededFilter.class, UsersResource.class);
+        return new ResourceConfig(TestResource.class, AuthenticationFilter.class, UsersResource.class);
     }
 
     /**

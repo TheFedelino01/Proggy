@@ -61,7 +61,7 @@ public class TestResource {
      */
     @GET
     @Path("/auth")
-    @JWTTokenNeeded
+    @Secured
     @Produces(MediaType.TEXT_PLAIN)
     public String getTextAuth(@Context SecurityContext securityContext) {
         return "Logged: " + securityContext.getUserPrincipal().getName();
