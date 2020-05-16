@@ -66,10 +66,10 @@ public class UsersResource {
         try {
 
             // Authenticate the user using the credentials provided
-            authenticate(username, password);
-
             // Issue a token for the user
-            String token = issueToken(username);
+            String token = authenticate(username, password);
+
+            //issueToken(username);
 
             // Return the token on the response
             return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
@@ -80,32 +80,40 @@ public class UsersResource {
         }
     }
 
-    private void authenticate(String username, String password) throws SQLException {
+    private String authenticate(String username, String password) throws SQLException {
         final DbManager db = DbManager.getInstance();
-        try (PreparedStatement statement = db.getConnection().prepareStatement("SELECT COUNT(*) FROM cliente WHERE username = ? AND password = ?")) {
+        try (PreparedStatement statement = db.getConnection().prepareStatement("SELECT * FROM admin WHERE username = ? AND password = ?")) {
             statement.setString(1, username);
-
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(password.getBytes());
-            byte[] digest = md.digest();
-            String hashedPassword = DatatypeConverter.printHexBinary(digest).toUpperCase();
-
-            statement.setString(2, hashedPassword);
+            statement.setString(2, md5(password));
 
             try (ResultSet result = statement.executeQuery()) {
-                result.next();
-                if (result.getInt(1) != 1)
-                    throw new SecurityException("Invalid user/password");
+                if (result.next())
+                    return issueToken(result.getInt("id"), result.getString("username"), true);
+                else
+                    try (PreparedStatement statement2 = db.getConnection().prepareStatement("SELECT * FROM cliente WHERE username = ? AND password = ?")) {
+                        statement2.setString(1, username);
+                        statement2.setString(2, md5(password));
+
+                        try (ResultSet result2 = statement2.executeQuery()) {
+                            if (result2.next())
+                                return issueToken(result2.getInt("id"), result2.getString("username"), false);
+                            else
+                                throw new SecurityException("Invalid user/password");
+                        }
+                    }
             }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
-    private String issueToken(String user) {
+    private String issueToken(int id, String user, boolean admin) {
         Key key = SimpleKeyGenerator.generateKey();
         return Jwts.builder()
                 .setSubject(user)
+                .claim("id", Integer.toString(id))
+                .claim("admin", admin)
                 .setIssuer(context.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
@@ -115,6 +123,13 @@ public class UsersResource {
 
     private Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    private String md5(String string) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(string.getBytes());
+        byte[] digest = md.digest();
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 
 }

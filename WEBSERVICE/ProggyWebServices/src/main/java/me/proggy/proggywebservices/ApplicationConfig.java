@@ -40,6 +40,7 @@ public class ApplicationConfig extends Application {
         resources.add(me.proggy.proggywebservices.saccani.DevicesAttivi.class);
         resources.add(me.proggy.proggywebservices.saccani.DevicesDissocia.class);
         resources.add(AuthenticationFilter.class);
+        resources.add(AuthorizationFilter.class);
     }
     
 }

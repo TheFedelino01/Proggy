@@ -60,8 +60,21 @@ public class TestResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("/auth")
-    @Secured
+    @Path("/auth/admin")
+    @Secured({Role.ADMIN})
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTextAuthAdmin(@Context SecurityContext securityContext) {
+        return "Logged: " + securityContext.getUserPrincipal().getName();
+    }
+
+    /**
+     * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     *
+     * @return an instance of java.lang.String
+     */
+    @GET
+    @Path("/auth/cliente")
+    @Secured({Role.CLIENTE})
     @Produces(MediaType.TEXT_PLAIN)
     public String getTextAuth(@Context SecurityContext securityContext) {
         return "Logged: " + securityContext.getUserPrincipal().getName();
