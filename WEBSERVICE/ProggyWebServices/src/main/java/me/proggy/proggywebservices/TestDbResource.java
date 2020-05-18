@@ -72,15 +72,6 @@ public class TestDbResource {
         }
     }
 
-    /**
-     * PUT method for updating or creating an instance of TestDbResource
-     *
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.TEXT_PLAIN)
-    public void putText(String content) {
-    }
 
     /**
      * Esempio di richiesta POST (inserimento nuova scheda)

@@ -22,6 +22,13 @@ import java.util.List;
 import static me.proggy.proggywebservices.Role.ADMIN;
 import static me.proggy.proggywebservices.Role.CLIENTE;
 
+/**
+ * Filtro che gestisce l'autorizzazione per l'accesso alle risorse
+ * Consente l'accesso alla risorsa richiesta solo se l'utente dispone dei permessi necessari
+ * I permessi vanno specificati nell'annotazione {@code @Secured({...})}
+ *
+ * @author Giacomo Orsenigo
+ */
 @Provider
 @Secured
 @Priority(Priorities.AUTHORIZATION)
@@ -30,6 +37,14 @@ public class AuthorizationFilter implements ContainerRequestFilter {
     @Context
     private ResourceInfo resourceInfo;
 
+    /**
+     * Intercetta le richieste effettuate ai metodi o classi annotati con {@link Secured}
+     * Se l'utente non possiede i permessi necessari, la richiesta viene rifiutata con un errore 403 - FORBITTEN {@link Response.Status#FORBIDDEN}
+     *
+     * Richiama {@link #extractRoles(AnnotatedElement)} e {@link #checkPermissions(List, ContainerRequestContext)}
+     *
+     * @param requestContext richiesta ricevuta
+     */
     @Override
     public void filter(ContainerRequestContext requestContext) {
         System.out.println("AuthorizationFilter");
@@ -54,12 +69,17 @@ public class AuthorizationFilter implements ContainerRequestFilter {
                 checkPermissions(methodRoles, requestContext);
             }
 
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
         }
     }
 
-    // Extract the roles from the annotated element
+    /**
+     * Estra i ruoli dall'annotazione del metodo
+     *
+     * @param annotatedElement elemento con annotazione
+     * @return lista dei ruoli
+     */
     private List<Role> extractRoles(AnnotatedElement annotatedElement) {
         if (annotatedElement == null) {
             return new ArrayList<Role>();
@@ -74,10 +94,16 @@ public class AuthorizationFilter implements ContainerRequestFilter {
         }
     }
 
+    /**
+     * Controlla che l'utente che ha fatto la richiesta abbia effettivamente i permessi necessari
+     *
+     * @param allowedRoles   ruoli consentiti per la risorsa richiesta
+     * @param requestContext richiesta effettuata
+     * @throws SecurityException se l'utente non è autorizzato
+     */
     private void checkPermissions(List<Role> allowedRoles, ContainerRequestContext requestContext) {
         // Check if the user contains one of the allowed roles
         // Throw an Exception if the user has not permission to execute the method
-
 
         if (isAuthenticated(requestContext)) {
 
@@ -101,10 +127,10 @@ public class AuthorizationFilter implements ContainerRequestFilter {
     }
 
     /**
-     * Check if the user is authenticated.
+     * Controlla se l'utente è autenticato.
      *
-     * @param requestContext context
-     * @return boolean
+     * @param requestContext richiesta
+     * @return true se è autenticato, false in caso contrario
      */
     private boolean isAuthenticated(final ContainerRequestContext requestContext) {
         return requestContext.getSecurityContext().getUserPrincipal() != null;

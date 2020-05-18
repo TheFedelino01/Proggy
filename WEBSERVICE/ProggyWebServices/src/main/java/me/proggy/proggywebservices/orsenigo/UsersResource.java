@@ -10,8 +10,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import me.proggy.proggywebservices.DbManager;
 import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -37,8 +35,9 @@ import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 
 /**
  * REST Web Service
+ * Conente l'autenticazione di un utente
  *
- * @author giaco
+ * @author Giacomo Orsenigo
  */
 @Path("users")
 @Transactional
@@ -55,9 +54,10 @@ public class UsersResource {
 
 
     /**
-     * Retrieves representation of an instance of me.proggy.proggywebservices.orsenigo.UserResource
+     * Effettua il login con username e password
+     * Richiama {@link #authenticate(String, String)}
      *
-     * @return an instance of java.lang.String
+     * @return token se l'autenticazione è andata a buon fine, {@link Response.Status#UNAUTHORIZED} in caso contrario
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -80,6 +80,18 @@ public class UsersResource {
         }
     }
 
+    /**
+     * Effutta l'autenticazione
+     * Controlla che lo username e password specificati appartengano a un cliente o a un amministratore
+     *
+     * Richiama {@link #issueToken(int, String, boolean)}
+     *
+     * @param username username
+     * @param password password
+     * @return token
+     * @throws SQLException
+     * @throws SecurityException nel caso l'autenticazione non sia riuscita
+     */
     private String authenticate(String username, String password) throws SQLException {
         final DbManager db = DbManager.getInstance();
         try (PreparedStatement statement = db.getConnection().prepareStatement("SELECT * FROM admin WHERE username = ? AND password = ?")) {
@@ -108,6 +120,17 @@ public class UsersResource {
         }
     }
 
+    /**
+     * Genera un token con i parametri specificati
+     *
+     * Richiama {@link SimpleKeyGenerator#generateKey()}
+     *
+     * @param id    id dell'utente
+     * @param user  username dell'utente
+     * @param admin booleano che indica se l'utente è un ammistratore
+     * @return token generato
+     * @see Jwts#builder()
+     */
     private String issueToken(int id, String user, boolean admin) {
         Key key = SimpleKeyGenerator.generateKey();
         return Jwts.builder()
@@ -121,10 +144,23 @@ public class UsersResource {
                 .compact();
     }
 
+    /**
+     * Converte un {@link LocalDateTime} in {@link Date}
+     *
+     * @param localDateTime data da convertire
+     * @return data convertita
+     */
     private Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
+    /**
+     * Calcola l'md5 di una stringa
+     *
+     * @param string stringa data
+     * @return mdr della stringa
+     * @throws NoSuchAlgorithmException in caso l'md5 non venga trovato
+     */
     private String md5(String string) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(string.getBytes());

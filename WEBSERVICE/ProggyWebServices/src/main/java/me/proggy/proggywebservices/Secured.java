@@ -9,6 +9,12 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * Annotazione per rendere una risorsa sicura
+ * Specifica i ruoli necessari per accedere a una risorsa
+ * Può essere messa sia sulla classe che sul singolo metodo,
+ * nel caso ci fossero entrambi verrà considerato quello sul metodo
+ */
 @NameBinding
 @Retention(RUNTIME)
 @Target({TYPE, METHOD})

@@ -33,9 +33,9 @@ public class TestResource {
     }
 
     /**
-     * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     * Metodo di test
      *
-     * @return an instance of java.lang.String
+     * @return stringa "FUNZIA"
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -44,20 +44,11 @@ public class TestResource {
         return "FUNZIA";
     }
 
-    /**
-     * PUT method for updating or creating an instance of TestResource
-     *
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.TEXT_PLAIN)
-    public void putText(String content) {
-    }
 
     /**
-     * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     * Metodo accessibile solo da amministratori loggati
      *
-     * @return an instance of java.lang.String
+     * @return stringa con username
      */
     @GET
     @Path("/auth/admin")
@@ -68,9 +59,9 @@ public class TestResource {
     }
 
     /**
-     * Retrieves representation of an instance of me.proggy.proggywebservices.TestResource
+     * Metodo accessibile solo da clienti loggati
      *
-     * @return an instance of java.lang.String
+     * @return stringa con username
      */
     @GET
     @Path("/auth/cliente")

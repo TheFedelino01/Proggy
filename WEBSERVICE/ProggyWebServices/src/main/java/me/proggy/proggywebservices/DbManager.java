@@ -10,8 +10,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
+ * Gestisce la connessione al database
  *
- * @author giaco
+ * @author Giacomo Orsenigo
  */
 public class DbManager {
 

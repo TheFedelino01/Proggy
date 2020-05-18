@@ -14,6 +14,12 @@ import javax.ws.rs.ext.Provider;
 import java.security.Key;
 import java.security.Principal;
 
+/**
+ * Filtro che gestisce l'autenticazione per l'accesso alle risorse
+ * Consente l'accesso alla risorsa richiesta solo se l'utente è autenticato
+ *
+ * @author Giacomo Orsenigo
+ */
 @Provider
 @Secured
 @Priority(Priorities.AUTHENTICATION)
@@ -23,6 +29,14 @@ public class AuthenticationFilter implements ContainerRequestFilter {
     private static final String REALM = "proggy";
 
 
+    /**
+     * Intercetta le richieste effettuate ai metodi o classi annotati con {@link Secured}
+     * Se l'utente non è loggato, la richiesta viene rifiutata con un errore 401 - UNAUTHORIZED {@link Response.Status#UNAUTHORIZED}
+     *
+     * Richiama {@link #isTokenBasedAuthentication(String)} (AnnotatedElement)}
+     *
+     * @param requestContext richiesta ricevuta
+     */
     @Override
     public void filter(ContainerRequestContext requestContext) {
         System.out.println("filtro");
@@ -82,12 +96,11 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 
     /**
-     * Check if the Authorization header is valid
-     * It must not be null and must be prefixed with "Bearer" plus a whitespace
-     * The authentication scheme comparison must be case-insensitive
+     * Controlla che l'Authorization header sia valido
+     * Non deve essere nullo e deve essere preceduto da "Bearer" più uno spazio bianco
      *
      * @param authorizationHeader stringa di autenticazione
-     * @return boolean
+     * @return true se è valido, false in caso contrario
      */
     private boolean isTokenBasedAuthentication(String authorizationHeader) {
         return authorizationHeader != null && authorizationHeader.toLowerCase()
