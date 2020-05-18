@@ -115,7 +115,7 @@ public class AuthorizationFilter implements ContainerRequestFilter {
 
             // Validate the token
             Key key = SimpleKeyGenerator.generateKey();
-            Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+            Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
             for (Role r : allowedRoles) {
                 if (r == ADMIN && claims.get("admin") == Boolean.FALSE)
                     throw new SecurityException("Non autorizzato");

@@ -64,15 +64,15 @@ public class TestResourceTest extends JerseyTest {
         // Check the JWT Token
         String justTheToken = token.substring("Bearer".length()).trim();
         Key key = SimpleKeyGenerator.generateKey();
-        assertEquals(1, Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getHeader().size());
-        assertEquals("HS512", Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getHeader().getAlgorithm());
-        assertEquals(6, Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().size());
-        assertEquals("federico", Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getSubject());
-        assertEquals("18", Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().get("id"));
-        assertEquals(false, Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().get("admin"));
-        //assertEquals(baseURL.toString().concat("api/users/login"), Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getIssuer());
-        assertNotNull(Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getIssuedAt());
-        assertNotNull(Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getExpiration());
+        assertEquals(1, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getHeader().size());
+        assertEquals("HS512", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getHeader().getAlgorithm());
+        assertEquals(6, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().size());
+        assertEquals("federico", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getSubject());
+        assertEquals("18", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("id"));
+        assertEquals(false, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("admin"));
+        //assertEquals(baseURL.toString().concat("api/users/login"), Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuer());
+        assertNotNull(Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuedAt());
+        assertNotNull(Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getExpiration());
     }
 
     @Test
@@ -104,15 +104,15 @@ public class TestResourceTest extends JerseyTest {
         // Check the JWT Token
         String justTheToken = token.substring("Bearer".length()).trim();
         Key key = SimpleKeyGenerator.generateKey();
-        assertEquals(1, Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getHeader().size());
-        assertEquals("HS512", Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getHeader().getAlgorithm());
-        assertEquals(6, Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().size());
-        assertEquals("admin", Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getSubject());
-        assertEquals("1", Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().get("id"));
-        assertEquals(true, Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().get("admin"));
-        //assertEquals(baseURL.toString().concat("api/users/login"), Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getIssuer());
-        assertNotNull(Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getIssuedAt());
-        assertNotNull(Jwts.parser().setSigningKey(key).parseClaimsJws(justTheToken).getBody().getExpiration());
+        assertEquals(1, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getHeader().size());
+        assertEquals("HS512", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getHeader().getAlgorithm());
+        assertEquals(6, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().size());
+        assertEquals("admin", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getSubject());
+        assertEquals("1", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("id"));
+        assertEquals(true, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("admin"));
+        //assertEquals(baseURL.toString().concat("api/users/login"), Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuer());
+        assertNotNull(Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuedAt());
+        assertNotNull(Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getExpiration());
     }
 
 

@@ -54,12 +54,12 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
                 // Validate the token
                 Key key = SimpleKeyGenerator.generateKey();
-                Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+                Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
                 System.out.println("#### valid token : " + token);
 
 
                 final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
-                String username = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().getSubject();
+                String username = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
                 requestContext.setSecurityContext(new SecurityContext() {
                     @Override
                     public Principal getUserPrincipal() {
