@@ -1,8 +1,11 @@
 <?php
 session_start();
 
-if (isset($_SESSION["username"])) {
-    header("Location: home.php?");
+if (isset($_SESSION["idCliente"])) {
+    header("Location: home.php");
+    die();
+} elseif (isset($_SESSION["idAdmin"])) {
+    header("Location: admin.php");
     die();
 }
 

@@ -1,28 +1,15 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["idAdmin"]) && isset($_SESSION["idCliente"])) {
-    die("Non puoi visualizzare questa pagina! Per visualizzare questa pagina devi prima effettuare il login come amministratore!");
-} elseif (!isset($_SESSION["idAdmin"])) {
-    header("Location: login.php?err=Per visualizzare questa pagina devi prima effettuare il login come amministratore!");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION["idAdmin"])) {
+    header("Location: index.php?err=Devi effettuare il login come amministratore!");
     die();
 }
 
-require "connection.php";
-$stmt = $conn->prepare("SELECT * FROM ente
-                        INNER JOIN admin 
-                            ON (admin.idEnte = ente.cod) 
-                    WHERE admin.id = ?");
-
-$stmt->bind_param("i", $_SESSION['idAdmin']);
-if (!$stmt->execute())
-    die("connessione al db fallita");
-
-$result = $stmt->get_result();
-$ente = $result->fetch_assoc();
+include 'connection.php';
 
 ?>
-
 <html lang="en">
 
 <head>
@@ -33,146 +20,83 @@ $ente = $result->fetch_assoc();
 
     <title>Personal Safety</title>
     <script>
-        function dettaglioEnte(enteId, enteImg) {
-            window.location = "dettaglioEnte.php?cod=" + enteId + "&img=" + enteImg;
+        function info(idScheda, dataInizio, dataFine) {
+            window.location = "infoScheda.php?idScheda=" + idScheda + "&dataInizio=" + dataInizio + "&dataFine=" + dataFine;
         }
-
-        $(document).ready(function() {
-
-        });
     </script>
-
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?"></script>
     <script>
-        var map;
-        var marker = [];
-        var coordinateFailed = 0;
-        var countCooForFailure = 5; //Visualizzo il msg dopo countCooForFailure volte che non ricevo le coordinate
-        var lastLat = 45.687345;
-        var lastLon = 9.179013;
-
-        function clearMarkers() {
-            marker.forEach(m => {
-                m.setMap(null);
-            })
-            marker = [];
-        }
-
-        function initMap() {
-            //45.687345, 9.179013
-            var myLatLng = {
-                lat: lastLat,
-                lng: lastLon
-            };
-
-            map = new google.maps.Map(document.getElementById('dvMap'), {
-                zoom: 18,
-                center: myLatLng,
-                icon: icon,
-                mapTypeId: 'satellite'
+        function dissocia() {
+            $.ajax({
+                url: "http://localhost:8080/ProggyWebServices/api/devices/dissocia?idScheda=<?php echo $_GET['idScheda']; ?>", //Your api url
+                type: 'PUT', //type is any HTTP method
+            }).done((data) => {
+                console.log(data);
+                location.reload();
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                console.error(errorThrown);
             });
-
-            /*marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                icon: icon,
-                title: 'Persona'
-            });*/
-
-            map.setTilt(1); //Posizione telecamera 1=2D
         }
 
+        function associa() {
+            var idUtente = $("#idUtente").val();
+            var xml = "";
+            if ($("#ora").val() == "")
+                xml = "<associazione><idScheda><?php echo $_GET['idScheda']; ?></idScheda><idUtente>" + idUtente + "</idUtente></associazione>";
+            else
+                xml = "<associazione><idScheda><?php echo $_GET['idScheda']; ?></idScheda><idUtente>" + idUtente + "</idUtente><dataOra>" + $("#ora").val() + "</dataOra></associazione>";
 
-
-        var icon = {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 9.5,
-            fillColor: "#027af3",
-            fillOpacity: 1,
-            strokeWeight: 0.4
-        };
-
-        function setMarkerOffline() {
-            icon.fillColor = "#f00";
-            SetMarker(lastLat, lastLon, "Persona OFFLINE");
-        }
-
-        function SetMarker(lat1, lng1, titolo) {
-            //marker.setMap(null);
-            var myLatLng = {
-                lat: lat1,
-                lng: lng1
-            };
-
-            //map.setCenter(myLatLng);
-
-            marker.push(new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                icon: icon,
-                title: titolo
-            }));
-        }
-
-
-        $(document).ready(function() {
-            initMap();
-            <?php
-            $result = $conn->query("SELECT cod FROM scheda 
-                                WHERE idEnte = {$ente['cod']}");
-
-            $schede = array();
-            while ($row = $result->fetch_assoc())
-                $schede[] = $row['cod'];
-            $str = "var schede = [";
-            foreach ($schede as $s) {
-                $result = $conn->query("SELECT * FROM posizione 
-                            INNER JOIN scheda 
-                                ON (posizione.idScheda = scheda.cod) 
-                            WHERE scheda.cod = $s
-                            ORDER BY dataOra DESC");
-
-                if ($result->num_rows != 0) {
-                    $str .= " [";
-                    $posizioni = array();
-                    $i = 0;
-                    while ($row = $result->fetch_assoc()) {
-                        $str .= "{lat: " . $row['latitudine'] . ", lng: " . $row['longitudine'] . "},";
-                        $posizioni[$i]["lat"] = $row['latitudine'];
-                        $posizioni[$i]["lng"] = $row['longitudine'];
-                        $i++;
-                    }
-                    $str .= "],";
-                    echo "SetMarker({$posizioni[0]['lat']},{$posizioni[0]['lng']},'Scheda $s');\n";
-                }
-            }
-            $str .= "];\n";
-            echo $str;
-            ?>
-            schede.forEach(s => {
-                var path = new google.maps.Polyline({
-                    path: s,
-                    geodesic: true,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 2
-                });
-                path.setMap(map);
+            $.ajax({
+                url: "http://localhost:8080/ProggyWebServices/api/devices/associa", //Your api url
+                type: 'POST', //type is any HTTP method
+                contentType: "application/xml",
+                data: xml
+            }).done((data) => {
+                console.log(data);
+                location.reload();
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                console.error(errorThrown);
             });
-        });
-
-        function confermaEliminazione(id) {
-            if (confirm("Confermi l'eliminazione della multa?"))
-                window.location.href = "eliminaScheda.php?id=" + id;
+            return false;
         }
     </script>
 
     <style>
-        @media only screen and (max-width: 1000px) {
+        .imgGrande {
+            margin: auto;
+            display: block;
+            padding-bottom: 20px;
+            width: 60%;
+        }
 
-            article {
-                height: 60%;
+        @media only screen and (max-width: 1000px) {
+            table {
+                width: 100%;
+            }
+
+            .imgGrande {
+
+                width: 100%;
+            }
+        }
+
+
+        .zoom {
+            animation-name: zoomAnim;
+            animation-duration: 2s;
+            animation-iteration-count: 1;
+        }
+
+        @keyframes zoomAnim {
+            0% {
+                transform: scale(0);
+            }
+
+            70% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
             }
         }
     </style>
@@ -210,9 +134,13 @@ $ente = $result->fetch_assoc();
                     </div>
 
                     <div class="d-flex flex-items-center">
+                        <b><a style="color:yellow!important;" href="admin.php" class="d-inline-block d-lg-none f5 text-white no-underline border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
+                                Home
+                            </a></b>
                         <a href="login.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
                             <?php echo ($_SESSION["nome"] . " " . $_SESSION["cognome"]); ?>
                         </a>
+
 
                         <!--  
 					Header-old header-logged-out js-details-container Details position-relative f4 py-2
@@ -266,6 +194,9 @@ $ente = $result->fetch_assoc();
                                 </details>
                             </li>
 
+                            <li class="border-bottom border-lg-bottom-0 mr-0 mr-lg-3">
+                                <b><a style="color:yellow;" href="admin.php" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-ga-click="(Logged out) Header, go to Team">Home</a></b>
+                            </li>
                         </ul>
                     </nav>
 
@@ -305,52 +236,155 @@ $ente = $result->fetch_assoc();
 
     <div class="container-lg p-responsive pb-6" style="padding-bottom: 0px!important;">
 
-        <p class="h00-mktg lh-condensed mt-3 mb-2 text-center">
-            Benvenuto nella pagina di amministrazione
+        <p class="h00-mktg lh-condensed mt-3 mb-2 text-center zoom">
+            Dettaglio scheda
         </p>
         <p class="lead-mktg text-gray text-center col-md-8 mx-auto mb-4">
-            Qui potrai visuallizzare e gestire le schede del tuo ente.
+            Elenco dei clienti che hanno utilizzato questa scheda
         </p>
     </div>
     <div class="application-main " data-commit-hovercards-enabled="">
         <main>
 
             <div class="py-7 py-md-8 py-lg-9" style="padding-top: 0px!important;">
-
                 <div class="d-flex flex-wrap flex-items-stretch flex-justify-center container-xl gutter-sm-condensed gutter-md mx-auto p-responsive">
-
-                    <div id="dvMap" style="width: 100%; height: 600px"></div>
-
 
                     <div id="tabellaSchede" style="padding-top: 20px; ">
                         <table>
                             <tr>
-                                <th>Codice scheda</th>
-                                <th>Dettagli</th>
+                                <th>ID Cliente</th>
+                                <th>Data Ora Inizio</th>
+                                <th>Data Ora Fine</th>
+                                <th>Percorso</th>
                             </tr>
                             <?php
-                            foreach ($schede as $s) {
+
+                            $sql = "SELECT * FROM utilizza
+                                WHERE idScheda = ?
+                                ORDER BY dataOraInizio";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bind_param("i", $_GET['idScheda']);
+
+                            if (!$stmt->execute())
+                                die("db error");
+                            $result = $stmt->get_result();
+
+                            $inUso = false;
+
+                            $i = 0;
+                            while ($row = $result->fetch_assoc()) {
+                                //array_push($arrayUtilizzoScheda,$row["idScheda"].";".$row["dataOraInizio"].";".$row["dataOraFine"]);	
+                                $idCliente = $row["idCliente"];
+                                $dInizio = $row["dataOraInizio"];
+                                $dFine = $row["dataOraFine"];
+                                $classMia = "pari";
+                                if ($i % 2 != 0) $classMia = "dispari";
                             ?>
 
-                                <tr>
-                                    <td><?php echo $s; ?></td>
-                                    <td><a href="dettaglioScheda.php?idScheda=<?php echo $s; ?>"><button>dettagli</button></a></td>
-                                    <td>
-                                        <button onclick="confermaEliminazione(<?php echo $s; ?>)">X</button>
-                                    </td>
+                                <tr class='<?php echo $classMia; ?>'>
+                                    <td><?php echo $idCliente; ?></td>
+                                    <td><?php echo $dInizio; ?></td>
+                                    <td><?php if ($dFine != null) {
+                                            echo $dFine;
+                                        } else {
+                                            echo "<button onclick='dissocia()'>Dissocia</button>";
+                                            $inUso = true;
+                                        } ?></td>
+                                    <td><input style='width:100%; height:100%;' type='button' value='Info' onClick="info('<?php echo $_GET['idScheda']; ?>','<?php echo $dInizio; ?>','<?php echo $dFine; ?>')"></td>
                                 </tr>
-
-                            <?php } ?>
+                            <?php
+                                $i++;
+                            }
+                            $conn->close();
+                            ?>
                         </table>
                         <br>
-                        <a href="inserisci.php"><button>Registra nuova scheda</button></a>
-                    </div>
+                        <!-- <?php
+                                if (!$inUso) {
+                                ?>
+                            <div>
+                                <p class='lead-mktg text-gray text-center col-md-8 mx-auto mb-4'>Associa questa scheda ad un nuovo cliente</p>
+                                <form onsubmit="return associa()">
+                                    <label for="idUtente">ID cliente</label>
+                                    <input type="number" name="idUtente" id="idUtente" required />
+                                    <br>
+                                    <br>
+                                    <button>Conferma</button>
+                                </form>
+                            </div>
 
+                        <?php
+                                } else
+                                    echo "<p class='lead-mktg text-gray text-center col-md-8 mx-auto mb-4'>Dissocia questa scheda per associarla ad un nuovo cliente</p>";
+                        ?> -->
+                    </div>
                 </div>
             </div>
 
         </main>
     </div>
+
+
+
+
+
+
+
+    <div class="container-lg p-responsive pb-6" style="padding-bottom: 0px!important;">
+
+        <?php
+        if (!$inUso) {
+        ?>
+            <p class="lead-mktg text-gray text-center col-md-8 mx-auto mb-4">
+                Associa questa scheda ad un nuovo cliente
+            </p>
+        <?php
+        } else
+            echo "<p class='lead-mktg text-gray text-center col-md-8 mx-auto mb-4'>Dissocia questa scheda per associarla ad un nuovo cliente</p>";
+        ?>
+    </div>
+    <div class="application-main " data-commit-hovercards-enabled="">
+        <main>
+
+            <div class="py-7 py-md-8 py-lg-9" style="padding-top: 0px!important;">
+                <div class="d-flex flex-wrap flex-items-stretch flex-justify-center container-xl gutter-sm-condensed gutter-md mx-auto p-responsive">
+
+                    <?php
+                    if (!$inUso) {
+                    ?>
+                        <div>
+                            <form onsubmit="return associa()">
+                                <dl class="form-group my-3 required">
+                                    <dt class="input-label"><label>ID cliente</label></dt>
+                                    <dd>
+                                        <input class="form-control input py-1" type="number" name="idUtente" id="idUtente" required>
+                                    </dd>
+                                </dl>
+                                <dl class="form-group my-3">
+                                    <dt class="input-label"><label>Orario di inizio (opzionale)</label></dt>
+                                    <dd>
+                                        <input class="form-control input py-1" type="datetime-local" name="ora" id="ora">
+                                    </dd>
+                                </dl>
+
+                                <div class="my-3">
+                                    <button class="btn-mktg signup-btn  js-octocaptcha-form-submit width-full" type="submit" height="64px" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">
+                                        Conferma
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+    </div>
+
+    </main>
+    </div>
+
 
 </body>
 
