@@ -133,18 +133,19 @@ $ente = $result->fetch_assoc();
                             WHERE scheda.cod = $s
                             ORDER BY dataOra DESC");
 
-
-                $str .= " [";
-                $posizioni = array();
-                $i = 0;
-                while ($row = $result->fetch_assoc()) {
-                    $str .= "{lat: " . $row['latitudine'] . ", lng: " . $row['longitudine'] . "},";
-                    $posizioni[$i]["lat"] = $row['latitudine'];
-                    $posizioni[$i]["lng"] = $row['longitudine'];
-                    $i++;
+                if ($result->num_rows != 0) {
+                    $str .= " [";
+                    $posizioni = array();
+                    $i = 0;
+                    while ($row = $result->fetch_assoc()) {
+                        $str .= "{lat: " . $row['latitudine'] . ", lng: " . $row['longitudine'] . "},";
+                        $posizioni[$i]["lat"] = $row['latitudine'];
+                        $posizioni[$i]["lng"] = $row['longitudine'];
+                        $i++;
+                    }
+                    $str .= "],";
+                    echo "SetMarker({$posizioni[0]['lat']},{$posizioni[0]['lng']},'Scheda $s');\n";
                 }
-                $str .= "],";
-                echo "SetMarker({$posizioni[0]['lat']},{$posizioni[0]['lng']},'Scheda $s');\n";
             }
             $str .= "];\n";
             echo $str;
