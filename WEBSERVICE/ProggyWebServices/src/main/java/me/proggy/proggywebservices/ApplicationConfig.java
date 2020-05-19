@@ -11,7 +11,6 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 /**
- *
  * @author giaco
  */
 @javax.ws.rs.ApplicationPath("api")
@@ -41,6 +40,7 @@ public class ApplicationConfig extends Application {
         resources.add(me.proggy.proggywebservices.saccani.DevicesDissocia.class);
         resources.add(AuthenticationFilter.class);
         resources.add(AuthorizationFilter.class);
+        resources.add(CorsFilter.class);
     }
-    
+
 }

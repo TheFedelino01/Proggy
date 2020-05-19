@@ -40,7 +40,7 @@ public class DevicesAssocia {
      *
      * @param idScheda id della scheda da associare
      * @param idUtente id dell'utente
-     * @param dataOra ]Opzionale] la data e l'ora dell'associazione (esempio: /api/devices/associa/1/1/2012-07-10%2014:58:00.000000)
+     * @param dataOra  [Opzionale] la data e l'ora dell'associazione (esempio: /api/devices/associa/1/1/2012-07-10%2014:58:00.000000)
      * @return xml con il risultato dell'operazione
      */
     @POST
@@ -53,51 +53,52 @@ public class DevicesAssocia {
             Element root = XMLUtils.loadXmlFromString(content);
             int idScheda = Integer.parseInt(root.getElementsByTagName("idScheda").item(0).getTextContent());
             int idUtente = Integer.parseInt(root.getElementsByTagName("idUtente").item(0).getTextContent());
-            String dataOra="";
-            java.util.Date dateObj=new java.util.Date();
-            
+            String dataOra = "";
+            java.util.Date dateObj = new java.util.Date();
+
             //Se ha specificato il parametro opzionale
-            if(root.getElementsByTagName("dataOra").getLength()>0){
+            if (root.getElementsByTagName("dataOra").getLength() > 0) {
                 dataOra = root.getElementsByTagName("dataOra").item(0).getTextContent();
-                
-                try{
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
+
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
                     dateObj = sdf.parse(dataOra);
-                }catch(Exception e){
-                    return "<result>406</result>";
+                } catch (Exception e) {
+                    throw new WebApplicationException("Ora non formattata correttamente", 400);
+                    //return "<result>406</result>";
                 }
             }
-            
+
             // verifica stato connessione a DBMS
             if (!db.isConnected()) {
                 System.err.println("DB non connesso");
                 throw new WebApplicationException("DB non connesso!", 500);
             }
-            
+
             PreparedStatement statement;
-            if(dataOra.isEmpty()){
+            if (dataOra.isEmpty()) {
                 String sql = "INSERT INTO `utilizza` (`idScheda`, `idCliente`) VALUES (?,?);";
                 statement = db.getConnection().prepareStatement(sql);
                 statement.setInt(1, idScheda);
                 statement.setInt(2, idUtente);
-            }else{
+            } else {
                 String sql = "INSERT INTO `utilizza` (`idScheda`, `idCliente`,`dataOraInizio`) VALUES (?,?,?);";
                 statement = db.getConnection().prepareStatement(sql);
                 statement.setInt(1, idScheda);
                 statement.setInt(2, idUtente);
                 statement.setTimestamp(3, new Timestamp(dateObj.getTime()));
             }
-            
+
             int i = statement.executeUpdate();
             if (i > 0) {
                 //throw new WebApplicationException("Success", 200); Non visualizza niente
                 return "<result>200</result>";
             } else {
-                //throw new WebApplicationException("Wrong parameters", 406); Non visualizza niente
-                return "<result>"
+                throw new WebApplicationException("Wrong parameters", 406); //Non visualizza niente
+                /*return "<result>"
                         + "<status>406</status>"
                         + "<errore>Parametri inseriti errati</errore>"
-                        + "</result>";
+                        + "</result>";*/
             }
 
 
@@ -105,6 +106,6 @@ public class DevicesAssocia {
             e.printStackTrace();
             throw new WebApplicationException("Wrong parameters", 406);
         }
-    } 
+    }
 
 }
