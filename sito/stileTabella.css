@@ -1,0 +1,34 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:hover {
+    background-color: #ffff99!important;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #1074e7;
+    color: white;
+}
+
+.pari {
+    background-color: #fff;
+}
+
+.dispari {
+    background-color: #f0f0f0;
+}
+
+tr {
+    text-align: center;
+}
