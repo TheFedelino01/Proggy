@@ -6,6 +6,17 @@ if (!isset($_SESSION["username"])) {
 	header("Location: index.php?err=Devi effettuare il login!");
 	die();
 }
+$giorni = array(
+    "0" => "lunedi",
+    "1" => "martedi",
+	"2" => "mercoledi",
+    "3" => "giovedi",
+	"4" => "venerdi",
+    "5" => "sabato",
+	"6" => "domenica",
+);
+
+$oldGiorno="1";
 
 include 'connection.php';
 
@@ -66,14 +77,30 @@ include 'connection.php';
 
 <body>
 <h1>I tuoi orari</h1>
-
-<table border=1>
 	<?php 
-		$sql="SELECT oraInizio, oraFine, giorno, postiDisponibili, ID FROM orari WHERE idEnte=(SELECT idEnte FROM admin WHERE username='".$_SESSION['username']."') ORDER BY giorno";
-		
+	for($i=0;$i<7;$i++)
+	{
+		$sql="SELECT oraInizio, oraFine, giorno, postiDisponibili, ID FROM orari WHERE idEnte=(SELECT idEnte FROM admin WHERE username='".$_SESSION['username']."') && giorno='$giorni[$i]' ORDER BY giorno";
+		?>
+<?php 	
 		$result = $conn->query($sql);
+		if($result->num_rows>0){
+			?>
+					<table border=1>
+<?php 
 	  while($row=$result->fetch_assoc()){
 	?>
+	
+	<?php
+	//Nome giorno della settimana
+	if($row['giorno']==$oldGiorno){
+	}else{
+		?>	
+	<h2><?php echo strtoupper($row['giorno'])?></h2>
+	<?php
+	}
+	?>
+
 	
 		<tr>
 		<td>
@@ -84,9 +111,6 @@ include 'connection.php';
 			<?php echo($row['oraFine']); ?>
 		</td>
 		
-		<td>
-			<?php echo($row['giorno']); ?>
-		</td>
 		<td>
 			<?php echo($row['postiDisponibili']); ?>
 		</td>
@@ -100,10 +124,15 @@ include 'connection.php';
 		</tr>
 
 	<?php 
+	$oldGiorno=$row['giorno'];
+	  }
 	 }
 	?>
 </table>
 
+<?php 
+	 }
+	?>
 
 	
 
