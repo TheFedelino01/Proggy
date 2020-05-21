@@ -1,7 +1,6 @@
 package me.proggy.proggywebservices;
 
-import io.jsonwebtoken.*;
-import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
+import me.proggy.proggywebservices.utils.MyPrincipal;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
@@ -9,12 +8,10 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,11 +79,11 @@ public class AuthorizationFilter implements ContainerRequestFilter {
      */
     private List<Role> extractRoles(AnnotatedElement annotatedElement) {
         if (annotatedElement == null) {
-            return new ArrayList<Role>();
+            return new ArrayList<>();
         } else {
             Secured secured = annotatedElement.getAnnotation(Secured.class);
             if (secured == null) {
-                return new ArrayList<Role>();
+                return new ArrayList<>();
             } else {
                 Role[] allowedRoles = secured.value();
                 return Arrays.asList(allowedRoles);
@@ -107,20 +104,13 @@ public class AuthorizationFilter implements ContainerRequestFilter {
 
         if (isAuthenticated(requestContext)) {
 
-            // Get the HTTP Authorization header from the request
-            String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
+            final MyPrincipal principal = ((MyPrincipal) requestContext.getSecurityContext().getUserPrincipal());
 
-            // Extract the token from the HTTP Authorization header
-            String token = authorizationHeader.substring("Bearer".length()).trim();
-
-            // Validate the token
-            Key key = SimpleKeyGenerator.generateKey();
-            Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
             for (Role r : allowedRoles) {
-                if (r == ADMIN && claims.get("admin") == Boolean.FALSE)
+                if (r == ADMIN && !principal.isAdmin())
                     throw new SecurityException("Non autorizzato");
 
-                if (r == CLIENTE && claims.get("admin") == Boolean.TRUE)
+                if (r == CLIENTE && principal.isAdmin())
                     throw new SecurityException("Non autorizzato");
             }
         } else throw new SecurityException("Utente non loggato. Unreachable");

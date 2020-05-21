@@ -68,7 +68,7 @@ public class TestResourceTest extends JerseyTest {
         assertEquals("HS512", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getHeader().getAlgorithm());
         assertEquals(6, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().size());
         assertEquals("federico", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getSubject());
-        assertEquals("18", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("id"));
+        assertEquals(18, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("id"));
         assertEquals(false, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("admin"));
         //assertEquals(baseURL.toString().concat("api/users/login"), Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuer());
         assertNotNull(Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuedAt());
@@ -108,7 +108,7 @@ public class TestResourceTest extends JerseyTest {
         assertEquals("HS512", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getHeader().getAlgorithm());
         assertEquals(6, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().size());
         assertEquals("admin", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getSubject());
-        assertEquals("1", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("id"));
+        assertEquals(1, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("id"));
         assertEquals(true, Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().get("admin"));
         //assertEquals(baseURL.toString().concat("api/users/login"), Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuer());
         assertNotNull(Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(justTheToken).getBody().getIssuedAt());

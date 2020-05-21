@@ -135,7 +135,7 @@ public class UsersResource {
         Key key = SimpleKeyGenerator.generateKey();
         return Jwts.builder()
                 .setSubject(user)
-                .claim("id", Integer.toString(id))
+                .claim("id", id)
                 .claim("admin", admin)
                 .setIssuer(context.getAbsolutePath().toString())
                 .setIssuedAt(new Date())

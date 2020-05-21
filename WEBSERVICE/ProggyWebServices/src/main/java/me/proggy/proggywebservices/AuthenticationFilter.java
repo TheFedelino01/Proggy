@@ -1,6 +1,8 @@
 package me.proggy.proggywebservices;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import me.proggy.proggywebservices.utils.MyPrincipal;
 import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
 
 import javax.annotation.Priority;
@@ -39,7 +41,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
      */
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        System.out.println("filtro");
+        System.out.println("AuthenticationFilter");
 
 
         // Get the HTTP Authorization header from the request
@@ -59,11 +61,12 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 
                 final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
-                String username = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
+                final Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+                final MyPrincipal principal = new MyPrincipal(claims.getSubject(), claims.get("id", Integer.class), claims.get("admin", Boolean.class));
                 requestContext.setSecurityContext(new SecurityContext() {
                     @Override
                     public Principal getUserPrincipal() {
-                        return () -> username;
+                        return principal;
                     }
 
                     @Override
@@ -84,6 +87,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 
             } catch (Exception e) {
+                e.printStackTrace();
                 System.err.println("#### invalid token : " + token);
                 requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
             }
