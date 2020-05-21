@@ -15,10 +15,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.*;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.security.MessageDigest;
@@ -72,7 +69,11 @@ public class UsersResource {
             //issueToken(username);
 
             // Return the token on the response
-            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+            return Response
+                    .ok()
+                    .header(AUTHORIZATION, "Bearer " + token)
+                    .cookie(new NewCookie("Biscotto", token))
+                    .build();
 
         } catch (Exception e) {
             e.printStackTrace();

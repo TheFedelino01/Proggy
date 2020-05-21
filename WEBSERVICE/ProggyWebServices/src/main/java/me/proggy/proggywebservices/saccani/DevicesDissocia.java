@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import me.proggy.proggywebservices.DbManager;
+import me.proggy.proggywebservices.Role;
+import me.proggy.proggywebservices.Secured;
 
 /**
  * REST Web Service per Dissociare una scheda in uso
@@ -40,6 +42,7 @@ public class DevicesDissocia {
      */
     @PUT
     @Produces(MediaType.APPLICATION_XML)
+    @Secured({Role.ADMIN})
     public String getXmlScheda(@QueryParam("idScheda") int idScheda) {
         final DbManager db = DbManager.getInstance();
         // verifica stato connessione a DBMS

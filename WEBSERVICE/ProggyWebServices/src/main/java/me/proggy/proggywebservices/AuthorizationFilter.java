@@ -3,6 +3,7 @@ package me.proggy.proggywebservices;
 import me.proggy.proggywebservices.utils.MyPrincipal;
 
 import javax.annotation.Priority;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -67,7 +68,7 @@ public class AuthorizationFilter implements ContainerRequestFilter {
             }
 
         } catch (SecurityException e) {
-            requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
+            throw new ForbiddenException(e);
         }
     }
 

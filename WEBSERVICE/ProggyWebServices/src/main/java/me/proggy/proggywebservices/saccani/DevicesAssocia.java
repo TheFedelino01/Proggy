@@ -14,6 +14,8 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 import me.proggy.proggywebservices.DbManager;
+import me.proggy.proggywebservices.Role;
+import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;
 import org.w3c.dom.Element;
 
@@ -46,6 +48,7 @@ public class DevicesAssocia {
     @POST
     @Produces(MediaType.APPLICATION_XML)
     @Consumes("application/xml")
+    @Secured({Role.ADMIN})
     public String getXmlScheda(String content) {
         final DbManager db = DbManager.getInstance();
         //@PathParam(value = "idScheda") int idScheda,@PathParam(value = "idUtente") int idUtente

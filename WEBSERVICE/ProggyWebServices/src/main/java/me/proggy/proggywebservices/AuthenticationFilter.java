@@ -6,9 +6,11 @@ import me.proggy.proggywebservices.utils.MyPrincipal;
 import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
 
 import javax.annotation.Priority;
+import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
@@ -28,6 +30,7 @@ import java.security.Principal;
 public class AuthenticationFilter implements ContainerRequestFilter {
 
     private static final String AUTHENTICATION_SCHEME = "Bearer";
+    private static final String AUTHENTICATION_COOKIE_NAME = "Biscotto";
     private static final String REALM = "proggy";
 
 
@@ -48,53 +51,59 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 
         if (isTokenBasedAuthentication(authorizationHeader)) {
-
             // Extract the token from the HTTP Authorization header
-            String token = authorizationHeader.substring("Bearer".length()).trim();
-
-            try {
-
-                // Validate the token
-                Key key = SimpleKeyGenerator.generateKey();
-                Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
-                System.out.println("#### valid token : " + token);
-
-
-                final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
-                final Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-                final MyPrincipal principal = new MyPrincipal(claims.getSubject(), claims.get("id", Integer.class), claims.get("admin", Boolean.class));
-                requestContext.setSecurityContext(new SecurityContext() {
-                    @Override
-                    public Principal getUserPrincipal() {
-                        return principal;
-                    }
-
-                    @Override
-                    public boolean isUserInRole(String role) {
-                        return true;
-                    }
-
-                    @Override
-                    public boolean isSecure() {
-                        return currentSecurityContext.isSecure();
-                    }
-
-                    @Override
-                    public String getAuthenticationScheme() {
-                        return AUTHENTICATION_SCHEME;
-                    }
-                });
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("#### invalid token : " + token);
-                requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
-            }
+            auth(authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim(), requestContext);
         } else {
-            System.err.println("#### Nessun token");
-            requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).header(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"").build());
+            final Cookie cookie = requestContext.getCookies().get(AUTHENTICATION_COOKIE_NAME);
+            if (cookie != null)
+                auth(cookie.getValue(), requestContext);
+            else {
+                System.err.println("#### Nessun token");
+                throw new NotAuthorizedException(AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"");
+            }
+        }
+    }
 
+
+    private void auth(String token, ContainerRequestContext requestContext) {
+        try {
+
+            // Validate the token
+            Key key = SimpleKeyGenerator.generateKey();
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            System.out.println("#### valid token : " + token);
+
+
+            final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
+            final Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+            final MyPrincipal principal = new MyPrincipal(claims.getSubject(), claims.get("id", Integer.class), claims.get("admin", Boolean.class));
+            requestContext.setSecurityContext(new SecurityContext() {
+                @Override
+                public Principal getUserPrincipal() {
+                    return principal;
+                }
+
+                @Override
+                public boolean isUserInRole(String role) {
+                    return true;
+                }
+
+                @Override
+                public boolean isSecure() {
+                    return currentSecurityContext.isSecure();
+                }
+
+                @Override
+                public String getAuthenticationScheme() {
+                    return AUTHENTICATION_SCHEME;
+                }
+            });
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("#### invalid token : " + token);
+            throw new NotAuthorizedException(AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"");
         }
     }
 
