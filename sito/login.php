@@ -17,6 +17,7 @@ if (isset($_SESSION["idCliente"])) {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stileRegistrazione.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         function chkUserAndPass() {
             //Maggiore di 4 caratteri e conferma password rinserimento
@@ -36,6 +37,23 @@ if (isset($_SESSION["idCliente"])) {
 
             window.location = "registrati.php?err=" + err;
             return false;
+        }
+
+        function login() {
+            $.ajax({
+                url: "http://localhost:8080/ProggyWebServices/api/users?username=" + $("#username").val() + "&password=" + $("#password").val(), //Your api url
+                type: 'GET', //type is any HTTP method
+                xhrFields: {
+                    withCredentials: true
+                },
+            }).done((data) => {
+                console.log(data);
+                //location.reload();
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                console.error(errorThrown);
+                alert("Autenticazione tramite WebService non riuscita. Verrà tentata tramite php, ma non sarà possibile utilizzare le funzionini che richiedomo il WebService");
+            });
+            return true;
         }
     </script>
 </head>
@@ -168,19 +186,19 @@ if (isset($_SESSION["idCliente"])) {
                         <?php if (isset($_GET["err"]))
                             echo "<h4 style='color:red'>" . $_GET["err"] . "</h4>";
                         ?>
-                        <form action="chklogin.php" method="post" class="setup-form js-signup-form js-octocaptcha-parent">
+                        <form action="chklogin.php" method="post" class="setup-form js-signup-form js-octocaptcha-parent" onsubmit="return login()">
 
                             <dl class="form-group my-3 required">
                                 <dt class="input-label"><label>Username</label></dt>
                                 <dd>
-                                    <input class="form-control input py-1" type="text" name="username" value="<?php if (isset($_GET["oldUsername"])) echo $_GET["oldUsername"]; ?>">
+                                    <input class="form-control input py-1" type="text" name="username" id="username" value="<?php if (isset($_GET["oldUsername"])) echo $_GET["oldUsername"]; ?>" required>
                                 </dd>
                             </dl>
 
                             <dl class="form-group my-3 required">
                                 <dt class="input-label"><label>Password</label></dt>
                                 <dd>
-                                    <input class="form-control input py-1" type="password" name="password">
+                                    <input class="form-control input py-1" type="password" name="password" id="password" required>
                                 </dd>
                             </dl>
 
@@ -191,7 +209,6 @@ if (isset($_SESSION["idCliente"])) {
                                     Accedi
                                 </button>
                             </div>
-
                         </form>
                     </div>
                 </div>

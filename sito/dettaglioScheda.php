@@ -29,6 +29,9 @@ include 'connection.php';
             $.ajax({
                 url: "http://localhost:8080/ProggyWebServices/api/devices/dissocia?idScheda=<?php echo $_GET['idScheda']; ?>", //Your api url
                 type: 'PUT', //type is any HTTP method
+                xhrFields: {
+                    withCredentials: true
+                },
             }).done((data) => {
                 console.log(data);
                 location.reload();
@@ -49,7 +52,10 @@ include 'connection.php';
                 url: "http://localhost:8080/ProggyWebServices/api/devices/associa", //Your api url
                 type: 'POST', //type is any HTTP method
                 contentType: "application/xml",
-                data: xml
+                data: xml,
+                xhrFields: {
+                    withCredentials: true
+                },
             }).done((data) => {
                 console.log(data);
                 location.reload();
