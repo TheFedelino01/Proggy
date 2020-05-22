@@ -5,10 +5,8 @@
  */
 package me.proggy.proggywebservices.orsenigo;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import me.proggy.proggywebservices.DbManager;
-import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
+import me.proggy.proggywebservices.JwtAuthenticator;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.GET;
@@ -17,15 +15,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.*;
 import javax.xml.bind.DatatypeConverter;
-import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
@@ -101,7 +95,7 @@ public class UsersResource {
 
             try (ResultSet result = statement.executeQuery()) {
                 if (result.next())
-                    return issueToken(result.getInt("id"), result.getString("username"), true);
+                    return JwtAuthenticator.getInstance().issueToken(result.getInt("id"), result.getString("username"), true, context);
                 else
                     try (PreparedStatement statement2 = db.getConnection().prepareStatement("SELECT * FROM cliente WHERE username = ? AND password = ?")) {
                         statement2.setString(1, username);
@@ -109,7 +103,7 @@ public class UsersResource {
 
                         try (ResultSet result2 = statement2.executeQuery()) {
                             if (result2.next())
-                                return issueToken(result2.getInt("id"), result2.getString("username"), false);
+                                return JwtAuthenticator.getInstance().issueToken(result2.getInt("id"), result2.getString("username"), false, context);
                             else
                                 throw new SecurityException("Invalid user/password");
                         }
@@ -119,40 +113,6 @@ public class UsersResource {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Genera un token con i parametri specificati
-     *
-     * Richiama {@link SimpleKeyGenerator#generateKey()}
-     *
-     * @param id    id dell'utente
-     * @param user  username dell'utente
-     * @param admin booleano che indica se l'utente è un ammistratore
-     * @return token generato
-     * @see Jwts#builder()
-     */
-    private String issueToken(int id, String user, boolean admin) {
-        Key key = SimpleKeyGenerator.generateKey();
-        return Jwts.builder()
-                .setSubject(user)
-                .claim("id", id)
-                .claim("admin", admin)
-                .setIssuer(context.getAbsolutePath().toString())
-                .setIssuedAt(new Date())
-                .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
-                .signWith(key, SignatureAlgorithm.HS512)
-                .compact();
-    }
-
-    /**
-     * Converte un {@link LocalDateTime} in {@link Date}
-     *
-     * @param localDateTime data da convertire
-     * @return data convertita
-     */
-    private Date toDate(LocalDateTime localDateTime) {
-        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
     /**

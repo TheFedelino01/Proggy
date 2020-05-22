@@ -1,9 +1,8 @@
 package me.proggy.proggywebservices;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.JwtException;
 import me.proggy.proggywebservices.utils.MyPrincipal;
-import me.proggy.proggywebservices.utils.SimpleKeyGenerator;
 
 import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
@@ -15,7 +14,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
-import java.security.Key;
 import java.security.Principal;
 
 /**
@@ -69,13 +67,11 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         try {
 
             // Validate the token
-            Key key = SimpleKeyGenerator.generateKey();
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            final Claims claims = JwtAuthenticator.getInstance().authenticate(token).getBody();
             System.out.println("#### valid token : " + token);
 
 
             final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
-            final Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
             final MyPrincipal principal = new MyPrincipal(claims.getSubject(), claims.get("id", Integer.class), claims.get("admin", Boolean.class));
             requestContext.setSecurityContext(new SecurityContext() {
                 @Override
