@@ -1,11 +1,10 @@
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import proggyGradle.Socket.socketUDP;
 import proggyGradle.server.Trilateration.APInfo;
 import proggyGradle.server.Trilateration.Trilateration;
 import proggyGradle.server.Trilateration.WiFiUtils;
@@ -29,11 +28,13 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class TrilaterationTest {
 
     private static ESPManager espManager;
+    private static socketUDP espSocket;
     private static DatagramSocket socket;
 
     @BeforeAll
     public static void init() throws SocketException {
-        espManager = new ESPManager(1234, new manager());
+        espManager = new ESPManager(-1, null);
+        espSocket = new socketUDP(1234);
         //espManager.start();
         socket = new DatagramSocket();
     }
@@ -44,7 +45,7 @@ public class TrilaterationTest {
         final String toSend = "2!fcecda384364;" + potenza1 + ";Saccani ROG MODEM;10;36!b8d5261593d;" + potenza2 + ";Saccani ROG MODEM - 2.4G;10;8!18e82951f2cf;" + potenza3 + ";Saccani ROG MODEM;10;44";
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap = espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
@@ -59,7 +60,7 @@ public class TrilaterationTest {
     public void testTrilateration(String toSend) throws IOException {
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap =  espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
@@ -75,7 +76,7 @@ public class TrilaterationTest {
     public void testTrilaterationOld(String toSend) throws IOException {
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap =  espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
@@ -91,7 +92,7 @@ public class TrilaterationTest {
     public void testTrilaterationFixed(String toSend) throws IOException {
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap =  espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
@@ -107,7 +108,7 @@ public class TrilaterationTest {
     public void testDistances(String toSend) throws IOException {
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap =  espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
@@ -122,7 +123,7 @@ public class TrilaterationTest {
     public void testDistancesOld(String toSend) throws IOException {
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap = espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
@@ -137,7 +138,7 @@ public class TrilaterationTest {
     public void testDistancesFixed(String toSend) throws IOException {
         DatagramPacket dp = new DatagramPacket(toSend.getBytes(), toSend.length(), InetAddress.getLocalHost(), 1234);
         socket.send(dp);
-        ESPManager.ReceivedData ap = espManager.receiveAPData();
+        ESPManager.ReceivedAPData ap = espManager.parseAPData(espSocket.receive().getComando());
         List<APInfo> apInfoList = ap.getApInfoList();
 //        for (APInfo apInfo : apInfoList)
 //            System.out.println(apInfo);
