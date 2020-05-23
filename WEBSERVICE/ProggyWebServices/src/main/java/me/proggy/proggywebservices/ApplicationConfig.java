@@ -39,6 +39,9 @@ public class ApplicationConfig extends Application {
         resources.add(me.proggy.proggywebservices.saccani.DevicesAssocia.class);
         resources.add(me.proggy.proggywebservices.saccani.DevicesAttivi.class);
         resources.add(me.proggy.proggywebservices.saccani.DevicesDissocia.class);
+        resources.add(me.proggy.proggywebservices.broch.addUtente.class);
+        resources.add(me.proggy.proggywebservices.broch.getPosisioni.class);
+        resources.add(me.proggy.proggywebservices.broch.salvaPosizione.class);
     }
 
 }
