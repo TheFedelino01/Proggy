@@ -8,11 +8,7 @@ package me.proggy.proggywebservices.orsenigo;
 import me.proggy.proggywebservices.DbManager;
 import me.proggy.proggywebservices.JwtAuthenticator;
 
-import javax.transaction.Transactional;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
@@ -31,7 +27,6 @@ import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
  * @author Giacomo Orsenigo
  */
 @Path("users")
-@Transactional
 public class UsersResource {
 
     @Context
@@ -69,7 +64,7 @@ public class UsersResource {
                     .cookie(new NewCookie("Biscotto", token))
                     .build();
 
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
             return Response.status(UNAUTHORIZED).build();
         }
@@ -79,16 +74,19 @@ public class UsersResource {
      * Effutta l'autenticazione
      * Controlla che lo username e password specificati appartengano a un cliente o a un amministratore
      *
-     * Richiama {@link #issueToken(int, String, boolean)}
+     * Richiama {@link JwtAuthenticator#issueToken(int, String, boolean, UriInfo)}
      *
      * @param username username
      * @param password password
      * @return token
-     * @throws SQLException
      * @throws SecurityException nel caso l'autenticazione non sia riuscita
      */
-    private String authenticate(String username, String password) throws SQLException {
+    private String authenticate(String username, String password) {
         final DbManager db = DbManager.getInstance();
+        if (!db.isConnected()) {
+            System.err.println("DB non connesso");
+            throw new InternalServerErrorException("DB non connesso!");
+        }
         try (PreparedStatement statement = db.getConnection().prepareStatement("SELECT * FROM admin WHERE username = ? AND password = ?")) {
             statement.setString(1, username);
             statement.setString(2, md5(password));
@@ -109,9 +107,9 @@ public class UsersResource {
                         }
                     }
             }
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException | SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new InternalServerErrorException(e);
         }
     }
 

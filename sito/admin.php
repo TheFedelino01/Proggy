@@ -175,7 +175,7 @@ $ente = $result->fetch_assoc();
                     location.reload();
                 }).fail((jqXHR, textStatus, errorThrown) => {
                     //console.error(errorThrown);
-                    $("#errors").html("Dissociazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
+                    $("#errors").html("Dissociazione non riuscita.\n" + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
                 });
             }
         }
@@ -205,7 +205,7 @@ $ente = $result->fetch_assoc();
                 if (jqXHR.status == 409)
                     $("#errors").html("Scheda già registrata da un altro ente");
                 else
-                    $("#errors").html("Registrazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
+                    $("#errors").html("Registrazione non riuscita.\n" + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
             });
             return false;
         }

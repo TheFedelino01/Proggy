@@ -36,11 +36,11 @@ public class DbManager {
             connected = false;
             e.printStackTrace();
         }
-        System.out.println("CONFIG - " + connected);
+        System.out.println("DB connesso: " + connected);
     }
 
     public static synchronized DbManager getInstance() {
-        if (INSTANCE == null) {
+        if (INSTANCE == null || !INSTANCE.connected) {
             INSTANCE = new DbManager();
         }
         return INSTANCE;
@@ -51,6 +51,12 @@ public class DbManager {
     }
 
     public boolean isConnected() {
+        try {
+            if (!connection.isValid(0))
+                connected = false;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return connected;
     }
 

@@ -52,7 +52,7 @@ if (isset($_SESSION["idCliente"])) {
                 //location.reload();
             }).fail((jqXHR, textStatus, errorThrown) => {
                 console.error(errorThrown);
-                alert("Autenticazione tramite WebService non riuscita. Verrà tentata tramite php, ma non sarà possibile utilizzare le funzioni che richiedomo il WebService");
+                alert("Autenticazione tramite WebService non riuscita. Verrà tentata tramite php, ma non sarà possibile utilizzare le funzioni che richiedono il WebService");
             });
             return true;
         }

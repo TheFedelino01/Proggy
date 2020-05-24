@@ -56,7 +56,7 @@ public class ContattiResource {
         // verifica stato connessione a DBMS
         if (!db.isConnected()) {
             System.err.println("DB non connesso");
-            throw new WebApplicationException("DB non connesso!", 500);
+            throw new InternalServerErrorException("DB non connesso");
         }
 
         final String sql = "SELECT cliente1.id, cliente1.nome, cliente1.cognome, " +
@@ -112,16 +112,17 @@ public class ContattiResource {
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public String creaContatto(String content) throws IOException, URISyntaxException, ParserConfigurationException, SAXException {
+    public String creaContatto(String content) throws IOException, URISyntaxException {
         final URL res = getClass().getClassLoader().getResource("xsd/contatto.xsd");
         final File xsd = Paths.get(res.toURI()).toFile();
         if (!XMLValidator.validate(xsd, content))
-            throw new WebApplicationException("Parametri non validi!", 406);
+            throw new BadRequestException("Parametri non validi!"); //Più corretto rispetto al 406
 
         final DbManager db = DbManager.getInstance();
         // verifica stato connessione a DBMS
         if (!db.isConnected()) {
-            throw new WebApplicationException("DBMS server error!", 500);
+            System.err.println("DB non connesso");
+            throw new InternalServerErrorException("DB non connesso");
         }
 
         final Element root = XMLUtils.loadXmlFromString(content);
@@ -142,14 +143,11 @@ public class ContattiResource {
                     if (rs.next()) {
                         id = rs.getLong(1);
                     }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                    throw new WebApplicationException("DBMS server error!", 500);
                 }
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new WebApplicationException("DBMS server error!", 500);
+            throw new InternalServerErrorException("DBMS server error!");
         }
         return "<idContatto>" + id + "</idContatto>";
 

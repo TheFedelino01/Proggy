@@ -37,7 +37,7 @@ include 'connection.php';
                 location.reload();
             }).fail((jqXHR, textStatus, errorThrown) => {
                 //console.error(errorThrown);
-                $("#errors").html("Dissociazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
+                $("#errors").html("Dissociazione non riuscita.\n" + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
             });
         }
 
@@ -62,7 +62,7 @@ include 'connection.php';
                 location.reload();
             }).fail((jqXHR, textStatus, errorThrown) => {
                 //console.error(errorThrown);
-                $("#errors").html("Associazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
+                $("#errors").html("Associazione non riuscita.\n" + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
             });
             return false;
         }
