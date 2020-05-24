@@ -46,12 +46,13 @@ if (isset($_SESSION["idCliente"])) {
                 xhrFields: {
                     withCredentials: true
                 },
+                async: false
             }).done((data) => {
                 console.log(data);
                 //location.reload();
             }).fail((jqXHR, textStatus, errorThrown) => {
                 console.error(errorThrown);
-                alert("Autenticazione tramite WebService non riuscita. Verrà tentata tramite php, ma non sarà possibile utilizzare le funzionini che richiedomo il WebService");
+                alert("Autenticazione tramite WebService non riuscita. Verrà tentata tramite php, ma non sarà possibile utilizzare le funzioni che richiedomo il WebService");
             });
             return true;
         }

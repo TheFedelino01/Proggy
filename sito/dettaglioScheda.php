@@ -32,11 +32,12 @@ include 'connection.php';
                 xhrFields: {
                     withCredentials: true
                 },
-            }).done((data) => {
-                console.log(data);
+            }).done((data, textStatus, jqXHR) => {
+                //console.log(data);
                 location.reload();
             }).fail((jqXHR, textStatus, errorThrown) => {
-                console.error(errorThrown);
+                //console.error(errorThrown);
+                $("#errors").html("Dissociazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
             });
         }
 
@@ -56,11 +57,12 @@ include 'connection.php';
                 xhrFields: {
                     withCredentials: true
                 },
-            }).done((data) => {
-                console.log(data);
+            }).done((data, textStatus, jqXHR) => {
+                //console.log(data);
                 location.reload();
             }).fail((jqXHR, textStatus, errorThrown) => {
-                console.error(errorThrown);
+                //console.error(errorThrown);
+                $("#errors").html("Associazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
             });
             return false;
         }
@@ -372,6 +374,8 @@ include 'connection.php';
                                         <input class="form-control input py-1" type="datetime-local" name="ora" id="ora">
                                     </dd>
                                 </dl>
+
+                                <font color="red" id="errors"></font>
 
                                 <div class="my-3">
                                     <button class="btn-mktg signup-btn  js-octocaptcha-form-submit width-full" type="submit" height="64px" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">

@@ -6,20 +6,25 @@
 package me.proggy.proggywebservices.orsenigo;
 
 import me.proggy.proggywebservices.DbManager;
+import me.proggy.proggywebservices.Role;
+import me.proggy.proggywebservices.Secured;
+import me.proggy.proggywebservices.utils.XMLUtils;
+import org.w3c.dom.Element;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * REST Web Service
+ * Rappresenta le schede in dotazione ai vari enti
  *
- * @author giaco
+ * @author Giacomo Orsenigo
  */
 @Path("devices")
 public class DevicesResource {
@@ -47,7 +52,7 @@ public class DevicesResource {
         // verifica stato connessione a DBMS
         if (!db.isConnected()) {
             System.err.println("DB non connesso");
-            throw new WebApplicationException("DB non connesso!", 500);
+            throw new InternalServerErrorException("DB non connesso!");
         }
 
         //controllo se la scheda esiste
@@ -58,11 +63,11 @@ public class DevicesResource {
             try (ResultSet result = statement.executeQuery()) {
                 result.next();
                 if (result.getInt(1) == 0)
-                    throw new WebApplicationException("Scheda inesistente", 404);
+                    throw new NotFoundException("Scheda inesistente");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new WebApplicationException("DBMS server error!", 500);
+            throw new InternalServerErrorException("DBMS server error!");
         }
 
         sql = "SELECT cliente.id, nome, cognome, dataOraInizio, dataOraFine FROM cliente " +
@@ -91,23 +96,98 @@ public class DevicesResource {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new WebApplicationException("DBMS server error!", 500);
+            throw new InternalServerErrorException("DBMS server error!");
         }
     }
 
-
-
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void modificaScheda(String content) {
-        //TODO
-    }
-
-
+    /**
+     * Consente di aggiungere una nuove scheda
+     *
+     * @param content xml contenente l'id della scheda e l'id dell'ente
+     */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
-    public void creaScheda(String content) {
+    @Secured({Role.ADMIN})
+    public Response creaScheda(String content, @Context UriInfo uriInfo) {
         //TODO
+        final DbManager db = DbManager.getInstance();
+        // verifica stato connessione a DBMS
+        if (!db.isConnected()) {
+            System.err.println("DB non connesso");
+            throw new InternalServerErrorException("DB non connesso!");
+        }
+
+        final Element root = XMLUtils.loadXmlFromString(content);
+        final int idScheda = Integer.parseInt(XMLUtils.getTextValue(root, "idScheda"));
+        final int idEnte = Integer.parseInt(XMLUtils.getTextValue(root, "idEnte"));
+
+        String sql = "SELECT * FROM scheda " +
+                "WHERE cod = ?";
+        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
+            statement.setInt(1, idScheda);
+
+            try (ResultSet result = statement.executeQuery()) {
+                if (result.next()) {
+                    if (result.getInt("idEnte") != idEnte)
+                        throw new ClientErrorException("Scheda già registrata da un altro ente", Response.Status.CONFLICT);
+                    else
+                        return Response.ok().build();
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new InternalServerErrorException("DBMS server error!");
+        }
+
+
+        sql = "INSERT INTO scheda(cod,idEnte) VALUES (?,?)";
+        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
+            statement.setInt(1, idScheda);
+            statement.setInt(2, idEnte);
+            int affectedRows = statement.executeUpdate();
+            // check the affected rows
+            if (affectedRows <= 0) {
+                throw new InternalServerErrorException("Non aggiunto");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new InternalServerErrorException("DBMS server error!");
+        }
+        return Response.created(uriInfo.getAbsolutePathBuilder().path(Integer.toString(idScheda)).build()).build();
+    }
+
+    /**
+     * Consente di eliminare una scheda
+     *
+     * @param idScheda id della scehda da eliminare
+     */
+    @DELETE
+    @Path("{idScheda}")
+    @Secured({Role.ADMIN})
+    public void eliminaScheda(@PathParam(value = "idScheda") int idScheda) {
+        final DbManager db = DbManager.getInstance();
+        // verifica stato connessione a DBMS
+        if (!db.isConnected()) {
+            System.err.println("DB non connesso");
+            throw new InternalServerErrorException("DB non connesso!");
+        }
+
+        //controllo se la scheda esiste
+        String sql = "DELETE FROM scheda " +
+                "WHERE cod = ?";
+        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
+            statement.setInt(1, idScheda);
+            final int rows = statement.executeUpdate();
+            if (rows == 0)
+                throw new NotFoundException("Scheda inesistente");
+            else if (rows > 1)
+                throw new InternalServerErrorException("S'è rotto tutto");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new InternalServerErrorException("DBMS server error!");
+        }
     }
 
 }

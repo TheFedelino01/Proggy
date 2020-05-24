@@ -163,8 +163,51 @@ $ente = $result->fetch_assoc();
         });
 
         function confermaEliminazione(id) {
-            if (confirm("Confermi l'eliminazione della multa?"))
-                window.location.href = "eliminaScheda.php?id=" + id;
+            if (confirm("Confermi l'eliminazione della scheda?")) {
+                $.ajax({
+                    url: "http://localhost:8080/ProggyWebServices/api/devices/" + id, //Your api url
+                    type: 'DELETE', //type is any HTTP method
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                }).done((data, textStatus, jqXHR) => {
+                    //console.log(data);
+                    location.reload();
+                }).fail((jqXHR, textStatus, errorThrown) => {
+                    //console.error(errorThrown);
+                    $("#errors").html("Dissociazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
+                });
+            }
+        }
+
+        function registra() {
+            var idScheda = $("#idScheda").val();
+            xml = "<associazione><idScheda>" + idScheda + "</idScheda><idEnte><?php echo $ente['cod']; ?></idEnte></associazione>";
+
+            $.ajax({
+                url: "http://localhost:8080/ProggyWebServices/api/devices", //Your api url
+                type: 'POST', //type is any HTTP method
+                contentType: "application/xml",
+                data: xml,
+                xhrFields: {
+                    withCredentials: true
+                },
+            }).done((data, textStatus, jqXHR) => {
+                //console.log(data);
+                if (jqXHR.status == 200)
+                    $("#errors").html("Scheda già registrata");
+                else if (jqXHR.status == 201)
+                    location.reload();
+                else
+                    $("#errors").html("S'è rotto tutto");
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                //console.error(errorThrown);
+                if (jqXHR.status == 409)
+                    $("#errors").html("Scheda già registrata da un altro ente");
+                else
+                    $("#errors").html("Registrazione non riuscita " + errorThrown + "\nAssicurati che il Web Service sia attivo e funzionante");
+            });
+            return false;
         }
     </script>
 
@@ -343,7 +386,24 @@ $ente = $result->fetch_assoc();
                             <?php } ?>
                         </table>
                         <br>
-                        <a href="inserisci.php"><button>Registra nuova scheda</button></a>
+                        <div>
+                            <form onsubmit="return registra()">
+                                <dl class="form-group my-3 required">
+                                    <dt class="input-label"><label>Codice identificativo della scheda</label></dt>
+                                    <dd>
+                                        <input class="form-control input py-1" type="number" name="idScheda" id="idScheda" required>
+                                    </dd>
+                                </dl>
+
+                                <font color="red" id="errors"></font>
+
+                                <div class="my-3">
+                                    <button class="btn-mktg signup-btn  js-octocaptcha-form-submit width-full" type="submit" height="64px" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">
+                                        Registra
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                 </div>
