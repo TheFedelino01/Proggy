@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="id12710500_personalsafety_new@localhost" uuid="91c661e6-98fc-4dec-870d-302653d87d3b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/id12710500_personalsafety_new</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="Europe/Rome" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

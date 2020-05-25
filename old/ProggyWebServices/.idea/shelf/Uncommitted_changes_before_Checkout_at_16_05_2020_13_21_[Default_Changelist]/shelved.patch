@@ -1,0 +1,110 @@
+Index: src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage me.proggy.proggywebservices.saccani;\r\n\r\nimport javax.ws.rs.*;\r\nimport javax.ws.rs.core.Context;\r\nimport javax.ws.rs.core.UriInfo;\r\nimport javax.ws.rs.core.MediaType;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.SQLException;\r\n\r\nimport me.proggy.proggywebservices.DbManager;\r\n\r\n/**\r\n * REST Web Service per Dissociare una scheda in uso\r\n *\r\n * @author Saccani Federico\r\n */\r\n@Path(\"devices/dissocia\")\r\npublic class DevicesDissocia {\r\n\r\n    @Context\r\n    private UriInfo context;\r\n\r\n    /**\r\n     * Creates a new instance of DevicesDissocia\r\n     */\r\n    public DevicesDissocia() {\r\n    }\r\n\r\n    /**\r\n     * Permette di impostare la data e l'ora di fine utilizzo della scheda specificata\r\n     * La data e l'ora impostata per la fine corrisponde al current timestamp\r\n     * \r\n     * @param idScheda la scheda da dissociare\r\n     * @return xml con il risultato dell'operazione\r\n     */\r\n    @PUT\r\n    @Produces(MediaType.APPLICATION_XML)\r\n    public String getXmlScheda(@QueryParam(\"idScheda\") int idScheda) {\r\n        final DbManager db = DbManager.getInstance();\r\n        // verifica stato connessione a DBMS\r\n        if (!db.isConnected()) {\r\n            System.err.println(\"DB non connesso\");\r\n            throw new WebApplicationException(\"DB non connesso!\", 500);\r\n        }\r\n\r\n\r\n        String sql = \"UPDATE `utilizza` SET `dataOraFine`=CURRENT_TIMESTAMP WHERE idScheda=? and dataOraFine is null\";\r\n        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {\r\n            statement.setInt(1, idScheda);\r\n            \r\n            int i = statement.executeUpdate();\r\n            if (i > 0) {\r\n                //throw new WebApplicationException(\"Success\", 200); Non visualizza niente\r\n                return \"<result>200</result>\";\r\n            } else {\r\n                //throw new WebApplicationException(\"Wrong parameters\", 406); Non visualizza niente\r\n                return \"<result>\"\r\n                        + \"<status>406</status>\"\r\n                        + \"<errore>Parametri inseriti errati</errore>\"\r\n                        + \"<errore>La scheda selezionata non puó essere dissociata in quanto non é attiva una sessione</errore>\"\r\n                        + \"</result>\";\r\n            }\r\n\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n            throw new WebApplicationException(\"Wrong parameters\", 406);\r\n        }\r\n    }\r\n\r\n    \r\n    /**\r\n     * Permette di impostare la data e l'ora di fine utilizzo della scheda specificata\r\n     * \r\n     * @param idScheda la scheda da dissociare\r\n     * @param dataOra la data e l'ora di quanto la scheda é stata dissociata (esempio: /api/devices/dissocia/1/2012-07-10%2014:58:00.000000) \r\n     * @return xml con il risultato dell'operazione\r\n     */\r\n    @PUT\r\n    @Produces(MediaType.APPLICATION_XML)\r\n    public String getXmlScheda(@QueryParam(\"idScheda\") int idScheda,@QueryParam(\"dataOra\") String dataOra) {\r\n        final DbManager db = DbManager.getInstance();\r\n        // verifica stato connessione a DBMS\r\n        if (!db.isConnected()) {\r\n            System.err.println(\"DB non connesso\");\r\n            throw new WebApplicationException(\"DB non connesso!\", 500);\r\n        }\r\n\r\n\r\n        String sql = \"UPDATE `utilizza` SET `dataOraFine`=? WHERE idScheda=? and dataOraFine is null\";\r\n        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {\r\n            statement.setString(1, dataOra);\r\n            statement.setInt(2, idScheda);\r\n            \r\n            int i = statement.executeUpdate();\r\n            if (i > 0) {\r\n                //throw new WebApplicationException(\"Success\", 200); Non visualizza niente\r\n                return \"<result>200</result>\";\r\n            } else {\r\n                //throw new WebApplicationException(\"Wrong parameters\", 406); Non visualizza niente\r\n                return \"<result>\"\r\n                        + \"<status>406</status>\"\r\n                        + \"<errore>Parametri inseriti errati</errore>\"\r\n                        + \"<errore>La scheda selezionata non puó essere dissociata in quanto non é attiva una sessione</errore>\"\r\n                        + \"</result>\";\r\n            }\r\n\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n            throw new WebApplicationException(\"Wrong parameters\", 406);\r\n        }\r\n    }\r\n   \r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java	(revision beb741c7c6f5edbf66d82481de29bbee42e2c260)
++++ src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java	(date 1589627627373)
+@@ -25,53 +25,53 @@
+     @Context
+     private UriInfo context;
+ 
+-    /**
+-     * Creates a new instance of DevicesDissocia
+-     */
+-    public DevicesDissocia() {
+-    }
+-
+-    /**
+-     * Permette di impostare la data e l'ora di fine utilizzo della scheda specificata
+-     * La data e l'ora impostata per la fine corrisponde al current timestamp
+-     * 
+-     * @param idScheda la scheda da dissociare
+-     * @return xml con il risultato dell'operazione
+-     */
+-    @PUT
+-    @Produces(MediaType.APPLICATION_XML)
+-    public String getXmlScheda(@QueryParam("idScheda") int idScheda) {
+-        final DbManager db = DbManager.getInstance();
+-        // verifica stato connessione a DBMS
+-        if (!db.isConnected()) {
+-            System.err.println("DB non connesso");
+-            throw new WebApplicationException("DB non connesso!", 500);
+-        }
+-
+-
+-        String sql = "UPDATE `utilizza` SET `dataOraFine`=CURRENT_TIMESTAMP WHERE idScheda=? and dataOraFine is null";
+-        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
+-            statement.setInt(1, idScheda);
+-            
+-            int i = statement.executeUpdate();
+-            if (i > 0) {
+-                //throw new WebApplicationException("Success", 200); Non visualizza niente
+-                return "<result>200</result>";
+-            } else {
+-                //throw new WebApplicationException("Wrong parameters", 406); Non visualizza niente
+-                return "<result>"
+-                        + "<status>406</status>"
+-                        + "<errore>Parametri inseriti errati</errore>"
+-                        + "<errore>La scheda selezionata non puó essere dissociata in quanto non é attiva una sessione</errore>"
+-                        + "</result>";
+-            }
+-
+-
+-        } catch (SQLException e) {
+-            e.printStackTrace();
+-            throw new WebApplicationException("Wrong parameters", 406);
+-        }
+-    }
++//    /**
++//     * Creates a new instance of DevicesDissocia
++//     */
++//    public DevicesDissocia() {
++//    }
++//
++//    /**
++//     * Permette di impostare la data e l'ora di fine utilizzo della scheda specificata
++//     * La data e l'ora impostata per la fine corrisponde al current timestamp
++//     *
++//     * @param idScheda la scheda da dissociare
++//     * @return xml con il risultato dell'operazione
++//     */
++//    @PUT
++//    @Produces(MediaType.APPLICATION_XML)
++//    public String getXmlScheda(@QueryParam("idScheda") int idScheda) {
++//        final DbManager db = DbManager.getInstance();
++//        // verifica stato connessione a DBMS
++//        if (!db.isConnected()) {
++//            System.err.println("DB non connesso");
++//            throw new WebApplicationException("DB non connesso!", 500);
++//        }
++//
++//
++//        String sql = "UPDATE `utilizza` SET `dataOraFine`=CURRENT_TIMESTAMP WHERE idScheda=? and dataOraFine is null";
++//        try (PreparedStatement statement = db.getConnection().prepareStatement(sql)) {
++//            statement.setInt(1, idScheda);
++//
++//            int i = statement.executeUpdate();
++//            if (i > 0) {
++//                //throw new WebApplicationException("Success", 200); Non visualizza niente
++//                return "<result>200</result>";
++//            } else {
++//                //throw new WebApplicationException("Wrong parameters", 406); Non visualizza niente
++//                return "<result>"
++//                        + "<status>406</status>"
++//                        + "<errore>Parametri inseriti errati</errore>"
++//                        + "<errore>La scheda selezionata non puó essere dissociata in quanto non é attiva una sessione</errore>"
++//                        + "</result>";
++//            }
++//
++//
++//        } catch (SQLException e) {
++//            e.printStackTrace();
++//            throw new WebApplicationException("Wrong parameters", 406);
++//        }
++//    }
+ 
+     
+     /**

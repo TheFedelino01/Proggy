@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="contatto">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idScheda" type="xs:int"/>
+                <xs:element name="idEstraneo" type="xs:int"/>
+                <xs:element name="dataOra" type="xs:dateTime"/>
+                <xs:element name="latitudine" type="xs:decimal"/>
+                <xs:element name="longitudine" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

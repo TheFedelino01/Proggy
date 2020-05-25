@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ProggyWebServices:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="17b826b2-f255-48bd-abab-a4811c90c9c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="dev-jwt" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="1bZeiPRNCZRGQsKft4kiJQDkbNU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="org.glassfish.jersey.test.JerseyTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../PersonalSafety" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.4597701" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="me.proggy.proggywebservices" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="org.glassfish.jersey.test.JerseyTest" />
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="me.proggy.proggywebservices" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="me.proggy.proggywebservices.utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\giaco\Desktop\Proggy\WEBSERVICE\ProggyWebServices\src\main\webapp\WEB-INF\lib" />
+      <recent name="C:\Users\giaco\Desktop\Proggy\WEBSERVICE\ProggyWebServices\src\main\webapp\META-INF" />
+      <recent name="C:\Users\giaco\Desktop\Proggy\WEBSERVICE\ProggyWebServices\src\main\resources\META-INF" />
+      <recent name="C:\Users\giaco\Desktop\Proggy\WEBSERVICE\ProggyWebServices\src\main\resources" />
+      <recent name="C:\Users\giaco\Desktop\Proggy\WEBSERVICE\ProggyWebServices\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="me.proggy.proggywebservices" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 7.0.92">
+    <configuration name="GlassFish 5.0.1" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 5.0.1" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ProggyWebServices-1.0-SNAPSHOT/" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ProggyWebServices:war">
+          <settings />
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="DOMAIN" value="domain1" />
+        <option name="PRESERVE" value="false" />
+        <option name="COMPATIBILITY" value="false" />
+        <option name="VIRTUAL_SERVER" />
+        <option name="USERNAME" value="admin" />
+        <option name="CREDENTIAL_ALIAS" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="GlassFish" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="9009" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ProggyWebServices:war" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="TestDbResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProggyWebServices" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="me.proggy.proggywebservices.orsenigo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="me.proggy.proggywebservices" />
+      <option name="MAIN_CLASS_NAME" value="me.proggy.proggywebservices.TestDbResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestResourceTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="ProggyWebServices" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="me.proggy.proggywebservices.orsenigo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="me.proggy.proggywebservices" />
+      <option name="MAIN_CLASS_NAME" value="me.proggy.proggywebservices.TestResourceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 7.0.92" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.92" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ProggyWebServices:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ProggyWebServices" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_ProggyWebServices" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57358" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ProggyWebServices:war" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="GlassFish Server.GlassFish 5.0.1" />
+      <item itemvalue="JUnit.TestResourceTest" />
+      <item itemvalue="JUnit.TestDbResourceTest" />
+      <item itemvalue="Tomcat Server.Tomcat 7.0.92" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestDbResourceTest" />
+        <item itemvalue="JUnit.TestDbResourceTest" />
+        <item itemvalue="JUnit.TestDbResourceTest" />
+        <item itemvalue="JUnit.TestDbResourceTest" />
+        <item itemvalue="JUnit.TestDbResourceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="17b826b2-f255-48bd-abab-a4811c90c9c5" name="Default Changelist" comment="" />
+      <created>1588844169198</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588844169198</updated>
+      <workItem from="1588844175498" duration="5958000" />
+      <workItem from="1588850497130" duration="567000" />
+      <workItem from="1588856607294" duration="2560000" />
+      <workItem from="1588859725471" duration="2854000" />
+      <workItem from="1588921235436" duration="8875000" />
+      <workItem from="1589010825152" duration="5568000" />
+      <workItem from="1589042442076" duration="323000" />
+      <workItem from="1589042825406" duration="1452000" />
+      <workItem from="1589044453190" duration="2927000" />
+      <workItem from="1589117768749" duration="1555000" />
+      <workItem from="1589120214707" duration="6053000" />
+      <workItem from="1589182314083" duration="21000" />
+      <workItem from="1589182362539" duration="795000" />
+      <workItem from="1589183175396" duration="1652000" />
+      <workItem from="1589191861403" duration="1000" />
+      <workItem from="1589274130893" duration="1000" />
+      <workItem from="1589274198898" duration="16000" />
+      <workItem from="1589274239502" duration="323000" />
+      <workItem from="1589274591931" duration="21000" />
+      <workItem from="1589274624896" duration="45000" />
+      <workItem from="1589274731017" duration="116000" />
+      <workItem from="1589274891110" duration="604000" />
+      <workItem from="1589276577584" duration="5000" />
+      <workItem from="1589280322360" duration="38000" />
+      <workItem from="1589366613701" duration="347000" />
+      <workItem from="1589452908960" duration="483000" />
+      <workItem from="1589453695081" duration="720000" />
+      <workItem from="1589532212566" duration="1720000" />
+      <workItem from="1589550301648" duration="9785000" />
+      <workItem from="1589622932429" duration="4937000" />
+      <workItem from="1589627899952" duration="1469000" />
+      <workItem from="1589635973449" duration="12591000" />
+      <workItem from="1589704828168" duration="341000" />
+      <workItem from="1589706745849" duration="3713000" />
+      <workItem from="1589796570826" duration="3419000" />
+      <workItem from="1589809350662" duration="1861000" />
+      <workItem from="1589881644728" duration="778000" />
+      <workItem from="1589896157788" duration="7641000" />
+      <workItem from="1589960238528" duration="3000" />
+      <workItem from="1589982621233" duration="5122000" />
+      <workItem from="1590047453714" duration="10240000" />
+      <workItem from="1590142949568" duration="1464000" />
+      <workItem from="1590154715377" duration="12553000" />
+      <workItem from="1590248260911" duration="10279000" />
+      <workItem from="1590309133770" duration="3356000" />
+      <workItem from="1590337833180" duration="4911000" />
+      <workItem from="1590389231733" duration="8662000" />
+      <workItem from="1590413988428" duration="34000" />
+    </task>
+    <task id="LOCAL-00001" summary="Aggiunto progetto">
+      <created>1588844615868</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588844615868</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Aggiunto progetto">
+      <created>1588844661330</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588844661330</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Aggiunto test con db">
+      <created>1588848652770</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588848652787</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Aggiornata versione Jersey">
+      <created>1588849313192</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588849313192</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Aggiornati plugin maven">
+      <created>1588850363662</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588850363662</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Impostato application/xml in testdb">
+      <created>1588850748424</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588850748424</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Aggiunta documentazione">
+      <created>1588851054618</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588851054618</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Prova inserimento nel db e test automatizzati">
+      <created>1588935160751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588935160751</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Prova inserimento nel db e test automatizzati">
+      <created>1588935280356</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588935280356</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Aggiunto webservice GET devices/id">
+      <created>1589014384041</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1589014384041</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Aggiunto webservice Contatti">
+      <created>1589047324515</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589047324515</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Sistemati contatti">
+      <created>1589123198467</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1589123198467</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Corretta query contatti">
+      <created>1589124469826</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1589124469826</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Riorganizzati packages">
+      <created>1589124820131</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1589124820131</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Aggiunta libreria JWT">
+      <created>1589532746844</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1589532746844</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Prima implementazione (non funzionante)">
+      <created>1589564190962</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1589564190962</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Rimosse injection che danno problemi">
+      <created>1589638672982</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1589638672982</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Rimosse injection che danno problemi">
+      <created>1589639970667</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1589639970667</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Autenticazione funzionante">
+      <created>1589641983991</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1589641983991</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Rinominate classi">
+      <created>1589642561210</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1589642561210</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Implementati ruoli (admin, cliente)">
+      <created>1589647857296</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1589647857296</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Commenti">
+      <created>1589799311687</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1589799311687</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Rimossi metodi deprecati di jjwt">
+      <created>1589799966982</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1589799966982</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Aggiunto CorsFilter, modifiche varie">
+      <created>1589904690510</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1589904690510</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Autenticazione più bella">
+      <created>1590051109648</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1590051109648</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Implementata autenticazione con cookies">
+      <created>1590059255921</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1590059255935</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Spostati metodi in nuova classe">
+      <created>1590159327751</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1590159327751</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Small fixes">
+      <created>1590250179578</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1590250179578</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Aggiunti metodi post e delete scheda">
+      <created>1590255235264</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1590255235264</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Aggiunti metodi post e delete scheda">
+      <created>1590310230206</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1590310230206</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Small fixes">
+      <created>1590341838836</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1590341838836</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Aggiunto test con db" />
+    <MESSAGE value="Aggiornata versione Jersey" />
+    <MESSAGE value="Aggiornati plugin maven" />
+    <MESSAGE value="Impostato application/xml in testdb" />
+    <MESSAGE value="Aggiunta documentazione" />
+    <MESSAGE value="Prova inserimento nel db e test automatizzati" />
+    <MESSAGE value="Aggiunto webservice GET devices/id" />
+    <MESSAGE value="Aggiunto webservice Contatti" />
+    <MESSAGE value="Sistemati contatti" />
+    <MESSAGE value="Corretta query contatti" />
+    <MESSAGE value="Riorganizzati packages" />
+    <MESSAGE value="Aggiunta libreria JWT" />
+    <MESSAGE value="Prima implementazione (non funzionante)" />
+    <MESSAGE value="Rimosse injection che danno problemi" />
+    <MESSAGE value="Autenticazione funzionante" />
+    <MESSAGE value="Rinominate classi" />
+    <MESSAGE value="Implementati ruoli (admin, cliente)" />
+    <MESSAGE value="Commenti" />
+    <MESSAGE value="Rimossi metodi deprecati di jjwt" />
+    <MESSAGE value="Aggiunto CorsFilter, modifiche varie" />
+    <MESSAGE value="Autenticazione più bella" />
+    <MESSAGE value="Implementata autenticazione con cookies" />
+    <MESSAGE value="Spostati metodi in nuova classe" />
+    <MESSAGE value="Aggiunti metodi post e delete scheda" />
+    <MESSAGE value="Small fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small fixes" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="563" y="102" key="#All_in_ProggyWebServices" timestamp="1588860605202">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="563" y="102" key="#All_in_ProggyWebServices/0.0.1920.1040@0.0.1920.1040" timestamp="1588860605202" />
+    <state x="440" y="94" key="#Project_Structure" timestamp="1588934277143">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588934277143" />
+    <state x="349" y="361" key="#SQL_Dialects" timestamp="1589013843630">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="349" y="361" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1589013843630" />
+    <state x="400" y="376" key="#SQL_Resolution_Scopes" timestamp="1589125816557">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="400" y="376" key="#SQL_Resolution_Scopes/0.0.1920.1040@0.0.1920.1040" timestamp="1589125816557" />
+    <state x="563" y="139" key="#TestResourceTest" timestamp="1588861533138">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="563" y="139" key="#TestResourceTest/0.0.1920.1040@0.0.1920.1040" timestamp="1588861533138" />
+    <state x="401" y="139" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590413610758">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="401" y="139" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590413610758" />
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1588929416024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588929416024" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1590047784347">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590047784347" />
+    <state x="711" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589124936525">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="711" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589124936525" />
+    <state x="590" y="209" width="892" height="622" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1589554874794">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="590" y="209" width="892" height="622" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589554874794" />
+    <state x="770" y="426" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1589554864896">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="770" y="426" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1920.1040@0.0.1920.1040" timestamp="1589554864896" />
+    <state x="578" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589124579384">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="578" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589124579384" />
+    <state x="743" y="389" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590340302232">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="743" y="389" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1590340302232" />
+    <state x="756" y="401" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1589124580222">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="756" y="401" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1040@0.0.1920.1040" timestamp="1589124580222" />
+    <state x="563" y="102" key="#me.proggy.proggywebservices_in_ProggyWebServices" timestamp="1588860633213">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="563" y="102" key="#me.proggy.proggywebservices_in_ProggyWebServices/0.0.1920.1040@0.0.1920.1040" timestamp="1588860633213" />
+    <state x="388" y="186" width="1236" height="692" key="CommitChangelistDialog2" timestamp="1590341837333">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="388" y="186" width="1236" height="692" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590341837333" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1590395482097">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590395482097" />
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1590412960822">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590412960822" />
+    <state width="1495" height="377" key="GridCell.Tab.0.bottom" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.0.center" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.0.left" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.0.right" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.1.bottom" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.1.center" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.1.left" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.1.right" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.2.bottom" timestamp="1590413965662">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965662" />
+    <state width="1495" height="377" key="GridCell.Tab.2.center" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.2.left" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="377" key="GridCell.Tab.2.right" timestamp="1590413965661">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="377" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590413965661" />
+    <state width="1495" height="324" key="GridCell.Tab.3.bottom" timestamp="1590060463871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590060463871" />
+    <state width="1495" height="324" key="GridCell.Tab.3.center" timestamp="1590060463870">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590060463870" />
+    <state width="1495" height="324" key="GridCell.Tab.3.left" timestamp="1590060463870">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590060463870" />
+    <state width="1495" height="324" key="GridCell.Tab.3.right" timestamp="1590060463870">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590060463870" />
+    <state width="1495" height="324" key="GridCell.Tab.4.bottom" timestamp="1589898051493">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.4.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589898051493" />
+    <state width="1495" height="324" key="GridCell.Tab.4.center" timestamp="1589898051493">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.4.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589898051493" />
+    <state width="1495" height="324" key="GridCell.Tab.4.left" timestamp="1589898051493">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.4.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589898051493" />
+    <state width="1495" height="324" key="GridCell.Tab.4.right" timestamp="1589898051493">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1495" height="324" key="GridCell.Tab.4.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589898051493" />
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1589628583384">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589628583384" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1589628090933">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589628090933" />
+    <state x="645" y="222" key="RollbackChangesDialog" timestamp="1590395483002">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="645" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590395483002" />
+    <state x="440" y="94" width="1251" height="851" key="SettingsEditor" timestamp="1590157664763">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" width="1251" height="851" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590157664763" />
+    <state width="200" height="441" key="SqlResolveConfigurable" timestamp="1589044736862">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="200" height="441" key="SqlResolveConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1589044736862" />
+    <state x="807" y="434" key="VCS.ChangelistChooser" timestamp="1589119527934">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="807" y="434" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589119527934" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590341839938">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590341839938" />
+    <state x="859" y="397" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1588858657810">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="859" y="397" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.1920.1040@0.0.1920.1040" timestamp="1588858657810" />
+    <state x="540" y="175" key="com.intellij.database.dbimport.ImportDialog" timestamp="1588858178312">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="175" key="com.intellij.database.dbimport.ImportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588858178312" />
+    <state x="690" y="325" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1590252354794">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="325" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590252354794" />
+    <state x="859" y="461" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1590255171287">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="859" y="461" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.1920.1040@0.0.1920.1040" timestamp="1590255171287" />
+    <state x="803" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1589125821592">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="803" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589125821592" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590248267616">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590248267616" />
+    <state x="731" y="330" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1589124941222">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="731" y="330" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589124941222" />
+    <state x="540" y="175" key="editAsTableFormatDialogDimension" timestamp="1589125192295">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="175" key="editAsTableFormatDialogDimension/0.0.1920.1040@0.0.1920.1040" timestamp="1589125192295" />
+    <state x="671" y="233" key="git4idea.branch.GitSmartOperationDialog" timestamp="1589628076498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="671" y="233" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589628076498" />
+    <state x="342" y="103" key="new project wizard" timestamp="1590409426087">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="103" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1590409426087" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1590342577888">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590342577888" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590340331751">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590340331751" />
+  </component>
+</project>

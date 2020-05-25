@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="clienti">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:integer"/>
+                            <xs:element name="nome" type="xs:string"/>
+                            <xs:element name="cognome" type="xs:string"/>
+                            <xs:element name="dataOraInizio" type="xs:dateTime"/>
+                            <xs:element name="dataOraFine" type="xs:dateTime"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

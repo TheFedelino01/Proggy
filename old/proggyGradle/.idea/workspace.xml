@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="proggyGradle.main:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c7e90ad3-ab5c-42ee-8907-666d1c765a9b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="proggyGradle" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="proggyGradle" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="proggyGradle" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="proggyGradle" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="bbadb8ab-05b1-46cf-92cb-e94d92048212" />
+  </component>
+  <component name="ProjectId" id="1XTzDTEPhCkqME5JPQgIBhsQ6pS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.4093567" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="proggyGradle.server.utility" />
+      <recent name="proggyGradle.Socket" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.ESPManagerTest">
+    <configuration name="ESPManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;proggyGradle.server.utility.ESPManagerTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ESPManagerTest.attivaScheda" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;proggyGradle.server.utility.ESPManagerTest.attivaScheda&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TrilaterationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;TrilaterationTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TrilaterationTest.testDistances" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;TrilaterationTest.testDistances&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TrilaterationTest.testTrilateration" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;TrilaterationTest.testTrilateration&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.TrilaterationTest" />
+      <item itemvalue="Gradle.TrilaterationTest.testTrilateration" />
+      <item itemvalue="Gradle.TrilaterationTest.testDistances" />
+      <item itemvalue="Gradle.ESPManagerTest.attivaScheda" />
+      <item itemvalue="Gradle.ESPManagerTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ESPManagerTest" />
+        <item itemvalue="Gradle.ESPManagerTest.attivaScheda" />
+        <item itemvalue="Gradle.TrilaterationTest" />
+        <item itemvalue="Gradle.TrilaterationTest.testDistances" />
+        <item itemvalue="Gradle.TrilaterationTest.testTrilateration" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7e90ad3-ab5c-42ee-8907-666d1c765a9b" name="Default Changelist" comment="" />
+      <created>1581084753249</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581084753249</updated>
+      <workItem from="1586874167082" duration="21000" />
+      <workItem from="1586968652345" duration="7000" />
+      <workItem from="1589881772601" duration="1288000" />
+      <workItem from="1589895493572" duration="619000" />
+      <workItem from="1590161521869" duration="1776000" />
+      <workItem from="1590163309740" duration="5211000" />
+      <workItem from="1590248249696" duration="14000" />
+      <workItem from="1590398050546" duration="2530000" />
+      <workItem from="1590413988221" duration="34000" />
+    </task>
+    <task id="LOCAL-00001" summary="Prima implementazione trilaterazione">
+      <created>1581098508718</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581098508718</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Prima implementazione trilaterazione">
+      <created>1581098547652</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581098547652</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Test trilaterazione">
+      <created>1581176469482</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581176469482</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Test trilaterazione">
+      <created>1581176556322</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581176556322</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Conversione RSSI in distanza&#10;&#10;Da testare">
+      <created>1581535899531</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581535899531</updated>
+    </task>
+    <task id="LOCAL-00006" summary="thSocket">
+      <created>1582634184311</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582634184311</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Inizio comunicazione database">
+      <created>1583514088346</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1583514088346</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Aggiunta libreria json">
+      <created>1583691462393</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583691462393</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Sistemata gestione coordinate">
+      <created>1585305983289</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585305983289</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Trilaterazione con AP giusti">
+      <created>1585415943229</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585415943229</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Potenza misurata in attributi">
+      <created>1585570531977</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1585570531977</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Potenza misurata in attributi">
+      <created>1585570660005</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1585570660005</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Aggiunto errore &quot;Impossibile localizzare&quot; se non ho ricevuto dati dall'esp">
+      <created>1585572532203</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1585572532203</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Modificato calcolo distanza dall'AP. Test.">
+      <created>1585755358633</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1585755358633</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Modificato calcolo distanza dall'AP. Test.">
+      <created>1585755457466</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1585755457466</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Test vari per calcolo distamza">
+      <created>1586023580676</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1586023580677</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Test vari per calcolo distanza">
+      <created>1586106366339</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1586106366339</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Aggiornato Gradle">
+      <created>1590162223822</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1590162223822</updated>
+    </task>
+    <task id="LOCAL-00019" summary="WebService Consumer&#10;device associa e dissocia">
+      <created>1590168506977</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1590168506977</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Prima implementazione trilaterazione" />
+    <MESSAGE value="Test trilaterazione" />
+    <MESSAGE value="Conversione RSSI in distanza&#10;&#10;Da testare" />
+    <MESSAGE value="thSocket" />
+    <MESSAGE value="Inizio comunicazione database" />
+    <MESSAGE value="Aggiunta libreria json" />
+    <MESSAGE value="Sistemata gestione coordinate" />
+    <MESSAGE value="Trilaterazione con AP giusti" />
+    <MESSAGE value="Potenza misurata in attributi" />
+    <MESSAGE value="Aggiunto errore &quot;Impossibile localizzare&quot; se non ho ricevuto dati dall'esp" />
+    <MESSAGE value="Modificato calcolo distanza dall'AP. Test." />
+    <MESSAGE value="Test vari per calcolo distamza" />
+    <MESSAGE value="Test vari per calcolo distanza" />
+    <MESSAGE value="Aggiornato Gradle" />
+    <MESSAGE value="WebService Consumer&#10;device associa e dissocia" />
+    <option name="LAST_COMMIT_MESSAGE" value="WebService Consumer&#10;device associa e dissocia" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="161" key="#Plugins" timestamp="1586874033067">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="161" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1586874033067" />
+    <state x="440" y="94" key="#Project_Structure" timestamp="1590163838654">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1590163838654" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583511906156">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583511906156" />
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1590165149641">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590165149641" />
+    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582816804601">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582816804601" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586873625568">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586873625568" />
+    <state x="756" y="379" width="423" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586016217169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="756" y="379" width="423" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1586016217169" />
+    <state x="627" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590168434386">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="627" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590168434386" />
+    <state x="431" y="201" key="CommitChangelistDialog2" timestamp="1590168506258">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="431" y="201" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590168506258" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1590168418976">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590168418976" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585736367918">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585736367918" />
+    <state width="1877" height="366" key="GridCell.Tab.0.bottom" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.0.center" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.0.left" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.0.right" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.1.bottom" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.1.center" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.1.left" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state width="1877" height="366" key="GridCell.Tab.1.right" timestamp="1590168545538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="366" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590168545538" />
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1590162837295">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590162837295" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1585570579653">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585570579653" />
+    <state x="672" y="236" key="MultipleFileMergeDialog" timestamp="1585570581306">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="672" y="236" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585570581306" />
+    <state x="679" y="231" key="RollbackChangesDialog" timestamp="1590164380553">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="679" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590164380553" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1589884394953">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589884394953" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1586106390567">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586106390567" />
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586016152498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586016152498" />
+    <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1590165100790">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590165100790" />
+    <state x="688" y="311" key="git4idea.merge.GitPullDialog" timestamp="1581688771937">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="688" y="311" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581688771937" />
+    <state x="342" y="132" key="new project wizard" timestamp="1587627852360">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="132" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1587627852360" />
+    <state x="702" y="139" key="refactoring.ChangeSignatureDialog" timestamp="1585724222809">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585724222809" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1585419398564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585419398564" />
+    <state x="616" y="173" width="670" height="676" key="search.everywhere.popup" timestamp="1585419680129">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="173" width="670" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585419680129" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/TrilaterationTest.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/proggyGradle/server/Trilateration/WiFiUtils.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

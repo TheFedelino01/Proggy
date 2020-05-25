@@ -9,7 +9,7 @@ build/
 bin/
 
 # IntelliJ IDEA
-.idea/
+# .idea/
 *.iml
 modules.xml
 .idea/misc.xml
@@ -50,6 +50,9 @@ out/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+#Avoid ingoring lib folder
+!PersonalSafety/WebService/src/main/webapp/WEB-INF/lib/*
 
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
