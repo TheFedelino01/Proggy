@@ -5,7 +5,7 @@ import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
-import proggy.Database.DbManager;
+import proggy.Database.old.DbManager;
 
 public class Telegram extends Thread {
 

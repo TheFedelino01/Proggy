@@ -5,7 +5,7 @@
  */
 package proggy.Socket;
 
-import proggy.Database.DbManager;
+import proggy.Database.old.DbManager;
 import proggy.server.coordinate;
 import proggy.server.manager;
 import proggy.server.utility.Telegram;

@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import me.proggy.proggywebservices.DbManager;
+import proggy.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 

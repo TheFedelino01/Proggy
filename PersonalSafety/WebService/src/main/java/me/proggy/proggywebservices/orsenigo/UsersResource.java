@@ -5,7 +5,7 @@
  */
 package me.proggy.proggywebservices.orsenigo;
 
-import me.proggy.proggywebservices.DbManager;
+import proggy.DbManager;
 import me.proggy.proggywebservices.JwtAuthenticator;
 
 import javax.ws.rs.*;

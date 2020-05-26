@@ -5,7 +5,7 @@
  */
 package me.proggy.proggywebservices.orsenigo;
 
-import me.proggy.proggywebservices.DbManager;
+import proggy.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;

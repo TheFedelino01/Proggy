@@ -1,290 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5b1ad3be-9b08-405d-bb0f-266e5bb7687c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerLocal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerRemote.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/cmdRicevuto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/cmdRicevutoByte.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/socketUDP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/thPhone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/thSocket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/Trilateration/ACCESSPOINTS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/Trilateration/APInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/Trilateration/Trilateration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/Trilateration/WiFiUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/battiti.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/coordinate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/coordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/device.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/devices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/emergencyNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/main/main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/ESPManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/NFCManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/Telegram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/WebServiceConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/phone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/test/java/TrilaterationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/test/java/proggyGradle/server/utility/ESPManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/ApplicationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/AuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/AuthorizationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/CorsFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/DbManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/JwtAuthenticator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/Secured.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/TestDbResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/TestResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/addUtente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/getPosisioni.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/salvaPosizione.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/UsersResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAssocia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAttivi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/utils/MyPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/utils/XMLUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/utils/XMLValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/resources/xsd/contatto.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/Login V8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/WEB-INF/lib/JavaBridge.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/WEB-INF/lib/php-servlet.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/img/blur.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/img/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/img/stars.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/img/world.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/js/DS_Store" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/js/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/js/jquery-1.9.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/assets/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/chkLogin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/connection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/css/css-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioEnte.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioEnteOld.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioScheda.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/editOrario.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-android-icon-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-114x114.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-120x120.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-152x152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-180x180.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-57x57.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-60x60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-apple-icon-76x76.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/favicons/icons-favicon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_A_0.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_A_0.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_A_0.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_B_0.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_B_0.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_B_0.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_C_0.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_C_0.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_C_0.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_D_0.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_D_0.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_D_0.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_E_0.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_E_0.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/fonts/proxima-2B04A9_E_0.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/getEnti.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/github-com-join-source-header-home (2).html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/github-com.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/home.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/img/ente/esselungaPaina.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/img/ente/u2Carugo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/infoScheda.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/js/js-jquery-1.9.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/js/js-scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/loginBugged.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/loginOld.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/registratiPage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/registratiPageOld.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/registrazioneEsegui.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/slog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/stileLogin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/stileRegistrazione.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/stileTabella.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/visualizzaOrari.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/test/java/me/proggy/proggywebservices/TestDbResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/test/java/me/proggy/proggywebservices/TestResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebService/src/test/resources/xml/devices.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Library/Jssc.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Library/Telegram.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Library/Twilio.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Library/java-telegram-bot-api-full (1).jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/Documentazione/API REST Gestione dispositivi Personal Safety BROCH.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/Documentazione/API REST Personal Safety - Saccani Federico [finale].pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/Documentazione/API REST Personal safety - Orsenigo.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/nb-configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/ApplicationConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/AuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/AuthorizationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/CorsFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/DbManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/JwtAuthenticator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/Secured.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/TestDbResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/TestResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/broch/addUtente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/broch/getPosisioni.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/broch/salvaPosizione.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/orsenigo/UsersResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/saccani/DevicesAssocia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/saccani/DevicesAttivi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/utils/MyPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/utils/XMLUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/java/me/proggy/proggywebservices/utils/XMLValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/resources/xsd/contatto.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/webapp/META-INF/context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/test/java/me/proggy/proggywebservices/TestDbResourceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/ProggyWebServices/src/test/java/me/proggy/proggywebservices/TestResourceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WEBSERVICE/id12710500_personalsafety_new.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Database/DbManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Database/DbManagerInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Database/DbManagerLocal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Database/DbManagerRemote.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Socket/cmdRicevuto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Socket/cmdRicevutoByte.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Socket/socketUDP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Socket/thPhone.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/Socket/thSocket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/Trilateration/ACCESSPOINTS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/Trilateration/APInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/Trilateration/Trilateration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/Trilateration/WiFiUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/battiti.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/coordinate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/coordinates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/device.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/devices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/emergencyNumber.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/main/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/manager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/utility/ESPManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/utility/NFCManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/utility/Telegram.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/utility/WebServiceConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/main/java/proggyGradle/server/utility/phone.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/test/java/TrilaterationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proggyGradle/src/test/java/proggyGradle/server/utility/ESPManagerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/Login V8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/admin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/img/blur.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/img/login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/img/stars.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/img/world.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/js/DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/js/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/js/jquery-1.9.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/assets/js/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/chkLogin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/connection.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/css/css-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/dettaglioEnte.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/dettaglioEnteOld.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/dettaglioScheda.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/editOrario.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-android-icon-192x192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-114x114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-120x120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-144x144.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-152x152.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-180x180.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-57x57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-60x60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-72x72.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-apple-icon-76x76.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/favicons/icons-favicon-96x96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_A_0.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_A_0.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_A_0.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_B_0.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_B_0.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_B_0.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_C_0.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_C_0.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_C_0.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_D_0.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_D_0.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_D_0.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_E_0.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_E_0.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/fonts/proxima-2B04A9_E_0.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/getEnti.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/github-com-join-source-header-home (2).html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/github-com.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/home.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/img/ente/esselungaPaina.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/img/ente/u2Carugo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/infoScheda.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/js/js-jquery-1.9.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/js/js-scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/loginBugged.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/loginOld.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/registratiPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/registratiPageOld.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/registrazioneEsegui.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/slog.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/stileLogin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/stileRegistrazione.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/stileTabella.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sito/visualizzaOrari.php" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManagerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManagerLocal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerRemote.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManagerRemote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/thSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/thSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/Telegram.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/Telegram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/DbManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/TestDbResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/TestDbResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/addUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/addUtente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/getPosisioni.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/getPosisioni.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/salvaPosizione.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/salvaPosizione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/UsersResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/UsersResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAssocia.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAssocia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAttivi.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAttivi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="testRunner" value="GRADLE" />
@@ -305,6 +67,9 @@
           <activation />
         </task>
         <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Common">
           <activation />
         </task>
         <projects_view>
@@ -347,6 +112,13 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpServers">
+    <servers>
+      <server host="IntelliJ IDEA 2020.1.1" id="184019a6-f6b6-4510-89bc-1b3600a84db3" name="IntelliJ IDEA 2020.1.1" port="63342" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3" />
   <component name="ProjectId" id="1cOzR58X9heIDksuhM8djOhx8i8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -356,6 +128,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Server/src/test/java" />
@@ -365,17 +138,17 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp\WEB-INF\lib" />
+      <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\Server\src\test\java" />
       <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\resources" />
       <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\test\resources" />
       <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\test\java" />
       <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp\WEB-INF\lib" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp\WEB-INF" />
-      <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp\WEB-INF\lib" />
-      <recent name="C:\Users\giaco\Desktop\Proggy\PersonalSafety\WebService\src\main\webapp" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0.92">
@@ -492,8 +265,8 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.PersonalSafety:WebService [war]" />
-      <item itemvalue="Tomcat Server.Tomcat 7.0.92" />
       <item itemvalue="Gradle.TestResourceTest" />
+      <item itemvalue="Tomcat Server.Tomcat 7.0.92" />
     </list>
     <recent_temporary>
       <list>
@@ -514,25 +287,55 @@
       <updated>1590414415888</updated>
       <workItem from="1590414420784" duration="3970000" />
       <workItem from="1590418570578" duration="3745000" />
+      <workItem from="1590424246691" duration="49000" />
+      <workItem from="1590425351839" duration="2274000" />
+      <workItem from="1590476757307" duration="20000" />
+      <workItem from="1590476912070" duration="399000" />
+      <workItem from="1590477330643" duration="3353000" />
+      <workItem from="1590487691215" duration="617000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="540" y="175" key="#CLI_Interpreters" timestamp="1590477085274">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="175" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1590477085274" />
+    <state x="667" y="163" key="#PHP" timestamp="1590477094927">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="163" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1590477094927" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590418999870">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590418999870" />
-    <state x="462" y="188" key="CommitChangelistDialog2" timestamp="1590421729011">
+    <state x="462" y="188" key="CommitChangelistDialog2" timestamp="1590488127955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="462" y="188" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590421729011" />
-    <state x="184" y="86" key="DiffContextDialog" timestamp="1590421715279">
+    <state x="462" y="188" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590488127955" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1590488127171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590421715279" />
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590488127171" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590477076753">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590477076753" />
     <state width="1293" height="2" key="GridCell.Tab.0.bottom" timestamp="1590421313645">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -585,13 +388,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="599" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590421381793" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1590415983000">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1590487958196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590415983000" />
-    <state x="342" y="130" key="new project wizard" timestamp="1590414752110">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590487958196" />
+    <state x="342" y="130" key="new project wizard" timestamp="1590487781686">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="342" y="130" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1590414752110" />
+    <state x="342" y="130" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1590487781686" />
   </component>
 </project>

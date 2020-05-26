@@ -5,7 +5,7 @@
  */
 package me.proggy.proggywebservices.broch;
 
-import me.proggy.proggywebservices.DbManager;
+import proggy.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;
@@ -16,7 +16,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 
 /**
  * REST Aggiunta di una nuova posizione

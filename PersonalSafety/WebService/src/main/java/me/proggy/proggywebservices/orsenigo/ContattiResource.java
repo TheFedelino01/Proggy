@@ -5,18 +5,15 @@
  */
 package me.proggy.proggywebservices.orsenigo;
 
-import me.proggy.proggywebservices.DbManager;
+import proggy.DbManager;
 import me.proggy.proggywebservices.utils.XMLUtils;
 import me.proggy.proggywebservices.utils.XMLValidator;
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.MediaType;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -25,7 +22,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.stream.Collectors;
 
 /**
  * REST Web Service

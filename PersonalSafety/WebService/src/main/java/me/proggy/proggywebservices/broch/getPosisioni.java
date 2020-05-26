@@ -1,6 +1,6 @@
 package me.proggy.proggywebservices.broch;
 
-import me.proggy.proggywebservices.DbManager;
+import proggy.DbManager;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
