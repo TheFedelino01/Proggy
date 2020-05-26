@@ -27,6 +27,10 @@ public class DbManager {
     private boolean connected;
 
     private DbManager() {
+        connect();
+    }
+
+    private void connect() {
         String url = dbms_url + database + "?serverTimezone=Europe/Rome";
         try {
             Class.forName(driver);
@@ -40,8 +44,10 @@ public class DbManager {
     }
 
     public static synchronized DbManager getInstance() {
-        if (INSTANCE == null || !INSTANCE.connected) {
+        if (INSTANCE == null) {
             INSTANCE = new DbManager();
+        } else if (!INSTANCE.connected) {
+            INSTANCE.connect();
         }
         return INSTANCE;
     }

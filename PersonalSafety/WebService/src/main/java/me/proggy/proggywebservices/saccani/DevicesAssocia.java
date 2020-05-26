@@ -18,6 +18,7 @@ import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;
 import org.w3c.dom.Element;
+import proggy.server.main.ServerManager;
 
 /**
  * REST Web Service per Associazione scheda con utente
@@ -95,6 +96,11 @@ public class DevicesAssocia {
             int i = statement.executeUpdate();
             if (i > 0) {
                 //throw new WebApplicationException("Success", 200); Non visualizza niente
+
+                //TODO: è commentato perchè non riceve l'ack e si blocca
+                //TODO: O si usa il tcp o l'esp manda l'ack (o si toglie la conferma tramite ack e si lascia l'udp)
+                //ServerManager.getINSTANCE().getEspManager().attivaScheda(idScheda, idUtente);        //MANDO ALL'ESP IL MESSAGGIO
+
                 return "<result>200</result>";
             } else {
                 throw new WebApplicationException("Wrong parameters", 406); //Non visualizza niente

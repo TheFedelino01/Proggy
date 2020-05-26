@@ -5,6 +5,7 @@
  */
 package me.proggy.proggywebservices;
 
+import proggy.server.main.ServerManager;
 import proggy.server.main.main;
 import proggy.server.manager;
 import proggy.server.utility.ESPManager;
@@ -19,7 +20,8 @@ import java.util.Set;
 public class ApplicationConfig extends Application {
 
     public ApplicationConfig() {
-        new ESPManager(1234,new manager()).start();
+        ServerManager serverManager = ServerManager.getINSTANCE();
+        serverManager.start();
     }
 
     @Override

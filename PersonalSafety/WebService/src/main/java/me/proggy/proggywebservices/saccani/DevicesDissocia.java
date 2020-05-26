@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import proggy.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
+import proggy.server.main.ServerManager;
 
 /**
  * REST Web Service per Dissociare una scheda in uso
@@ -59,6 +60,11 @@ public class DevicesDissocia {
             int i = statement.executeUpdate();
             if (i > 0) {
                 //throw new WebApplicationException("Success", 200); Non visualizza niente
+
+                //TODO: è commentato perchè non riceve l'ack e si blocca
+                //TODO: O si usa il tcp o l'esp manda l'ack (o si toglie la conferma tramite ack e si lascia l'udp)
+                //ServerManager.getINSTANCE().getEspManager().disattivaScheda(idScheda);     //MANDO ALL'ESP IL MESSAGGIO
+
                 return "<result>200</result>";
             } else {
                 throw new WebApplicationException("Wrong parameters", 406); //Non visualizza niente

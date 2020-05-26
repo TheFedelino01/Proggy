@@ -9,7 +9,7 @@ dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.1')
 
     implementation 'com.github.pengrad:java-telegram-bot-api:4.6.0'
-    implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
+    implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0", { exclude group: 'io.jsonwebtoken', module: 'jjwt' }
     implementation 'com.github.purejavacomm:purejavacomm:1.0.2.RELEASE'
 
     compile group: 'org.glassfish.jersey.bundles', name: 'jaxrs-ri', version: '2.30.1'

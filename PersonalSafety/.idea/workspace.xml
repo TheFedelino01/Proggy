@@ -19,25 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b1ad3be-9b08-405d-bb0f-266e5bb7687c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="5b1ad3be-9b08-405d-bb0f-266e5bb7687c" name="Default Changelist" comment="Spostato DbManager">
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/main/ServerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManagerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManagerLocal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManagerRemote.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/old/DbManagerRemote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/thSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Socket/thSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/Telegram.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/Telegram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/DbManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/TestDbResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/TestDbResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/addUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/addUtente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/getPosisioni.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/getPosisioni.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/salvaPosizione.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/broch/salvaPosizione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/ContattiResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/UsersResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/UsersResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/Database/DbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/ESPManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/ESPManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/proggy/server/utility/WebServiceConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAssocia.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAssocia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAttivi.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesAttivi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/saccani/DevicesDissocia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,6 +94,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -112,10 +111,14 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="IntelliJ IDEA 2020.1.1" id="184019a6-f6b6-4510-89bc-1b3600a84db3" name="IntelliJ IDEA 2020.1.1" port="63342" />
+      <server host="localhost" id="1b1dbcd3-4c6a-47ad-aa4c-8d6d491e005a" name="localhost" port="8080" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/WebService/src/main/webapp" remote-root="D:/xampp/tomcat/webapps/ProggyWebServices" />
+        </path_mappings>
+      </server>
     </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3" />
@@ -292,8 +295,16 @@
       <workItem from="1590476757307" duration="20000" />
       <workItem from="1590476912070" duration="399000" />
       <workItem from="1590477330643" duration="3353000" />
-      <workItem from="1590487691215" duration="617000" />
+      <workItem from="1590487691215" duration="4961000" />
     </task>
+    <task id="LOCAL-00001" summary="Spostato DbManager">
+      <created>1590488467914</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590488467914</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +322,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Spostato DbManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spostato DbManager" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1590477085274">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -324,10 +339,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590418999870" />
-    <state x="462" y="188" key="CommitChangelistDialog2" timestamp="1590488127955">
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1590490559288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="462" y="188" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590488127955" />
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590490559288" />
+    <state x="462" y="188" key="CommitChangelistDialog2" timestamp="1590488466835">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="462" y="188" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590488466835" />
     <state x="184" y="86" key="DiffContextDialog" timestamp="1590488127171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -336,54 +355,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590477076753" />
-    <state width="1293" height="2" key="GridCell.Tab.0.bottom" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.0.bottom" timestamp="1590492668415">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.0.center" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668415" />
+    <state width="1293" height="310" key="GridCell.Tab.0.center" timestamp="1590492668414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.0.left" timestamp="1590421313644">
+    <state width="1293" height="310" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668414" />
+    <state width="1293" height="310" key="GridCell.Tab.0.left" timestamp="1590492668414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313644" />
-    <state width="1293" height="2" key="GridCell.Tab.0.right" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668414" />
+    <state width="1293" height="310" key="GridCell.Tab.0.right" timestamp="1590492668415">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.1.bottom" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668415" />
+    <state width="1293" height="310" key="GridCell.Tab.1.bottom" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.1.center" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.1.center" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.1.left" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.1.left" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.1.right" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.1.right" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.2.bottom" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.2.bottom" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.2.center" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.2.center" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.2.left" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.2.left" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
-    <state width="1293" height="2" key="GridCell.Tab.2.right" timestamp="1590421313645">
+    <state width="1293" height="310" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
+    <state width="1293" height="310" key="GridCell.Tab.2.right" timestamp="1590492668354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="2" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590421313645" />
+    <state width="1293" height="310" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590492668354" />
     <state x="599" y="222" key="RollbackChangesDialog" timestamp="1590421381793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
