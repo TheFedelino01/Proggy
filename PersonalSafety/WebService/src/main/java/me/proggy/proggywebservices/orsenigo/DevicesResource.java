@@ -5,6 +5,7 @@
  */
 package me.proggy.proggywebservices.orsenigo;
 
+import me.proggy.proggywebservices.utils.XMLValidator;
 import proggy.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
@@ -16,6 +17,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -108,8 +114,12 @@ public class DevicesResource {
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Secured({Role.ADMIN})
-    public Response creaScheda(String content, @Context UriInfo uriInfo) {
-        //TODO
+    public Response creaScheda(String content, @Context UriInfo uriInfo) throws URISyntaxException, IOException {
+        final URL res = getClass().getClassLoader().getResource("xsd/scheda.xsd");
+        final File xsd = Paths.get(res.toURI()).toFile();
+        if (!XMLValidator.validate(xsd, content))
+            throw new BadRequestException("Parametri non validi!"); //Più corretto rispetto al 406
+
         final DbManager db = DbManager.getInstance();
         // verifica stato connessione a DBMS
         if (!db.isConnected()) {
