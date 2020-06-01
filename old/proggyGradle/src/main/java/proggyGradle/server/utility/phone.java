@@ -26,7 +26,6 @@ public class phone {
         String from = "+12057084073";
 
         try{
-            //TODO RIMUOVERE COMMENTO!!!!!
             Call call = Call.creator(new PhoneNumber(numero), new PhoneNumber(from), new URI("https://handler.twilio.com/twiml/EH75c3841ce8cab3a1bb7c5b16ac94536f")).create();
             
             System.out.println("Chiamato: "+numero /*+" ["+call.getSid()+"]"*/);  
