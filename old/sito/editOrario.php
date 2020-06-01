@@ -6,15 +6,6 @@ if (!isset($_SESSION["username"])) {
 	header("Location: index.php?err=Devi effettuare il login!");
 	die();
 }
-$giorni = array(
-    "0" => "lunedi",
-    "1" => "martedi",
-	"2" => "mercoledi",
-    "3" => "giovedi",
-	"4" => "venerdi",
-    "5" => "sabato",
-	"6" => "domenica",
-);
 $err="";
 
 include 'connection.php';
@@ -28,12 +19,7 @@ if(isset($_GET['idOrario'])&& $_SERVER['REQUEST_METHOD'] == 'GET'){
 		$inizio=$_POST['inizio'];
 		$fine=$_POST['fine'];
 		$posti=$_POST['posti'];
-		if(in_array($_POST['giorno'],$giorni)){//è da fare lo schifo in js
 		$giorno=$_POST['giorno'];
-		}else{
-			$err="Inserisci un giorno valido";
-			header("location: editOrario.php?idOrario=$ID&&err=$err");
-		}	
 		$sql="UPDATE orari SET oraInizio = '$inizio',oraFine = '$fine',giorno = '$giorno', postiDisponibili = '$posti' WHERE ID='$ID';";
 		$result = $conn->query($sql);
 		header("location: visualizzaOrari.php");
@@ -54,7 +40,17 @@ if(isset($_GET['idOrario'])&& $_SERVER['REQUEST_METHOD'] == 'GET'){
 <label for="posti">Posti disponibili</label>
 <input type="number" name="posti" value="<?php echo($row['postiDisponibili']); ?>">
 <label for="giorno">Giorno</label>
-<input type="text" name="giorno" value="<?php echo($row['giorno']); ?>">
+<select name="giorno" id="giorno">
+  <option selected disabled></option>
+  <option value="lunedi">Lunedi</option>
+  <option value="martedi">Martedi</option>
+  <option value="mercoledi">Mercoledi</option>
+  <option value="giovedi">Giovedi</option>
+  <option value="venerdi">Venerdi</option>
+  <option value="sabato">Sabato</option>
+  <option value="domenica">Domenica</option>
+
+</select>
 <br><br>
 <input type="submit" value="Invia">
 <input type="reset" value="Cancella">
