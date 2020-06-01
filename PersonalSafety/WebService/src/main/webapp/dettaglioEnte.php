@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!isset($_SESSION["username"])){
+if(!isset($_SESSION["username"]) || isset($_SESSION["idAdmin"])){
 	header("Location: index.php?err=Devi effettuare il login!");
 	die();
 }
@@ -52,6 +52,10 @@ $conn->close();
 	</script>
 	
 	<style>
+	input[type=button]{
+		cursor:pointer;
+	}
+		
 	table {
 		width:50%;
 	}

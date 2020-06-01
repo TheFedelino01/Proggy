@@ -9,7 +9,7 @@ if (!isset($_SESSION["idAdmin"]) && isset($_SESSION["idCliente"])) {
 }
 
 require "connection.php";
-$stmt = $conn->prepare("SELECT * FROM ente
+$stmt = $conn->prepare("SELECT *, ente.nome as nomeEnte FROM ente
                         INNER JOIN admin 
                             ON (admin.idEnte = ente.cod) 
                     WHERE admin.id = ?");
@@ -211,6 +211,10 @@ $ente = $result->fetch_assoc();
     </script>
 
     <style>
+	input[type=button]{
+			cursor:pointer;
+		}
+		
         @media only screen and (max-width: 1000px) {
 
             article {
@@ -226,7 +230,7 @@ $ente = $result->fetch_assoc();
 
 <div class="position-relative js-header-wrapper ">
     <header id="miaBarra" class="Header-old header-logged-out js-details-container Details position-relative f4 py-2"
-            role="banner" style="background-color:#1074e7;">
+            role="banner" style="background-color:#0;">
         <div class="container-xl d-lg-flex flex-items-center p-responsive">
             <div class="d-flex flex-justify-between flex-items-center">
                 <a class="mr-4" href="index.php" aria-label="Homepage"
@@ -385,8 +389,12 @@ $ente = $result->fetch_assoc();
     <p class="h00-mktg lh-condensed mt-3 mb-2 text-center">
         Benvenuto nella pagina di amministrazione
     </p>
+	<p class="h00-mktg lh-condensed mt-3 mb-2 text-center" style="padding:0px;">
+        <?php echo($ente['nomeEnte']); ?>
+    </p>
     <p class="lead-mktg text-gray text-center col-md-8 mx-auto mb-4">
         Qui potrai visuallizzare e gestire le schede del tuo ente.
+		
     </p>
 </div>
 <div class="application-main " data-commit-hovercards-enabled="">

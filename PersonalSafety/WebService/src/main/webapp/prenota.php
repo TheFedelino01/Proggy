@@ -4,7 +4,7 @@ date_default_timezone_set('UTC');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!isset($_SESSION["username"])){
+if(!isset($_SESSION["username"]) || isset($_SESSION["idAdmin"])){
 	header("Location: index.php?err=Devi effettuare il login!");
 	die();
 }

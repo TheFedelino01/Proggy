@@ -69,6 +69,10 @@ include 'connection.php';
     </script>
 
     <style>
+		input[type=button]{
+			cursor:pointer;
+		}
+		
         .imgGrande {
             margin: auto;
             display: block;
@@ -116,7 +120,7 @@ include 'connection.php';
 
 <div class="position-relative js-header-wrapper ">
     <header id="miaBarra" class="Header-old header-logged-out js-details-container Details position-relative f4 py-2"
-            role="banner" style="background-color:#1074e7;">
+            role="banner" style="background-color:#0;">
         <div class="container-xl d-lg-flex flex-items-center p-responsive">
             <div class="d-flex flex-justify-between flex-items-center">
                 <a class="mr-4" href="index.php" aria-label="Homepage"
