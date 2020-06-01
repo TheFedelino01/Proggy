@@ -38,7 +38,7 @@
 	
 
 	if($result)
-		echo "Registrazione effettuata con successo! Click <a href='index.php'>here</a> for login";
+		echo "Registrazione effettuata con successo! Click <a href='login.php?appenaRegistrato=1'>here</a> for login";
 	else{
 		$errore=mysqli_error($conn);
 		header('Location: registratiPage.php?err=Errore registrazione: '.$errore.'&'.$datiOld);

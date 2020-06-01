@@ -19,14 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b1ad3be-9b08-405d-bb0f-266e5bb7687c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WebService/src/main/resources/xsd/scheda.xsd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FILE/schemadb.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../FILE/schemadb.jpeg" afterDir="false" />
+    <list default="true" id="5b1ad3be-9b08-405d-bb0f-266e5bb7687c" name="Default Changelist" comment="Sito clienti @TheFedelino01">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/account.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/cancellaPrenotazione.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/changeAccountInfo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/confermaPrenotazione.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/demoQR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/img/sangue.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/infoPrenotazione.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/listaPrenotazioni.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebService/src/main/webapp/prenota.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioScheda.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioScheda.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/chkLogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/chkLogin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioEnte.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/dettaglioEnte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/infoScheda.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/infoScheda.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/registratiPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/registratiPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebService/src/main/webapp/registrazioneEsegui.php" beforeDir="false" afterPath="$PROJECT_DIR$/WebService/src/main/webapp/registrazioneEsegui.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../id12710500_personalsafety_new.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../id12710500_personalsafety_new.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +111,18 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="TheFedelino01 &lt;federico.saccani01@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="sito" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -125,6 +149,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -271,6 +296,9 @@
       <list>
         <item itemvalue="Gradle.TestResourceTest" />
         <item itemvalue="Gradle.PersonalSafety:WebService [war]" />
+        <item itemvalue="Gradle.TestResourceTest" />
+        <item itemvalue="Gradle.PersonalSafety:WebService [war]" />
+        <item itemvalue="Gradle.TestResourceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +323,9 @@
       <workItem from="1590583906421" duration="6000" />
       <workItem from="1590599439824" duration="240000" />
       <workItem from="1590686102323" duration="1276000" />
-      <workItem from="1590834555683" duration="2324000" />
+      <workItem from="1590834555683" duration="2590000" />
+      <workItem from="1590850624960" duration="693000" />
+      <workItem from="1591013083829" duration="2960000" />
     </task>
     <task id="LOCAL-00001" summary="Spostato DbManager">
       <created>1590488467914</created>
@@ -311,11 +341,35 @@
       <option name="project" value="LOCAL" />
       <updated>1590492983122</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="xsd and fixes">
+      <created>1590838057964</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590838057964</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Sito clienti @TheFedelino01">
+      <created>1591013596494</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591013596494</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -332,7 +386,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Spostato DbManager" />
     <MESSAGE value="Integrato server con webservice&#10;&#10;FUNZIONAMENTO:&#10;1. il server riceve i messaggi dall'esp e aggiorna lo stato sul db&#10;2. il webservice riceve una richesta sull'attivazione/disattivazione di una scheda -&gt; aggiorna lo stato sul db e invia alla scheda corrispondente il messaggio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Integrato server con webservice&#10;&#10;FUNZIONAMENTO:&#10;1. il server riceve i messaggi dall'esp e aggiorna lo stato sul db&#10;2. il webservice riceve una richesta sull'attivazione/disattivazione di una scheda -&gt; aggiorna lo stato sul db e invia alla scheda corrispondente il messaggio" />
+    <MESSAGE value="xsd and fixes" />
+    <MESSAGE value="Sito clienti @TheFedelino01" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sito clienti @TheFedelino01" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1590477085274">
@@ -343,74 +399,74 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="163" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1590599680076" />
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590418999870">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591015124664">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590418999870" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591015124664" />
     <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1590490559288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590490559288" />
-    <state x="462" y="188" key="CommitChangelistDialog2" timestamp="1590492982028">
+    <state x="279" y="188" key="CommitChangelistDialog2" timestamp="1591015694674">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="462" y="188" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590492982028" />
-    <state x="184" y="86" key="DiffContextDialog" timestamp="1590492977092">
+    <state x="279" y="188" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591015694674" />
+    <state x="155" y="50" width="1536" height="860" key="DiffContextDialog" timestamp="1591015490169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590492977092" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590477076753">
+    <state x="155" y="50" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591015490169" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1591015735158">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590477076753" />
-    <state width="1293" height="397" key="GridCell.Tab.0.bottom" timestamp="1590837749371">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591015735158" />
+    <state width="1293" height="287" key="GridCell.Tab.0.bottom" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749371" />
-    <state width="1293" height="397" key="GridCell.Tab.0.center" timestamp="1590837749371">
+    <state width="1293" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.0.center" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749371" />
-    <state width="1293" height="397" key="GridCell.Tab.0.left" timestamp="1590837749371">
+    <state width="1293" height="287" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.0.left" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749371" />
-    <state width="1293" height="397" key="GridCell.Tab.0.right" timestamp="1590837749371">
+    <state width="1293" height="287" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.0.right" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749371" />
-    <state width="1293" height="397" key="GridCell.Tab.1.bottom" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.1.bottom" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.1.center" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.1.center" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.1.left" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.1.left" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.1.right" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.1.right" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.2.bottom" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.2.bottom" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.2.center" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.2.center" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.2.left" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.2.left" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
-    <state width="1293" height="397" key="GridCell.Tab.2.right" timestamp="1590837749300">
+    <state width="1293" height="287" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
+    <state width="1293" height="287" key="GridCell.Tab.2.right" timestamp="1591015937452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="397" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749300" />
+    <state width="1293" height="287" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591015937452" />
     <state width="1293" height="397" key="GridCell.Tab.3.bottom" timestamp="1590837749301">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -427,18 +483,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1293" height="397" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590837749301" />
-    <state x="599" y="222" key="RollbackChangesDialog" timestamp="1590421381793">
+    <state x="599" y="222" key="RollbackChangesDialog" timestamp="1591013963069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="599" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590421381793" />
+    <state x="599" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591013963069" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1590487958196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590487958196" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590493008928">
+    <state x="807" y="434" key="VCS.ChangelistChooser" timestamp="1591013707183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590493008928" />
+    <state x="807" y="434" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591013707183" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590838066352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590838066352" />
     <state x="342" y="130" key="new project wizard" timestamp="1590487781686">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -451,6 +511,11 @@
           <url>file://$PROJECT_DIR$/WebService/src/main/java/me/proggy/proggywebservices/orsenigo/DevicesResource.java</url>
           <line>117</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/WebService/src/main/webapp/listaPrenotazioni.php</url>
+          <line>1</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -67,7 +67,7 @@ if(!isset($_SESSION["username"])){
                 </div>
 
                 <div class="d-flex flex-items-center">
-                    <a href="login.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
+                    <a href="account.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
 					  <?php echo($_SESSION["nome"]." ".$_SESSION["cognome"]); ?>
 					</a>
 					
@@ -111,7 +111,7 @@ if(!isset($_SESSION["username"])){
 									<!-- SOTTO ELEMENTO -->
                                     <ul class="list-style-none f5 pb-3">
                                         <li class="edge-item-fix"><a href="index.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Welcome Page</a></li>
-										<li class="edge-item-fix"><a href="login.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Login</a></li>
+										<li class="edge-item-fix"><a href="account.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Login</a></li>
 										<li class="edge-item-fix"><a href="registratiPage.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Registrazione</a></li>
                                     </ul>
 									
@@ -132,7 +132,7 @@ if(!isset($_SESSION["username"])){
 						Esci
 					</a>
 					
-                    <a href="login.php" class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1">
+                    <a href="account.php" class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1">
 						<?php echo($_SESSION["nome"]." ".$_SESSION["cognome"]); ?>
 					</a>
                 </div>

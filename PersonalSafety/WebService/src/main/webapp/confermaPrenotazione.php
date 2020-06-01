@@ -1,37 +1,169 @@
-﻿<html lang="en">
+<?php
+date_default_timezone_set('UTC');
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(!isset($_SESSION["username"])){
+	header("Location: index.php?err=Devi effettuare il login!");
+	die();
+}
+
+include 'connection.php';
+
+//Prendo info cliente e ente
+$sql = "SELECT * FROM ente where cod=".$_GET["codEnte"];
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+$nomeEnte=$row["nome"];
+$idEnte=$_GET["codEnte"];
+$idCliente = $_SESSION["idCliente"];
+
+//Prendo le info della data
+$data=$_GET["data"];//Della prenotazione
+$dayOfWeek = date('w', strtotime($data));//prendo il numero
+$dayOfWeek = convertDayOfWeek($dayOfWeek);//prendo il nome del giorno
+$oraInizio=$_GET["oraInizio"];
+$oraFine=$_GET["oraFine"];
+
+$giaEsistente=false;
+$avvenuto=false;
+
+//Controllo se ha giá effettuato una prenotazione per questo giorno, in tal caso non prenoto ancora
+$sql ="SELECT * FROM `prenotazione` WHERE data='$data' AND idCliente='$idCliente' AND cancellato=0";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+$idPrenotazione=-1;
+
+if ($result->num_rows > 0) {
+	$giaEsistente=true;
+	$idPrenotazione=$row["id"];
+}else{
+	//Non esiste nessuna prenotazione per questo orario con questo nome, allora eseguo la prenotazione
+	//Creo la prenotazione
+	$sql ="INSERT INTO `prenotazione`(`oraInizio`, `oraFine`, `idCliente`,`data`) VALUES ('$oraInizio','$oraFine','$idCliente','$data')";
+	$result = $conn->query($sql);
+	
+
+	if($result){
+		$idPrenotazione = $conn->insert_id;
+		//Inserisco il riferimento all'ente
+		$sql ="INSERT INTO `riferimento`(`codEnte`, `idPrenotazione`) VALUES ('$idEnte','$idPrenotazione')";
+		$result = $conn->query($sql);
+		
+		if($result)
+			$avvenuto=true;
+	}
+}
+
+$conn->close();
+?>
+
+<?php
+function convertDayOfWeek($numero){
+	if($numero==1)
+		return "Lunedi";
+	else if($numero==2)
+		return "Martedi";
+	else if($numero==3)
+		return "Mercoledi";
+	else if($numero==4)
+		return "Giovedi";
+	else if($numero==5)
+		return "Venerdi";
+	else if($numero==6)
+		return "Sabato";
+	else if($numero==7)
+		return "Domenica";
+}
+?>
+<html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="stileRegistrazione.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="stileRegistrazione.css">
-	<script>
-	function chkUserAndPass(){
-		//Maggiore di 4 caratteri e conferma password rinserimento
-		
-		var user = document.getElementById("user").value;
-		var pass = document.getElementById("pass").value;
-		var passR = document.getElementById("passR").value;
-		var err="";
-		
-		if(pass.length<4)
-			err+="La password deve avere una lunghezza maggiore di 4 caratteri<br>";
-		
-		if(pass!=passR){
-			err+="Le password non corrispondono<br>";
-				
-		if(err=="") return true;
-		
-		window.location="registrati.php?err="+err;
-		return false;
+
+
+	<title>Personal Safety</title>
+	
+	<style>
+	input[type=button]{
+		cursor:pointer;
+	}
+	table {
+
+	  border-collapse: collapse;
+	  width: 100% !important;
+	  margin:auto;
 	}
 
-	</script>
+	 td, th {
+	  border: 1px solid #ddd;
+	  padding: 8px;
+	}
+
+	.noStile{
+	  border: 0px solid #ddd;
+	  padding: 0px;
+	}
+
+	tr:hover {
+		background-color: #ffff99!important;
+	}
+	
+	.noStile:hover {
+		background-color: #fff!important;
+	}
+	
+	th {
+	  padding-top: 12px;
+	  padding-bottom: 12px;
+	  text-align: left;
+	  background-color: #1074e7;
+	  color: white;
+	  text-align:center;
+	}
+	.pari{
+		background-color: #fff;
+	}
+	.dispari{
+		background-color: #f0f0f0;
+	}
+	
+	tr {
+		text-align:center;
+	}
+	table {
+		width:50%;
+	}
+	
+	.imgGrande{
+		margin:auto;
+		display:block; 
+		padding-bottom:20px;
+		width:60%;
+	}
+	@media only screen and (max-width: 1000px) {
+		table {
+			width:100%;
+		}
+		
+		.imgGrande{
+
+			width:100%;
+		}
+	}
+	
+
+	</style>
 </head>
 
 <!--  required errored        form-control input py-1 is-autocheck-errored -->
 <body class="logged-out env-production page-responsive intent-mouse">
+
 <div class="position-relative js-header-wrapper ">
     <header id="miaBarra" class="Header-old header-logged-out js-details-container Details position-relative f4 py-2" role="banner" style="background-color:#1074e7;">
         <div class="container-xl d-lg-flex flex-items-center p-responsive">
@@ -60,9 +192,14 @@
                 </div>
 
                 <div class="d-flex flex-items-center">
-                    <a href="account.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
-					  Login
+					<b><a style="color:yellow!important;" href="home.php" class="d-inline-block d-lg-none f5 text-white no-underline border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
+						  Home
+					</a></b>
+                    <a href="login.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
+					  <?php echo($_SESSION["nome"]." ".$_SESSION["cognome"]); ?>
 					</a>
+					
+					
 					<!--  
 					Header-old header-logged-out js-details-container Details position-relative f4 py-2
 					Header-old header-logged-out js-details-container Details position-relative f4 py-2 open Details--on -->
@@ -102,8 +239,8 @@
                                     <a  class="py-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover">Pagine del sito</a>
 									<!-- SOTTO ELEMENTO -->
                                     <ul class="list-style-none f5 pb-3">
-                                        <li class="edge-item-fix"><a href="index.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Home</a></li>
-										<li class="edge-item-fix"><a href="account.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Login</a></li>
+                                        <li class="edge-item-fix"><a href="index.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Welcome Page</a></li>
+										<li class="edge-item-fix"><a href="login.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Login</a></li>
 										<li class="edge-item-fix"><a href="registratiPage.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Registrazione</a></li>
                                     </ul>
 									
@@ -113,139 +250,84 @@
                                     </ul>
                                 </div>
                             </details>
-                        </li>
+                        </li>	
 						
-                        <li class="border-bottom border-lg-bottom-0 mr-0 mr-lg-3">
-                            <a href="index.php" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block">Home</a>
-                        </li>
-                        <li class="border-bottom border-lg-bottom-0 mr-0 mr-lg-3">
-                            <a href="#" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block">Enterprise</a>
-                        </li>
-
-
+						<li class="border-bottom border-lg-bottom-0 mr-0 mr-lg-3">
+						  <b><a style="color:yellow;" href="home.php" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-ga-click="(Logged out) Header, go to Team">Home</a></b>
+						</li>
                     </ul>
                 </nav>
 				
 				<!-- ELEMENTI LATO DX-->
                 <div class="d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left">
-
-                    <a href="registratiPage.php" class="HeaderMenu-link no-underline mr-3">
-						Registrati
+					<a href="slog.php" class="HeaderMenu-link no-underline mr-3">
+						Esci
 					</a>
+					
                     <a href="account.php" class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1">
-						Login
+						<?php echo($_SESSION["nome"]." ".$_SESSION["cognome"]); ?>
 					</a>
                 </div>
             </div>
 			
         </div>
     </header>
+</div>
+
+
+<!-- BODY DEL DOCUMENTO -->
+
+<div class="container-lg p-responsive pb-6" style="padding-bottom: 0px!important;">
+
+    <p class="h00-mktg lh-condensed mt-3 mb-2 text-center" >
+      <?php echo($nomeEnte); ?>
+    </p>
+    <p class="lead-mktg text-gray text-center col-md-8 mx-auto mb-4">
+		<?php 
+			//Controllo se giá esistente, se false vedo se é stata inserita correttamente
+			if($giaEsistente){
+				echo("Hai giá effettuato una prenotazione per questo ente:");
+			}else{
+				if($avvenuto)
+					echo("Prenotazione Effettuata con successo!");
+				else
+					echo("Impossibile effettuare la prenotazione!");
+			}
+		?>
+		<br>
+		
+		<br>
+		
+		Riepilogo:
+		<table>
+			<?php 
+			//Visualizzo le info se la prenotazione giá esiste oppure é stata appena inserita e risulta essere nel db
+				if($avvenuto || $giaEsistente){
+					echo("<tr><td>Giorno:</td><td>$data ($dayOfWeek)</td></tr>");
+					echo("<tr><td>Orario:</td><td>dalle $oraInizio alle $oraFine</td></tr>");
+					echo("<tr><td>Luogo:</td><td>$nomeEnte</td></tr>");
+				}
+			?>
+		</table>
+		<br>
+		<table class="noStile">
+			<?php 
+
+			//Visualizzo il QR
+				if($avvenuto || $giaEsistente){
+					//Nel qr metto anche queste info per sicurezza... altrimenti avrei dovuto mettere solo l'id della prenotazione che risulterebbe essere facile da indovinare
+					$linkQR="http://localhost/clientPersonalSafety/prenotazioneQR.php?idCliente=$idCliente&oraInizio=$oraInizio&oraFine=$oraFine&data=$data&idPrenotazione=$idPrenotazione";
+					echo('<tr class="noStile"><td class="noStile"><b>QRCode personale</b><br>Conserva il seguente QRCode e mostralo quanto sarai arrivato nei pressi dell\'Ente:</td>');
+					echo('<td class="noStile"><img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl='.$linkQR.'&choe=UTF-8"  title="QR personale prenotazione" /></td></tr>');
+					//echo($linkQR);
+				}
+			?>
+		</table>
+    </p>
+	
 
 </div>
 
-    <div class="application-main " data-commit-hovercards-enabled="">
-        <main>
-            <div class="p-responsive mt-4 mt-md-8">
-                <div class="mb-4 mb-md-8 container-md">
-                    <div class="text-mono text-center text-gray-light text-normal mb-3">Entra in Personal Safety</div>
-                    <h1 class="d-none d-md-block mt-0 mb-3 text-center h00-mktg lh-condensed-ultra ">Crea il tuo account</h1>
-                </div>
-                <div class="container-sm">
-                    <div class="mb-4">
-							<?php if(isset($_GET["err"]))
-							echo "<h4 style='color:red'>".$_GET["err"]."</h4>";
-							?>
-                        <form enctype="multipart/form-data" action ="registrazioneEsegui.php" method="post" onsubmit="chkUserAndPass()" class="setup-form js-signup-form js-octocaptcha-parent">
-						
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Nome</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="nome" value="<?php if(isset($_GET["oldNome"]))echo $_GET["oldNome"];?>">
-								</dd>
-							</dl>
-
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Cognome</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="cognome" value="<?php if(isset($_GET["oldCognome"]))echo $_GET["oldCognome"];?>">
-								</dd>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Data di Nascita</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="date" name="data" value="<?php if(isset($_GET["oldData"]))echo $_GET["oldData"];?>">
-								</dd>
-							</dl>
-							      
-  
-							<dl class=""><dt class="input-label"><label>Sesso</label></dt>
-								<select class="form-control form-control input py-1" name="sesso">
-								  <option value=""></option>
-								  <option value="Maschio">Maschio</option>
-								  <option value="Femmina">Femmina</option>
-								</select>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Codice Fiscale</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="cf" value="<?php if(isset($_GET["oldCF"]))echo $_GET["oldCF"];?>">
-								</dd>
-							</dl>
-							<br>
-							
-							
-							
-							
-							
-							<br>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Username</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="username" value="<?php if(isset($_GET["oldUsername"]))echo $_GET["oldUsername"];?>">
-								</dd>
-							</dl>
-							<dl class="form-group my-3"><dt class="input-label"><label>Foto Profilo</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="file" name="userfile">
-								</dd>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Nuova password</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="password" name="password">
-								</dd>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Reinserisci password</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="password" name="passwordR">
-								</dd>
-							</dl>
-
-							<!--<dl class="form-group my-3">
-								<dt class="input-label mb-n2">
-									<label>Email preferences</label>
-								</dt>
-								<dd>
-									<div class="form-checkbox">
-										<label class="text-normal mt-2 text-gray" data-ga-click="Signup, send email">
-											<input type="checkbox" name="all_emails" id="all_emails" value="true" data-ga-click="Signup funnel entrance, click, select checkbox marketing opt-in"> Send me occasional product updates, announcements, and offers.
-										</label>
-									</div>
-								</dd>
-							</dl>-->
-
-							<br><br>
-							<div class="my-3">
-								<button class="btn-mktg signup-btn  js-octocaptcha-form-submit width-full" type="submit" height="64px" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">
-								Create account
-								</button>
-							</div>
-							<p class="my-3 f6">
-								By creating an account, you agree to the
-								<a href="/site/terms" target="_blank">Terms of Service</a>. For more information about our privacy practices, see the
-								<a href="/site/privacy" target="_blank">Privacy Statement</a>.
-							</p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-    </div>
 </body>
 
 </html>

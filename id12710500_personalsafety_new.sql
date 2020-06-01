@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 19, 2020 alle 12:18
+-- Creato il: Giu 01, 2020 alle 14:45
 -- Versione del server: 10.1.36-MariaDB
 -- Versione PHP: 7.2.11
 
@@ -68,8 +68,8 @@ CREATE TABLE `ap` (
 CREATE TABLE `cartellaclinica` (
   `id` int(11) NOT NULL,
   `allergie` text COLLATE utf8_unicode_ci,
-  `fermaci` text COLLATE utf8_unicode_ci,
-  `gruppoSanguigno` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `farmaci` text COLLATE utf8_unicode_ci,
+  `gruppoSanguigno` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
   `note` text COLLATE utf8_unicode_ci,
   `idCliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -78,8 +78,8 @@ CREATE TABLE `cartellaclinica` (
 -- Dump dei dati per la tabella `cartellaclinica`
 --
 
-INSERT INTO `cartellaclinica` (`id`, `allergie`, `fermaci`, `gruppoSanguigno`, `note`, `idCliente`) VALUES
-(1, 'ambrosia', 'farmaco importante', NULL, 'nessuna', 18),
+INSERT INTO `cartellaclinica` (`id`, `allergie`, `farmaci`, `gruppoSanguigno`, `note`, `idCliente`) VALUES
+(1, 'Ambrosia, Polline', 'Tachipirina, Aspirina', 'AB Rh-', 'nessuna', 18),
 (2, 'ambrosia', 'tachipirina', NULL, 'nessuna', 18);
 
 -- --------------------------------------------------------
@@ -170,6 +170,36 @@ CREATE TABLE `log` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `orari`
+--
+
+CREATE TABLE `orari` (
+  `oraInizio` time NOT NULL,
+  `oraFine` time NOT NULL,
+  `giorno` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postiDisponibili` int(11) NOT NULL,
+  `idEnte` int(11) NOT NULL,
+  `ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `orari`
+--
+
+INSERT INTO `orari` (`oraInizio`, `oraFine`, `giorno`, `postiDisponibili`, `idEnte`, `ID`) VALUES
+('09:00:00', '10:00:00', 'Lunedi', 30, 1, 2),
+('10:00:00', '11:00:00', 'Lunedi', 30, 1, 3),
+('11:00:00', '12:00:00', 'Lunedi', 30, 1, 4),
+('12:00:00', '13:00:00', 'Lunedi', 30, 1, 5),
+('16:00:00', '17:00:00', 'Martedi', 30, 1, 6),
+('17:00:00', '18:00:00', 'Martedi', 30, 1, 7),
+('18:00:00', '19:00:00', 'Martedi', 30, 1, 8),
+('09:00:00', '10:00:00', 'Mercoledi', 30, 1, 9),
+('10:00:00', '11:00:00', 'Mercoledi', 30, 1, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `posizione`
 --
 
@@ -186,11 +216,13 @@ CREATE TABLE `posizione` (
 --
 
 INSERT INTO `posizione` (`id`, `latitudine`, `longitudine`, `dataOra`, `idScheda`) VALUES
-(1, '45.687345', '9.179013', '2020-04-19 00:03:00', 1),
-(2, '45.687977', '9.179388', '2020-04-19 00:04:00', 1),
+(1, '45.687345', '9.179013', '2020-05-19 12:00:00', 1),
+(2, '45.687977', '9.179388', '2020-05-19 12:05:00', 1),
 (3, '45.688206', '9.178835', '2020-04-19 00:20:00', 1),
 (4, '45.687132', '9.178024', '2020-05-05 00:00:00', 2),
-(5, '45.686900', '9.179100', '2020-05-06 05:00:00', 2);
+(5, '45.686900', '9.179100', '2020-05-06 05:00:00', 2),
+(6, '45.688276', '9.178697', '2020-05-19 12:06:00', 1),
+(7, '45.688467', '9.178102', '2020-05-19 12:06:30', 1);
 
 -- --------------------------------------------------------
 
@@ -200,9 +232,24 @@ INSERT INTO `posizione` (`id`, `latitudine`, `longitudine`, `dataOra`, `idScheda
 
 CREATE TABLE `prenotazione` (
   `id` int(11) NOT NULL,
-  `dataOra` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `idCliente` int(11) NOT NULL
+  `oraInizio` varchar(20) NOT NULL,
+  `oraFine` varchar(20) NOT NULL,
+  `data` date NOT NULL,
+  `idCliente` int(11) NOT NULL,
+  `cancellato` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `prenotazione`
+--
+
+INSERT INTO `prenotazione` (`id`, `oraInizio`, `oraFine`, `data`, `idCliente`, `cancellato`) VALUES
+(1, '09:00:00', '10:00:00', '2020-05-20', 18, 1),
+(2, '10:00:00', '11:00:00', '2020-05-27', 18, 0),
+(3, '12:00:00', '13:00:00', '2020-05-25', 18, 1),
+(4, '10:00:00', '11:00:00', '2020-07-08', 18, 0),
+(5, '09:00:00', '10:00:00', '2020-05-25', 18, 1),
+(6, '16:00:00', '17:00:00', '2020-05-26', 18, 0);
 
 -- --------------------------------------------------------
 
@@ -214,6 +261,18 @@ CREATE TABLE `riferimento` (
   `codEnte` int(11) NOT NULL,
   `idPrenotazione` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `riferimento`
+--
+
+INSERT INTO `riferimento` (`codEnte`, `idPrenotazione`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6);
 
 -- --------------------------------------------------------
 
@@ -243,7 +302,8 @@ INSERT INTO `scheda` (`cod`, `idEnte`) VALUES
 (10, 2),
 (11, 2),
 (12, 2),
-(13, 2);
+(13, 2),
+(14, 2);
 
 -- --------------------------------------------------------
 
@@ -323,6 +383,12 @@ ALTER TABLE `log`
   ADD KEY `esegue` (`idAdmin`);
 
 --
+-- Indici per le tabelle `orari`
+--
+ALTER TABLE `orari`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indici per le tabelle `posizione`
 --
 ALTER TABLE `posizione`
@@ -398,22 +464,28 @@ ALTER TABLE `log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT per la tabella `orari`
+--
+ALTER TABLE `orari`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT per la tabella `posizione`
 --
 ALTER TABLE `posizione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `scheda`
 --
 ALTER TABLE `scheda`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Limiti per le tabelle scaricate

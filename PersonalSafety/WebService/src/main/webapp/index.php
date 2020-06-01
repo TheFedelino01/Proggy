@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(isset($_SESSION["username"])){
+	header("Location: home.php?");
+}
+
+?>
 <!DOCTYPE HTML>
 <html lang="en"><head><title>Personal Safety - HOME</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="stylesheet" href="css/css-style.css"><meta name="description" content="Evoulve is a digital technology innovation Company. We focus on designing innovations in digital technology industry, and transform emerging ideas into viable products that move the digital industry forward."><link rel="apple-touch-icon" sizes="57x57" href="favicons/icons-apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="favicons/icons-apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="favicons/icons-apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="favicons/icons-apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="favicons/icons-apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="favicons/icons-apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="favicons/icons-apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="favicons/icons-apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="favicons/icons-apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="favicons/icons-android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="favicons/icons-favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="favicons/icons-favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="favicons/icons-favicon-16x16.png"><link rel="manifest" href="assets/img/icons/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="assets/img/icons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-20462557-9"></script><script>
 		  window.dataLayer = window.dataLayer || [];

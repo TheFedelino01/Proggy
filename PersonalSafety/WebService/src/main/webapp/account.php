@@ -1,37 +1,130 @@
-﻿<html lang="en">
+<?php 
+session_start();
+
+if(!isset($_SESSION["username"])){
+	header("Location: login.php?err=Per visualizzare questa pagina devi prima effettuare il login!");
+	die();
+}
+
+
+?>
+
+<html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="stileRegistrazione.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="stileRegistrazione.css">
+	<title>Personal Safety</title>
 	<script>
-	function chkUserAndPass(){
-		//Maggiore di 4 caratteri e conferma password rinserimento
+		function nascondi(id){
+			document.getElementById(id).style.display = "none";
+		}
 		
-		var user = document.getElementById("user").value;
-		var pass = document.getElementById("pass").value;
-		var passR = document.getElementById("passR").value;
-		var err="";
+		function mostraTabella(){
+			var x = document.getElementById("imgCompatibilita");
+			x.style.display = "block";	  
+		}
 		
-		if(pass.length<4)
-			err+="La password deve avere una lunghezza maggiore di 4 caratteri<br>";
-		
-		if(pass!=passR){
-			err+="Le password non corrispondono<br>";
-				
-		if(err=="") return true;
-		
-		window.location="registrati.php?err="+err;
-		return false;
-	}
-
+		function nascondiTabella(){
+			var x = document.getElementById("imgCompatibilita");
+			x.style.display = "none";  
+		}
 	</script>
+	
+	<style>
+		@media only screen and (max-width: 1000px) {
+
+			article{
+				height:60%;
+			}
+		}
+		.alert-primary {
+			color: #004085;
+			background-color: #cce5ff;
+			border-color: #b8daff;
+		}
+		.alert {
+			position: relative;
+			padding: .75rem 1.25rem;
+			margin-bottom: 1rem;
+			border: 1px solid transparent;
+			border-radius: .25rem;
+			font-size:15px;
+		}
+
+		*, ::after, ::before {
+			box-sizing: border-box;
+		}
+		.alert-success {
+			color: #155724;
+			background-color: #d4edda;
+			border-color: #c3e6cb;
+		}
+		
+		.alert-danger {
+			color: #721c24;
+			background-color: #f8d7da;
+			border-color: #f5c6cb;
+		}
+		button.close {
+			padding: 0;
+			background-color: transparent;
+			border: 0;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+		.close {
+			float: right;
+			font-size: 1.5rem;
+			font-weight: 700;
+			line-height: 1;
+			color: #000;
+			text-shadow: 0 1px 0 #fff;
+			opacity: .5;
+		}
+		button, select {
+			text-transform: none;
+		}
+		button, input {
+			overflow: visible;
+		}
+		.close {
+			float: right;
+			font-size: 1.5rem;
+			font-weight: 700;
+			line-height: 1;
+			color: #000;
+			text-shadow: 0 1px 0 #fff;
+			opacity: .5;
+		}
+		button {
+			-webkit-writing-mode: horizontal-tb !important;
+			text-rendering: auto;
+			color: -internal-light-dark-color(buttontext, rgb(170, 170, 170));
+			letter-spacing: normal;
+			word-spacing: normal;
+			text-transform: none;
+			text-indent: 0px;
+			text-shadow: none;
+			text-align: center;
+			cursor: default;
+			font: 400 13.3333px Arial;
+		}
+		[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+			cursor: pointer;
+		}
+		textarea{
+			font-size:20px;
+		}
+
+	</style>
 </head>
 
 <!--  required errored        form-control input py-1 is-autocheck-errored -->
 <body class="logged-out env-production page-responsive intent-mouse">
+
 <div class="position-relative js-header-wrapper ">
     <header id="miaBarra" class="Header-old header-logged-out js-details-container Details position-relative f4 py-2" role="banner" style="background-color:#1074e7;">
         <div class="container-xl d-lg-flex flex-items-center p-responsive">
@@ -60,9 +153,10 @@
                 </div>
 
                 <div class="d-flex flex-items-center">
-                    <a href="account.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
-					  Login
+                    <a href="login.php" class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5">
+					  <?php echo($_SESSION["nome"]." ".$_SESSION["cognome"]); ?>
 					</a>
+					
 					<!--  
 					Header-old header-logged-out js-details-container Details position-relative f4 py-2
 					Header-old header-logged-out js-details-container Details position-relative f4 py-2 open Details--on -->
@@ -102,8 +196,8 @@
                                     <a  class="py-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover">Pagine del sito</a>
 									<!-- SOTTO ELEMENTO -->
                                     <ul class="list-style-none f5 pb-3">
-                                        <li class="edge-item-fix"><a href="index.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Home</a></li>
-										<li class="edge-item-fix"><a href="account.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Login</a></li>
+                                        <li class="edge-item-fix"><a href="index.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Welcome Page</a></li>
+										<li class="edge-item-fix"><a href="login.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Login</a></li>
 										<li class="edge-item-fix"><a href="registratiPage.php" class="py-2 lh-condensed-ultra d-block link-gray no-underline f5">Registrazione</a></li>
                                     </ul>
 									
@@ -113,139 +207,135 @@
                                     </ul>
                                 </div>
                             </details>
-                        </li>
-						
-                        <li class="border-bottom border-lg-bottom-0 mr-0 mr-lg-3">
-                            <a href="index.php" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block">Home</a>
-                        </li>
-                        <li class="border-bottom border-lg-bottom-0 mr-0 mr-lg-3">
-                            <a href="#" class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block">Enterprise</a>
-                        </li>
-
+                        </li>	
 
                     </ul>
                 </nav>
 				
 				<!-- ELEMENTI LATO DX-->
                 <div class="d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left">
-
-                    <a href="registratiPage.php" class="HeaderMenu-link no-underline mr-3">
-						Registrati
+					<a href="slog.php" class="HeaderMenu-link no-underline mr-3">
+						Esci
 					</a>
+					
                     <a href="account.php" class="HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1">
-						Login
+						<?php echo($_SESSION["nome"]." ".$_SESSION["cognome"]); ?>
 					</a>
                 </div>
             </div>
 			
         </div>
     </header>
-
 </div>
 
-    <div class="application-main " data-commit-hovercards-enabled="">
-        <main>
-            <div class="p-responsive mt-4 mt-md-8">
-                <div class="mb-4 mb-md-8 container-md">
-                    <div class="text-mono text-center text-gray-light text-normal mb-3">Entra in Personal Safety</div>
-                    <h1 class="d-none d-md-block mt-0 mb-3 text-center h00-mktg lh-condensed-ultra ">Crea il tuo account</h1>
-                </div>
-                <div class="container-sm">
-                    <div class="mb-4">
-							<?php if(isset($_GET["err"]))
-							echo "<h4 style='color:red'>".$_GET["err"]."</h4>";
-							?>
-                        <form enctype="multipart/form-data" action ="registrazioneEsegui.php" method="post" onsubmit="chkUserAndPass()" class="setup-form js-signup-form js-octocaptcha-parent">
-						
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Nome</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="nome" value="<?php if(isset($_GET["oldNome"]))echo $_GET["oldNome"];?>">
-								</dd>
-							</dl>
+<!--
+<div class="container-lg p-responsive pb-6">
 
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Cognome</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="cognome" value="<?php if(isset($_GET["oldCognome"]))echo $_GET["oldCognome"];?>">
-								</dd>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Data di Nascita</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="date" name="data" value="<?php if(isset($_GET["oldData"]))echo $_GET["oldData"];?>">
-								</dd>
-							</dl>
-							      
-  
-							<dl class=""><dt class="input-label"><label>Sesso</label></dt>
-								<select class="form-control form-control input py-1" name="sesso">
-								  <option value=""></option>
-								  <option value="Maschio">Maschio</option>
-								  <option value="Femmina">Femmina</option>
-								</select>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Codice Fiscale</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="cf" value="<?php if(isset($_GET["oldCF"]))echo $_GET["oldCF"];?>">
-								</dd>
-							</dl>
-							<br>
-							
-							
-							
-							
-							
-							<br>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Username</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="text" name="username" value="<?php if(isset($_GET["oldUsername"]))echo $_GET["oldUsername"];?>">
-								</dd>
-							</dl>
-							<dl class="form-group my-3"><dt class="input-label"><label>Foto Profilo</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="file" name="userfile">
-								</dd>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Nuova password</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="password" name="password">
-								</dd>
-							</dl>
-							<dl class="form-group my-3 required"><dt class="input-label"><label>Reinserisci password</label></dt>
-								<dd>
-									<input class="form-control input py-1" type="password" name="passwordR">
-								</dd>
-							</dl>
-
-							<!--<dl class="form-group my-3">
-								<dt class="input-label mb-n2">
-									<label>Email preferences</label>
-								</dt>
-								<dd>
-									<div class="form-checkbox">
-										<label class="text-normal mt-2 text-gray" data-ga-click="Signup, send email">
-											<input type="checkbox" name="all_emails" id="all_emails" value="true" data-ga-click="Signup funnel entrance, click, select checkbox marketing opt-in"> Send me occasional product updates, announcements, and offers.
-										</label>
-									</div>
-								</dd>
-							</dl>-->
-
-							<br><br>
-							<div class="my-3">
-								<button class="btn-mktg signup-btn  js-octocaptcha-form-submit width-full" type="submit" height="64px" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">
-								Create account
-								</button>
-							</div>
-							<p class="my-3 f6">
-								By creating an account, you agree to the
-								<a href="/site/terms" target="_blank">Terms of Service</a>. For more information about our privacy practices, see the
-								<a href="/site/privacy" target="_blank">Privacy Statement</a>.
-							</p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-
+    <p class="h00-mktg lh-condensed mt-3 mb-2 text-center">
+      A better way to work together
+    </p>
+    <p class="lead-mktg text-gray text-center col-md-8 mx-auto mb-4">
+      GitHub brings teams together to work through problems, move ideas forward, and learn from each other along&nbsp;the&nbsp;way.
+    </p>
+    <div class="text-center">
+        <a href="/join?plan=business&amp;setup_organization=true&amp;source=home" class="btn-mktg btn-large-mktg btn-outline-mktg Bump-link" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;sign up your team&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="e36501fbe26e81166c30178192f6644085f83ba404af98e05cdb482d5456175a" data-ga-click="Signup, Attempt, text:Sign up your team">
+          Sign up your team <span class="Bump-link-symbol">→</span>
+        </a>
     </div>
-</body>
+  </div>-->
+  
+<!-- BODY DEL DOCUMENTO -->
 
+<div class="container-lg p-responsive pb-6" style="padding-bottom: 0px!important;">
+
+    <p class="h00-mktg lh-condensed mt-3 mb-2 text-center">
+      Visualizzazione Account
+    </p>
+
+	
+  </div>
+<div class="application-main " data-commit-hovercards-enabled="">
+     <main>
+		<div class="py-7 py-md-8 py-lg-9" style="padding-top: 0px!important;">		
+			<div class="d-flex flex-wrap flex-items-stretch flex-justify-center container-xl gutter-sm-condensed gutter-md mx-auto p-responsive">
+				<p class="lead-mktg text-gray text-center col-md-8 mx-auto mb-4" style="text-align:left !important;">
+				
+					<?php
+					include 'connection.php';
+
+					//Prendo la cartellaClinica del cliente
+					$sql = "SELECT * FROM cartellaClinica where idCliente=".$_SESSION["idCliente"];
+					$result = $conn->query($sql);
+					$row = $result->fetch_assoc();
+
+					?>
+					<form action="changeAccountInfo.php" method="post">
+					
+						<?php
+						if( isset($_GET["ris"]) ){
+							$ris = $_GET["ris"];
+							if(strpos($ris,"successo") == true){
+								echo('<div class="alert alert-success" role="alert" id="successo">
+								  <button onClick="nascondi(\'successo\');" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								  <strong>Perfetto!</strong> '.$ris.'
+								</div>');
+							}else{
+								echo('<div class="alert alert-danger" role="alert" id="errore">
+								  <button onClick="nascondi(\'errore\');" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								  <strong>Errore!</strong> '.$ris.'
+								</div>');
+							}
+						}
+						?>
+						
+						<label style="font-size: 30px;">Allergie</label><br>
+							<textarea name="allergie" cols="40" rows="5" style="width:100%"><?php echo($row["allergie"]); ?></textarea>
+						<br><br>
+						
+						<label style="font-size: 30px;">Farmaci</label><br>
+							<textarea name="farmaci" cols="40" rows="5" style="width:100%"><?php echo($row["farmaci"]); ?></textarea>
+						<br><br>
+						
+						
+						
+						<label style="font-size: 30px;">Gruppo Sanguigno</label><br>
+							<select style="width:100%;font-size:20px;" id="gruppo" name="gruppo">
+								<option id="0 Rh-" value="0 Rh-">0 Rh-</option>
+								<option id="0 Rh+" value="0 Rh+">0 Rh+</option>
+								<option id="A Rh-" value="A Rh-">A Rh-</option>
+								<option id="A Rh+" value="A Rh+">A Rh+</option>
+								<option id="B Rh-" value="B Rh-">B Rh-</option>
+								<option id="B Rh+" value="B Rh+">B Rh+</option>
+								<option id="AB Rh-" value="AB Rh-">AB Rh-</option>
+								<option id="AB Rh+" value="AB Rh+">AB Rh+</option>
+							</select>
+							<a onmouseover="mostraTabella()" onmouseleave="nascondiTabella()" style="cursor: pointer;font-size:18px;" class="testImg">Tabella compatibilita</a>
+						<br><br>
+						<?php 
+						//Seleziono il gruppo sanguigno
+							$gruppo = $row["gruppoSanguigno"]; 
+							echo('<script>document.getElementById("'.$gruppo.'").selected = true;</script>');
+						?>
+						
+						
+						<div id="imgCompatibilita" style="display:none; position:absolute;">
+							<img src="./img/sangue.jpg" alt="Girl in a jacket" width="100%" height="300" style="margin:auto;" >
+							<br><br>
+						</div>
+						
+						
+						<label style="font-size: 30px;">Note aggiuntive</label><br>
+							<textarea name="note" cols="40" rows="5" style="width:100%"><?php echo($row["note"]); ?></textarea>
+						<br><br><br>
+						<img src="./img/sangue.jpg" alt="Girl in a jacket" width="80%" height="0" style="margin:auto;" >
+						
+						<b><input type="submit" value="Salva" style="width:100%; height:80px"></b>
+					</form>
+				</p>
+			</div>
+		</div>
+	</main>
+</div>
+  
+</body>
 </html>
