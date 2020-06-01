@@ -12,10 +12,9 @@ import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import proggy.DbManager;
+import proggy.Database.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
-import proggy.server.main.ServerManager;
 
 /**
  * REST Web Service per Dissociare una scheda in uso

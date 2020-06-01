@@ -6,7 +6,7 @@
 package me.proggy.proggywebservices.orsenigo;
 
 import me.proggy.proggywebservices.utils.XMLValidator;
-import proggy.DbManager;
+import proggy.Database.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;

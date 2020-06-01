@@ -5,7 +5,7 @@
  */
 package me.proggy.proggywebservices.broch;
 
-import proggy.DbManager;
+import proggy.Database.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;

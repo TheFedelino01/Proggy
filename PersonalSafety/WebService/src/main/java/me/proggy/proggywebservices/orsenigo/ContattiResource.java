@@ -5,7 +5,7 @@
  */
 package me.proggy.proggywebservices.orsenigo;
 
-import proggy.DbManager;
+import proggy.Database.DbManager;
 import me.proggy.proggywebservices.utils.XMLUtils;
 import me.proggy.proggywebservices.utils.XMLValidator;
 import org.w3c.dom.Element;

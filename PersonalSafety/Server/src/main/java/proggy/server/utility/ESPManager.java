@@ -5,7 +5,7 @@
  */
 package proggy.server.utility;
 
-import proggy.DbManager;
+import proggy.Database.DbManager;
 import proggy.Socket.cmdRicevuto;
 import proggy.Socket.socketUDP;
 import proggy.server.Trilateration.ACCESSPOINTS;
@@ -13,9 +13,7 @@ import proggy.server.Trilateration.APInfo;
 import proggy.server.Trilateration.Trilateration;
 import proggy.server.manager;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;

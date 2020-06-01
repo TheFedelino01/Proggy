@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import proggy.DbManager;
+import proggy.Database.DbManager;
 
 /**
  * REST Web Service per Otteneres l'elenco delle schede attive in questo momento

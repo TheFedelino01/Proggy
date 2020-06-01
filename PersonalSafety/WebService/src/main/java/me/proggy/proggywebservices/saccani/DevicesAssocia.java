@@ -13,12 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-import proggy.DbManager;
+import proggy.Database.DbManager;
 import me.proggy.proggywebservices.Role;
 import me.proggy.proggywebservices.Secured;
 import me.proggy.proggywebservices.utils.XMLUtils;
 import org.w3c.dom.Element;
-import proggy.server.main.ServerManager;
 
 /**
  * REST Web Service per Associazione scheda con utente
