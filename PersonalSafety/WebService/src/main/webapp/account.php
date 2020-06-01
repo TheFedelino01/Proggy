@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if(!isset($_SESSION["username"])){
+if(!isset($_SESSION["username"]) || isset($_SESSION["idAdmin"])){
 	header("Location: login.php?err=Per visualizzare questa pagina devi prima effettuare il login!");
 	die();
 }
