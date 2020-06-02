@@ -37,7 +37,8 @@ public class AuthorizationFilter implements ContainerRequestFilter {
 
     /**
      * Intercetta le richieste effettuate ai metodi o classi annotati con {@link Secured}
-     * Se l'utente non possiede i permessi necessari, la richiesta viene rifiutata con un errore 403 - FORBITTEN {@link Response.Status#FORBIDDEN}
+     * Se l'utente non possiede i permessi necessari,
+     * la richiesta viene rifiutata con un errore 403 - FORBITTEN {@link Response.Status#FORBIDDEN}
      *
      * Richiama {@link #extractRoles(AnnotatedElement)} e {@link #checkPermissions(List, ContainerRequestContext)}
      *

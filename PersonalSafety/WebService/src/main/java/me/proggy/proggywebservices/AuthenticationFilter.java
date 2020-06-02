@@ -72,7 +72,9 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 
             final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
-            final MyPrincipal principal = new MyPrincipal(claims.getSubject(), claims.get("id", Integer.class), claims.get("admin", Boolean.class));
+            final MyPrincipal principal = new MyPrincipal(claims.getSubject(),
+                    claims.get("id", Integer.class),
+                    claims.get("admin", Boolean.class));
             requestContext.setSecurityContext(new SecurityContext() {
                 @Override
                 public Principal getUserPrincipal() {
@@ -96,7 +98,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
             });
 
 
-        } catch (Exception e) {
+        } catch (JwtException e) {
             e.printStackTrace();
             System.err.println("#### invalid token : " + token);
             throw new NotAuthorizedException(AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"");
